@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-07T19:17:31.376Z",
+  "generatedAt": "2026-10-07T21:34:40.631Z",
   "title": "Design System: Mycelium · landing",
   "extensions": {
     "colorMeta": {
@@ -22,16 +22,16 @@
       "brote": {
         "role": "primary",
         "displayName": "Brote",
-        "canonical": "oklch(89.3% 0.17 167)",
+        "canonical": "oklch(89.3% 0.170 167.0)",
         "tonalRamp": [
-          "oklch(15% 0.16 167)",
-          "oklch(26% 0.16 167)",
-          "oklch(38% 0.16 167)",
-          "oklch(50% 0.16 167)",
-          "oklch(62% 0.16 167)",
-          "oklch(74% 0.16 167)",
-          "oklch(85% 0.16 167)",
-          "oklch(95% 0.16 167)"
+          "oklch(15% 0.160 167.0)",
+          "oklch(26% 0.160 167.0)",
+          "oklch(38% 0.160 167.0)",
+          "oklch(50% 0.160 167.0)",
+          "oklch(62% 0.160 167.0)",
+          "oklch(74% 0.160 167.0)",
+          "oklch(85% 0.160 167.0)",
+          "oklch(95% 0.160 167.0)"
         ]
       },
       "esporo": {
@@ -67,31 +67,16 @@
       "lienzo": {
         "role": "neutral",
         "displayName": "Lienzo",
-        "canonical": "oklch(17.5% 0.022 237)",
+        "canonical": "oklch(17.5% 0.022 237.0)",
         "tonalRamp": [
-          "oklch(15% 0.022 237)",
-          "oklch(26% 0.022 237)",
-          "oklch(38% 0.022 237)",
-          "oklch(50% 0.022 237)",
-          "oklch(62% 0.022 237)",
-          "oklch(74% 0.022 237)",
-          "oklch(85% 0.022 237)",
-          "oklch(95% 0.022 237)"
-        ]
-      },
-      "niebla": {
-        "role": "neutral",
-        "displayName": "Niebla",
-        "canonical": "oklch(20.9% 0.029 237.9)",
-        "tonalRamp": [
-          "oklch(15% 0.029 237.9)",
-          "oklch(26% 0.029 237.9)",
-          "oklch(38% 0.029 237.9)",
-          "oklch(50% 0.029 237.9)",
-          "oklch(62% 0.029 237.9)",
-          "oklch(74% 0.029 237.9)",
-          "oklch(85% 0.029 237.9)",
-          "oklch(95% 0.029 237.9)"
+          "oklch(15% 0.022 237.0)",
+          "oklch(26% 0.022 237.0)",
+          "oklch(38% 0.022 237.0)",
+          "oklch(50% 0.022 237.0)",
+          "oklch(62% 0.022 237.0)",
+          "oklch(74% 0.022 237.0)",
+          "oklch(85% 0.022 237.0)",
+          "oklch(95% 0.022 237.0)"
         ]
       },
       "humus": {
@@ -124,6 +109,21 @@
           "oklch(95% 0.048 194.3)"
         ]
       },
+      "placa-tenue": {
+        "role": "neutral",
+        "displayName": "Placa tenue",
+        "canonical": "oklch(74.1% 0.042 192.4)",
+        "tonalRamp": [
+          "oklch(15% 0.042 192.4)",
+          "oklch(26% 0.042 192.4)",
+          "oklch(38% 0.042 192.4)",
+          "oklch(50% 0.042 192.4)",
+          "oklch(62% 0.042 192.4)",
+          "oklch(74% 0.042 192.4)",
+          "oklch(85% 0.042 192.4)",
+          "oklch(95% 0.042 192.4)"
+        ]
+      },
       "borde": {
         "role": "neutral",
         "displayName": "Borde",
@@ -140,18 +140,18 @@
         ]
       },
       "info": {
-        "role": "tertiary",
-        "displayName": "Info (solo isotipo)",
+        "role": "neutral",
+        "displayName": "Info (isotipo)",
         "canonical": "oklch(64.8% 0.189 258.5)",
         "tonalRamp": [
-          "oklch(15% 0.16 258.5)",
-          "oklch(26% 0.16 258.5)",
-          "oklch(38% 0.16 258.5)",
-          "oklch(50% 0.16 258.5)",
-          "oklch(62% 0.16 258.5)",
-          "oklch(74% 0.16 258.5)",
-          "oklch(85% 0.16 258.5)",
-          "oklch(95% 0.16 258.5)"
+          "oklch(15% 0.160 258.5)",
+          "oklch(26% 0.160 258.5)",
+          "oklch(38% 0.160 258.5)",
+          "oklch(50% 0.160 258.5)",
+          "oklch(62% 0.160 258.5)",
+          "oklch(74% 0.160 258.5)",
+          "oklch(85% 0.160 258.5)",
+          "oklch(95% 0.160 258.5)"
         ]
       },
       "hifa-claro": {
@@ -172,31 +172,16 @@
       "brote-claro": {
         "role": "primary",
         "displayName": "Brote, claro",
-        "canonical": "oklch(71.6% 0.12 206.8)",
+        "canonical": "oklch(71.6% 0.120 206.8)",
         "tonalRamp": [
-          "oklch(15% 0.12 206.8)",
-          "oklch(26% 0.12 206.8)",
-          "oklch(38% 0.12 206.8)",
-          "oklch(50% 0.12 206.8)",
-          "oklch(62% 0.12 206.8)",
-          "oklch(74% 0.12 206.8)",
-          "oklch(85% 0.12 206.8)",
-          "oklch(95% 0.12 206.8)"
-        ]
-      },
-      "esporo-claro": {
-        "role": "neutral",
-        "displayName": "Esporo, claro",
-        "canonical": "oklch(37.9% 0.062 215.9)",
-        "tonalRamp": [
-          "oklch(15% 0.062 215.9)",
-          "oklch(26% 0.062 215.9)",
-          "oklch(38% 0.062 215.9)",
-          "oklch(50% 0.062 215.9)",
-          "oklch(62% 0.062 215.9)",
-          "oklch(74% 0.062 215.9)",
-          "oklch(85% 0.062 215.9)",
-          "oklch(95% 0.062 215.9)"
+          "oklch(15% 0.120 206.8)",
+          "oklch(26% 0.120 206.8)",
+          "oklch(38% 0.120 206.8)",
+          "oklch(50% 0.120 206.8)",
+          "oklch(62% 0.120 206.8)",
+          "oklch(74% 0.120 206.8)",
+          "oklch(85% 0.120 206.8)",
+          "oklch(95% 0.120 206.8)"
         ]
       },
       "esporo-profundo-claro": {
@@ -217,16 +202,16 @@
       "lienzo-claro": {
         "role": "neutral",
         "displayName": "Lienzo, claro",
-        "canonical": "oklch(97% 0.005 211)",
+        "canonical": "oklch(97.0% 0.005 211.0)",
         "tonalRamp": [
-          "oklch(15% 0.005 211)",
-          "oklch(26% 0.005 211)",
-          "oklch(38% 0.005 211)",
-          "oklch(50% 0.005 211)",
-          "oklch(62% 0.005 211)",
-          "oklch(74% 0.005 211)",
-          "oklch(85% 0.005 211)",
-          "oklch(95% 0.005 211)"
+          "oklch(15% 0.005 211.0)",
+          "oklch(26% 0.005 211.0)",
+          "oklch(38% 0.005 211.0)",
+          "oklch(50% 0.005 211.0)",
+          "oklch(62% 0.005 211.0)",
+          "oklch(74% 0.005 211.0)",
+          "oklch(85% 0.005 211.0)",
+          "oklch(95% 0.005 211.0)"
         ]
       },
       "niebla-claro": {
@@ -247,31 +232,31 @@
       "humus-claro": {
         "role": "neutral",
         "displayName": "Humus, claro",
-        "canonical": "oklch(28.6% 0.02 212.3)",
+        "canonical": "oklch(28.6% 0.020 212.3)",
         "tonalRamp": [
-          "oklch(15% 0.02 212.3)",
-          "oklch(26% 0.02 212.3)",
-          "oklch(38% 0.02 212.3)",
-          "oklch(50% 0.02 212.3)",
-          "oklch(62% 0.02 212.3)",
-          "oklch(74% 0.02 212.3)",
-          "oklch(85% 0.02 212.3)",
-          "oklch(95% 0.02 212.3)"
+          "oklch(15% 0.020 212.3)",
+          "oklch(26% 0.020 212.3)",
+          "oklch(38% 0.020 212.3)",
+          "oklch(50% 0.020 212.3)",
+          "oklch(62% 0.020 212.3)",
+          "oklch(74% 0.020 212.3)",
+          "oklch(85% 0.020 212.3)",
+          "oklch(95% 0.020 212.3)"
         ]
       },
       "humus-tenue-claro": {
         "role": "neutral",
-        "displayName": "Humus tenue, claro (landing)",
-        "canonical": "oklch(47.3% 0.02 210.2)",
+        "displayName": "Humus tenue, claro",
+        "canonical": "oklch(47.3% 0.020 210.2)",
         "tonalRamp": [
-          "oklch(15% 0.02 210.2)",
-          "oklch(26% 0.02 210.2)",
-          "oklch(38% 0.02 210.2)",
-          "oklch(50% 0.02 210.2)",
-          "oklch(62% 0.02 210.2)",
-          "oklch(74% 0.02 210.2)",
-          "oklch(85% 0.02 210.2)",
-          "oklch(95% 0.02 210.2)"
+          "oklch(15% 0.020 210.2)",
+          "oklch(26% 0.020 210.2)",
+          "oklch(38% 0.020 210.2)",
+          "oklch(50% 0.020 210.2)",
+          "oklch(62% 0.020 210.2)",
+          "oklch(74% 0.020 210.2)",
+          "oklch(85% 0.020 210.2)",
+          "oklch(95% 0.020 210.2)"
         ]
       },
       "brote-texto-claro": {
@@ -289,136 +274,153 @@
           "oklch(95% 0.075 206.1)"
         ]
       },
-      "brote-marco-claro": {
+      "degrade-inicio-claro": {
         "role": "primary",
-        "displayName": "Brote marco, claro",
-        "canonical": "oklch(79.4% 0.096 204.7)",
+        "displayName": "Brote oscurecido del degradé, claro",
+        "canonical": "oklch(56.3% 0.113 166.1)",
         "tonalRamp": [
-          "oklch(15% 0.096 204.7)",
-          "oklch(26% 0.096 204.7)",
-          "oklch(38% 0.096 204.7)",
-          "oklch(50% 0.096 204.7)",
-          "oklch(62% 0.096 204.7)",
-          "oklch(74% 0.096 204.7)",
-          "oklch(85% 0.096 204.7)",
-          "oklch(95% 0.096 204.7)"
+          "oklch(15% 0.113 166.1)",
+          "oklch(26% 0.113 166.1)",
+          "oklch(38% 0.113 166.1)",
+          "oklch(50% 0.113 166.1)",
+          "oklch(62% 0.113 166.1)",
+          "oklch(74% 0.113 166.1)",
+          "oklch(85% 0.113 166.1)",
+          "oklch(95% 0.113 166.1)"
         ]
       },
-      "brote-marco-acento-claro": {
-        "role": "primary",
-        "displayName": "Brote marco acento, claro",
-        "canonical": "oklch(75.3% 0.113 205.4)",
-        "tonalRamp": [
-          "oklch(15% 0.113 205.4)",
-          "oklch(26% 0.113 205.4)",
-          "oklch(38% 0.113 205.4)",
-          "oklch(50% 0.113 205.4)",
-          "oklch(62% 0.113 205.4)",
-          "oklch(74% 0.113 205.4)",
-          "oklch(85% 0.113 205.4)",
-          "oklch(95% 0.113 205.4)"
-        ]
-      },
-      "noche-texto-tenue": {
+      "superficie-alta-claro": {
         "role": "neutral",
-        "displayName": "Humus tenue de la noche",
-        "canonical": "oklch(70.4% 0.045 194.3)",
+        "displayName": "Superficie alta, claro",
+        "canonical": "oklch(100.0% 0.000 0)",
         "tonalRamp": [
-          "oklch(15% 0.045 194.3)",
-          "oklch(26% 0.045 194.3)",
-          "oklch(38% 0.045 194.3)",
-          "oklch(50% 0.045 194.3)",
-          "oklch(62% 0.045 194.3)",
-          "oklch(74% 0.045 194.3)",
-          "oklch(85% 0.045 194.3)",
-          "oklch(95% 0.045 194.3)"
+          "oklch(15% 0.000 0)",
+          "oklch(26% 0.000 0)",
+          "oklch(38% 0.000 0)",
+          "oklch(50% 0.000 0)",
+          "oklch(62% 0.000 0)",
+          "oklch(74% 0.000 0)",
+          "oklch(85% 0.000 0)",
+          "oklch(95% 0.000 0)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "El H1 del hero, uno por página, con el degradé de marca."
+        "purpose": "El H1 de la portada, en Humus liso sobre la placa del grafo."
+      },
+      "numero": {
+        "displayName": "Número de tapa",
+        "purpose": "El número de versión del cierre, con el degradé de marca."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "El H2 de cada tramo, novedades y descargas, en --titulo-2."
+        "purpose": "El H2 del recorrido, de la tapa sin versión y de la 404."
+      },
+      "titular": {
+        "displayName": "Titular de tapa",
+        "purpose": "El primer título de las notas del release, debajo de la fecha."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "El H3 de un par de captura y texto, en --titulo-3."
+        "purpose": "El H3 de cada nodo de la hifa; fija la altura del punto."
       },
-      "entrada": {
-        "displayName": "Entrada",
-        "purpose": "El párrafo de apertura de cada tramo y la bajada del hero."
-      },
-      "reading": {
-        "displayName": "Lectura",
-        "purpose": "El cuerpo de las novedades, Markdown del release."
+      "bajada": {
+        "displayName": "Bajada",
+        "purpose": "La bajada de la portada."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "El texto corrido de la página."
+        "purpose": "El texto de la página."
+      },
+      "sistema": {
+        "displayName": "Sistema",
+        "purpose": "Los títulos de la columna de descargas."
       },
       "meta": {
         "displayName": "Meta",
-        "purpose": "Línea de versión, notas de descarga, epígrafes."
+        "purpose": "Línea de versión, notas de descarga, epígrafes, pie."
       },
-      "hora": {
-        "displayName": "Hora",
-        "purpose": "La hora de un tramo, dentro del H2, y las horas de la regla."
+      "rotulo": {
+        "displayName": "Rótulo",
+        "purpose": "El nombre de cada nodo y el pie de foto del grafo."
+      },
+      "fecha": {
+        "displayName": "Fecha de tapa",
+        "purpose": "La fecha de publicación debajo del número."
       }
     },
     "shadows": [
       {
         "name": "ventana",
-        "value": "0 28px 70px -24px var(--sombra)",
-        "purpose": "El marco de una captura de la app."
+        "value": "0 28px 64px -28px var(--sombra), 0 2px 6px -2px var(--sombra)",
+        "purpose": "El marco de una captura."
       },
       {
-        "name": "rotulo-regla",
-        "value": "0 8px 24px var(--sombra)",
-        "purpose": "El nombre de la hora que aparece al costado de la regla."
+        "name": "ventana-terminal",
+        "value": "0 30px 70px -30px var(--sombra), 0 2px 6px -2px var(--sombra)",
+        "purpose": "El marco de la terminal del nodo claude code."
+      },
+      {
+        "name": "tu-sistema",
+        "value": "0 22px 50px -26px var(--sombra)",
+        "purpose": "La descarga del sistema detectado."
+      },
+      {
+        "name": "halo-punto",
+        "value": "0 0 0 4px color-mix(in srgb, var(--linea) 14%, transparent), 0 2px 14px color-mix(in srgb, var(--linea) 55%, transparent)",
+        "purpose": "Un nodo encendido de la hifa."
+      },
+      {
+        "name": "halo-claude-code",
+        "value": "0 0 0 6px color-mix(in srgb, var(--linea-punta) 16%, transparent), 0 3px 24px color-mix(in srgb, var(--linea-punta) 70%, transparent)",
+        "purpose": "El punto Brote del nodo claude code."
       }
     ],
     "motion": [
       {
         "name": "salida",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Entrada de capturas, giro de la hora, vuelta del indicador."
+        "purpose": "Curva de toda transición de estado."
       },
       {
         "name": "hover",
         "value": "120ms ease-out",
-        "purpose": "Fondo y borde de botones, color de las horas."
+        "purpose": "Fondo, borde y color de botones y enlaces."
       },
       {
         "name": "entrada-captura",
-        "value": "160ms, desde translateY(4px) y opacidad 0",
-        "purpose": "Una vez por captura, con IntersectionObserver."
+        "value": "160ms desde translateY(4px)",
+        "purpose": "Fundido de entrada de cada captura, una vez."
       },
       {
-        "name": "giro-hora",
-        "value": "220ms",
-        "purpose": "La lectura de la regla: la hora sale hacia arriba y entra desde abajo."
+        "name": "chevron",
+        "value": "200ms",
+        "purpose": "Giro de 180° del chevron del sumario."
       },
       {
-        "name": "vuelta-indicador",
-        "value": "320ms",
-        "purpose": "El indicador vuelve al principio de la escala a la mañana siguiente."
+        "name": "nodo-encendido",
+        "value": "280ms",
+        "purpose": "El punto pasa de aro a relleno con halo cuando la hifa lo alcanza."
+      },
+      {
+        "name": "hifa-scroll",
+        "value": "scaleY(var(--lleno)) hasta el 62% de la ventana",
+        "purpose": "La hifa se llena con el scroll; sin JS o con movimiento reducido, encendida."
       }
     ],
     "breakpoints": [
       {
-        "name": "mediana",
-        "value": "1100px"
+        "name": "cierre-una-columna",
+        "value": "1020px"
       },
       {
-        "name": "apilado",
-        "value": "900px"
+        "name": "nodos-apilados",
+        "value": "860px"
       },
       {
-        "name": "celular",
+        "name": "telefono",
         "value": "760px"
       }
     ]
@@ -428,117 +430,119 @@
       "name": "Botón primario",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "La descarga: uno por contexto.",
-      "html": "<a class=\"ds-boton ds-boton-primario\" href=\"#\"><svg class=\"ds-icono\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 15V3M7 10l5 5 5-5M5 21h14\"/></svg>Descargar para Windows</a>",
-      "css": ".ds-boton{display:inline-flex;align-items:center;gap:.55rem;min-height:46px;padding:0 1.2rem;border-radius:4px;font:600 1rem/1.2 \"Geist\",system-ui,sans-serif;text-decoration:none;white-space:nowrap;transition:background-color 120ms ease-out,border-color 120ms ease-out}.ds-icono{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ds-boton-primario{background:#19e6ff;color:#071219}.ds-boton-primario:hover{background:color-mix(in srgb,#19e6ff 85%,#000)}.ds-boton:focus-visible{outline:2px solid #3dffc4;outline-offset:2px}"
+      "description": "La descarga del sistema detectado; uno por contexto.",
+      "html": "<a class=\"ds-boton ds-primario\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 15V3M7 10l5 5 5-5M5 21h14\"/></svg>Descargar para Windows</a>",
+      "css": ".ds-boton{display:inline-flex;align-items:center;gap:.55rem;min-height:46px;padding:0 1.2rem;border:1px solid transparent;border-radius:4px;font:600 1rem/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background-color 120ms ease-out,border-color 120ms ease-out,color 120ms ease-out}.ds-primario{background:#19e6ff;color:#04090e}.ds-primario:hover{background:#3dffc4}.ds-primario:focus-visible{outline:2px solid #3dffc4;outline-offset:3px}"
     },
     {
       "name": "Botón secundario",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Otras plataformas, .deb, .rpm.",
+      "description": "«Otras plataformas», .deb, .rpm y toda descarga sin sistema detectado.",
       "html": "<a class=\"ds-boton2\" href=\"#\">Otras plataformas</a>",
-      "css": ".ds-boton2{display:inline-flex;align-items:center;min-height:46px;padding:0 1.2rem;border-radius:4px;border:1px solid color-mix(in srgb,#c6e7e1 30%,transparent);color:#c6e7e1;font:600 1rem/1.2 \"Geist\",system-ui,sans-serif;text-decoration:none;transition:background-color 120ms ease-out,border-color 120ms ease-out}.ds-boton2:hover{background:color-mix(in srgb,#3dffc4 14%,transparent);border-color:color-mix(in srgb,#c6e7e1 50%,transparent)}.ds-boton2:focus-visible{outline:2px solid #3dffc4;outline-offset:2px}"
+      "css": ".ds-boton2{display:inline-flex;align-items:center;min-height:46px;padding:0 1.2rem;border:1px solid color-mix(in srgb,#c6e7e1 30%,transparent);border-radius:4px;color:#c6e7e1;font:600 1rem/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background-color 120ms ease-out,border-color 120ms ease-out}.ds-boton2:hover{background:color-mix(in srgb,#3dffc4 14%,transparent);border-color:color-mix(in srgb,#c6e7e1 50%,transparent)}.ds-boton2:focus-visible{outline:2px solid #3dffc4;outline-offset:3px}"
     },
     {
-      "name": "Titular con hora",
+      "name": "Descarga de la cabecera",
+      "kind": "nav",
+      "refersTo": "cabecera-descarga",
+      "description": "El enlace «Descargar <versión>» de la navegación, en Geist con cifras tabulares.",
+      "html": "<a class=\"ds-cab\" href=\"#\">Descargar 2.4.0</a>",
+      "css": ".ds-cab{display:inline-flex;align-items:center;min-height:38px;padding:0 .85rem;border:1px solid color-mix(in srgb,#19e6ff 45%,transparent);border-radius:4px;font:600 .875rem/1 Geist,system-ui,sans-serif;font-variant-numeric:tabular-nums;color:#19e6ff;text-decoration:none;background:#0b1d27;transition:background-color 120ms ease-out,color 120ms ease-out}.ds-cab:hover{background:#19e6ff;color:#04090e}.ds-cab:focus-visible{outline:2px solid #3dffc4;outline-offset:3px}"
+    },
+    {
+      "name": "Nodo de la hifa",
       "kind": "custom",
-      "refersTo": "headline",
-      "description": "El H2 de un tramo: la hora en mono como primera columna.",
-      "html": "<h2 class=\"ds-h2\"><time class=\"ds-hora\">11:15</time> Conectás</h2>",
-      "css": ".ds-h2{display:grid;grid-template-columns:7rem minmax(0,1fr);align-items:baseline;margin:0;font:600 clamp(2.1rem,1.3rem + 2.4vw,3.4rem)/1.08 \"Source Serif 4\",Georgia,serif;letter-spacing:-.015em;color:color-mix(in srgb,#3dffc4 70%,#c6e7e1)}.ds-hora{font:500 1rem/1 \"JetBrains Mono\",ui-monospace,monospace;font-variant-numeric:tabular-nums;color:#3dffc4}"
+      "refersTo": "punto",
+      "description": "Punto sobre la línea, nombre en mono debajo, H3 serif y texto al lado.",
+      "html": "<div class=\"ds-nodo\"><span class=\"ds-linea\"></span><span class=\"ds-punto\"></span><span class=\"ds-nombre\">escribir</span><div class=\"ds-txt\"><h3>Escribís y la nota ya se ve</h3><p>Markdown que se formatea mientras tipeás, con <code>[[enlaces]]</code>.</p></div></div>",
+      "css": ".ds-nodo{position:relative;padding:0 0 2rem 4.5rem;background:#04090e;color:#c6e7e1;font:400 1.0625rem/1.6 Geist,system-ui,sans-serif}.ds-linea{position:absolute;left:.75rem;top:0;bottom:0;width:1px;background:#19e6ff}.ds-punto{position:absolute;left:calc(.75rem - 6px);top:calc(1.2rem - 6px);width:12px;height:12px;border-radius:50%;background:#19e6ff;box-shadow:0 0 0 4px color-mix(in srgb,#19e6ff 14%,transparent),0 2px 14px color-mix(in srgb,#19e6ff 55%,transparent)}.ds-nombre{position:absolute;left:.75rem;top:calc(1.2rem + 12px);transform:translateX(-50%);padding:.2rem .3rem;background:#04090e;font:400 .75rem/1.3 'JetBrains Mono',monospace;color:#6e9a99}.ds-txt h3{margin:0;font:600 2rem/1.15 'Source Serif 4',Georgia,serif;letter-spacing:-.01em}.ds-txt p{margin:1rem 0 0;color:#6e9a99;max-width:21rem}.ds-txt code{font:.86em 'JetBrains Mono',monospace;background:#0b1d27;color:#c6e7e1;border-radius:4px;padding:.12em .4em}"
     },
     {
       "name": "Marco de captura",
       "kind": "card",
       "refersTo": "marco-captura",
-      "description": "Una captura real de la app en marco de ventana.",
-      "html": "<figure class=\"ds-captura\"><div class=\"ds-marco\"></div><figcaption>Lo que tiene fecha va al calendario.</figcaption></figure>",
-      "css": ".ds-captura{margin:0}.ds-marco{aspect-ratio:2880/1800;border-radius:8px;border:1px solid #16343f;background:#0a1a24;box-shadow:0 28px 70px -24px color-mix(in srgb,#04090e 75%,transparent)}.ds-captura figcaption{margin-top:.9rem;font:400 .95rem/1.6 \"Geist\",system-ui,sans-serif;color:#6e9a99}"
+      "description": "Recorte legible de una captura real, con sombra de ventana.",
+      "html": "<figure class=\"ds-cap\"><div class=\"ds-marco\"><div class=\"ds-img\"></div></div><figcaption>Bioluminiscencia, claro</figcaption></figure>",
+      "css": ".ds-cap{margin:0;max-width:24rem;font:400 .9rem/1.5 Geist,system-ui,sans-serif;color:#6e9a99}.ds-marco{overflow:hidden;border:1px solid #16343f;border-radius:8px;background:#0b1d27;box-shadow:0 28px 64px -28px color-mix(in srgb,#04090e 85%,transparent),0 2px 6px -2px color-mix(in srgb,#04090e 85%,transparent)}.ds-img{aspect-ratio:16/10}.ds-cap figcaption{margin-top:.75rem}"
     },
     {
-      "name": "Regla del día",
-      "kind": "nav",
-      "refersTo": "regla",
-      "description": "La regla fija de 56px con la escala 06–24 h.",
-      "html": "<nav class=\"ds-regla\"><p class=\"ds-lectura\">11:15</p><ol class=\"ds-horas\"><li><a href=\"#\">08:40</a></li><li><a href=\"#\" aria-current=\"true\">11:15</a></li><li><a href=\"#\">15:30</a></li></ol></nav>",
-      "css": ".ds-regla{width:56px;height:320px;display:flex;flex-direction:column;background:#04090e;color:#6e9a99;border-right:1px solid color-mix(in srgb,#3dffc4 12%,transparent)}.ds-lectura{margin:0;height:30px;font:500 12px/30px \"JetBrains Mono\",monospace;text-align:center;color:#3dffc4;border-block:1px solid color-mix(in srgb,#3dffc4 14%,transparent)}.ds-horas{list-style:none;margin:1.5rem 0;padding:0;display:grid;gap:2rem}.ds-horas a{display:block;padding:7px 0 7px 7px;font:500 11px/1 \"JetBrains Mono\",monospace;color:#6e9a99;text-decoration:none;transition:color 120ms ease-out}.ds-horas a:hover,.ds-horas a[aria-current=true]{color:#3dffc4}.ds-horas a[aria-current=true]{font-weight:600;box-shadow:inset 2px 0 0 #3dffc4}.ds-horas a:focus-visible{outline:2px solid #3dffc4;outline-offset:-2px}"
-    },
-    {
-      "name": "Novedades plegadas",
+      "name": "La tapa",
       "kind": "custom",
-      "refersTo": "novedades-toggle",
-      "description": "El resto del release, plegado tras el primer grupo.",
-      "html": "<details class=\"ds-mas\"><summary><span>Todo lo nuevo de la 2.4.0</span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"/></svg></summary><p>…</p></details>",
-      "css": ".ds-mas>summary{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem;border:1px solid color-mix(in srgb,#c6e7e1 30%,transparent);border-radius:4px;font:600 1rem/1.2 \"Geist\",system-ui,sans-serif;color:#c6e7e1;cursor:pointer;list-style:none;transition:background-color 120ms ease-out}.ds-mas>summary::-webkit-details-marker{display:none}.ds-mas>summary:hover{background:color-mix(in srgb,#3dffc4 14%,transparent)}.ds-mas>summary:focus-visible{outline:2px solid #3dffc4;outline-offset:2px}.ds-mas svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;transition:transform 160ms cubic-bezier(.16,1,.3,1)}.ds-mas[open] svg{transform:rotate(180deg)}"
+      "refersTo": "punto-final",
+      "description": "Anillo final, número de versión con el degradé, fecha de tapa, titular y sumario numerado.",
+      "html": "<div class=\"ds-tapa\"><span class=\"ds-anillo\"></span><h2 class=\"ds-num\">2.4.0</h2><p class=\"ds-fecha\">6 de octubre de 2026</p><p class=\"ds-tit\">Tus archivos, al instante</p><ol class=\"ds-sum\"><li><details><summary><span>El explorador sigue al disco</span></summary><p>Lo que agregás desde fuera aparece al instante.</p></details></li><li><details><summary><span>Cualquier archivo</span></summary><p>Arrastrá cualquier archivo o carpeta.</p></details></li></ol></div>",
+      "css": ".ds-tapa{position:relative;padding-left:4.5rem;background:#04090e;color:#c6e7e1;font:400 1.0625rem/1.6 Geist,system-ui,sans-serif}.ds-anillo{position:absolute;left:calc(.75rem - 14px);top:calc(7rem*.42 - 14px);width:28px;height:28px;border-radius:50%;border:1.5px solid color-mix(in srgb,#3dffc4 45%,transparent);background:radial-gradient(circle,#3dffc4 0 4.5px,#04090e 5.5px)}.ds-num{margin:0;font:700 7rem/.86 Geist,system-ui,sans-serif;letter-spacing:-.04em;padding-bottom:.06em;background:linear-gradient(90deg,#3dffc4,#19e6ff);-webkit-background-clip:text;background-clip:text;color:transparent}.ds-fecha{margin:1rem 0 0;font:400 .875rem/1.4 'JetBrains Mono',monospace;color:#6e9a99}.ds-tit{margin:1.5rem 0 0;font:600 2rem/1.15 'Source Serif 4',Georgia,serif;letter-spacing:-.01em}.ds-sum{counter-reset:s;list-style:none;margin:2rem 0 0;padding:0;border-top:1px solid #16343f}.ds-sum>li{counter-increment:s;border-bottom:1px solid #16343f}.ds-sum summary{display:grid;grid-template-columns:2.5rem 1fr;align-items:baseline;padding:.95rem 0;font-weight:600;cursor:pointer;list-style:none;border-radius:4px}.ds-sum summary::-webkit-details-marker{display:none}.ds-sum summary::before{content:counter(s,decimal-leading-zero);font:500 .8125rem/1 Geist,system-ui,sans-serif;font-variant-numeric:tabular-nums;color:#19e6ff}.ds-sum summary:hover span{color:#3dffc4}.ds-sum summary:focus-visible{outline:2px solid #3dffc4;outline-offset:3px}.ds-sum details>p{margin:0;padding:0 0 1.1rem 2.75rem;color:#6e9a99;font-size:.975rem}"
     },
     {
-      "name": "Chip tu sistema",
-      "kind": "chip",
-      "refersTo": "chip-tu-sistema",
-      "description": "Marca la columna del sistema detectado.",
-      "html": "<span class=\"ds-chip\">tu sistema</span>",
-      "css": ".ds-chip{font:500 .75rem/1 \"Geist\",system-ui,sans-serif;color:#3dffc4;padding:.25em .55em;border-radius:4px;background:color-mix(in srgb,#3dffc4 15%,transparent)}"
+      "name": "Descarga del sistema detectado",
+      "kind": "card",
+      "refersTo": "sistema-tuyo",
+      "description": "El bloque que sube primero, con el chip «tu sistema» y el único botón relleno.",
+      "html": "<div class=\"ds-sis\"><div class=\"ds-sis-cab\"><h4>Windows</h4><span class=\"ds-chip\">tu sistema</span></div><p class=\"ds-req\">Instalador .exe · Windows de 64 bits</p><a class=\"ds-sis-btn\" href=\"#\">Descargar para Windows</a><p class=\"ds-nota\">No hace falta crear ninguna cuenta.</p></div>",
+      "css": ".ds-sis{max-width:24rem;padding:1.25rem 1.375rem 1.3rem;border:1px solid color-mix(in srgb,#19e6ff 70%,transparent);border-radius:8px;background:#0b1d27;box-shadow:0 22px 50px -26px color-mix(in srgb,#04090e 85%,transparent);color:#c6e7e1;font:400 1.0625rem/1.6 Geist,system-ui,sans-serif}.ds-sis-cab{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem}.ds-sis h4{margin:0;font:600 1.2rem/1.3 Geist,system-ui,sans-serif;letter-spacing:-.01em}.ds-chip{padding:.25em .6em;border-radius:4px;background:#3dffc4;color:#04090e;font:500 .72rem/1.2 Geist,system-ui,sans-serif}.ds-req{margin:.3rem 0 1rem;font-size:.925rem;color:#6e9a99}.ds-sis-btn{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:4px;background:#19e6ff;color:#04090e;font:600 1rem/1.2 Geist,system-ui,sans-serif;text-decoration:none;transition:background-color 120ms ease-out}.ds-sis-btn:hover{background:#3dffc4}.ds-sis-btn:focus-visible{outline:2px solid #3dffc4;outline-offset:3px}.ds-nota{margin:.85rem 0 0;font-size:.875rem;line-height:1.5;color:#6e9a99}"
     }
   ],
   "narrative": {
-    "northStar": "Un día con tu vault",
-    "overview": "La página es un día. Cinco horas en orden fijo —08:40 escribís, 11:15 conectás, 15:30 encontrás, 18:00 ordenás, 22:10 le preguntás a tu vault— y después «a la mañana siguiente», donde viven los temas, las novedades y las descargas. El tiempo es el material de la página: una **regla del día** fija al borde izquierdo con la escala de 06 a 24 h, la hora de cada tramo dentro de su titular, y un fondo que se **hunde** de la luz de la mañana hacia Esporo a medida que se baja. La noche es una banda de Esporo con la terminal; a la mañana siguiente el fondo y la regla vuelven al principio.\n\nEs el bosque bioluminiscente de la app (**heredado**: los mismos raw Esporo, Lienzo, Niebla, Humus, Hifa para la acción y Brote para lo que brilla; las mismas familias; los mismos radios), pero en otra densidad: la app habla en 13px y la landing en 17px, con titulares de marketing en Source Serif. La regla del día es el rail de la app traducido a la página: 56px, Esporo, el isotipo arriba, el indicador de 2px que marca dónde estás. La prueba son **capturas reales** de la app con el vault de demostración «Huerta del barrio», recortadas para que se lean; nada de ilustraciones ni maquetas.\n\nLo que la landing rechaza es la landing de categoría: hero centrado, grilla de tarjetas de funciones y testimonios. Las funciones se dicen como momentos del día, en pares de captura y texto, en listas con filetes finos, nunca en tarjetas.",
+    "northStar": "La red",
+    "overview": "La página es la red misma. Abre con el **grafo real** del vault de demostración «Huerta del barrio» a sangre, de borde a borde, bajo un velo que lo apaga detrás del texto; desde ahí baja una **hifa**, una línea vertical de 1px en el margen izquierdo, que une las funciones como nodos: escribir, conectar, encontrar, agendar, organizar, claude code, temas. Cada nodo es un punto sobre la línea con su nombre debajo, en mono chico, como los rótulos del grafo; al lado, su titular serif, dos o tres líneas y un recorte legible de una captura real. La hifa se **enciende con el scroll** y desemboca en la versión vigente, impresa como la **tapa de una edición**: el número enorme con el degradé de marca, la fecha de tapa, el titular del release y el sumario numerado, junto a las descargas.\n\nEs el bosque bioluminiscente de la app (**heredado**: los raw de Bioluminiscencia, Hifa para lo que se hace y Brote para lo que brilla, las tres familias, los dos radios), en la densidad de una página: 17px de texto, titulares de marketing en Source Serif. La portada es una **placa oscura en los dos modos**, porque es la captura del grafo y el grafo se dibuja siempre sobre oscuro; el resto de la página sigue a `prefers-color-scheme`.\n\nRechaza la landing de categoría: hero centrado sobre fondo liso, grilla de tarjetas de funciones, testimonios y métricas. Las funciones se recorren en fila sobre la hifa, nunca en tarjetas.",
     "keyCharacteristics": [
-      "La regla del día, fija: escala 06–24 h, indicador que recorre el día con el scroll, la hora que gira, un punto en la hora del visitante, clic en una hora salta a su tramo.",
-      "El tono atado al scroll: el fondo se hunde de `--fondo-dia` a `--fondo-tarde`.",
-      "La noche es oscura en los dos modos; la mañana siguiente vuelve a la luz.",
-      "Capturas reales en un marco de ventana, que sangran por el borde derecho.",
-      "Titulares en Source Serif con la hora en mono como primera columna.",
-      "Todo progresivo: sin JS la página se lee entera, con las tres descargas a la vista."
+      "El grafo real a sangre en la portada, con velo y viñeteado de Esporo, oscuro en los dos modos.",
+      "La hifa vertical que se enciende con el scroll y une los nodos hasta la tapa.",
+      "Nodos con punto sobre la línea y nombre en mono debajo del punto, como en el grafo.",
+      "Un solo brote en la página: el anillo donde termina la hifa, junto al número de versión.",
+      "La tapa: «2.4.0» enorme en Geist 700 con el degradé, fecha de tapa, titular y sumario plegable.",
+      "Recortes legibles de capturas reales, nunca maquetas.",
+      "Todo progresivo: sin JS la página se lee entera, con la hifa encendida y las tres descargas."
     ],
     "rules": [
       {
-        "name": "The Sinking Day Rule",
-        "body": "El fondo de la página es uno solo y se hunde con el scroll: cada tramo declara su tono `--t` (0 en la mañana, 0.08, 0.3, 0.55, 0.8, 1 en la noche, 0 otra vez a la mañana siguiente) y el JS interpola `--hundimiento` entre tramos, mezclando `--fondo-dia` con `--fondo-tarde` en oklab. En oscuro va de Niebla a Esporo; en claro, de Lienzo a Niebla teñida de Esporo al 9%. Con movimiento reducido cada tramo conserva su tono fijo. Ningún tramo lleva un fondo propio salvo la noche.",
+        "name": "The Dark Plate Rule",
+        "body": "La portada redefine los roles con la paleta `--placa-*` en los dos modos: es la captura del grafo y su lienzo es Esporo profundo. Sobre la placa, el texto usa `--placa-humus` y `--placa-tenue`, nunca un rol calibrado para el fondo claro.",
         "section": "colors"
       },
       {
-        "name": "The Night Is Always Dark Rule",
-        "body": "La banda de las 22:10 usa la paleta oscura en los dos modos: Esporo en oscuro, Esporo profundo en claro, con la tinta, el foco y los títulos del modo oscuro y un filete de Brote al 10% arriba y abajo. Es el único tramo oscuro en modo claro.",
+        "name": "The One Sprout Rule",
+        "body": "La hifa termina en un único anillo Brote (aro al 45% y núcleo de 4.5px) a media altura del número de la tapa. Es el único brote de la página; el nodo `claude code` es el único otro punto que pasa de Hifa a Brote.",
         "section": "colors"
       },
       {
-        "name": "The Frame Rule",
-        "body": "Sobre la regla del día, el texto y el foco usan `--marco-texto` y `--marco-glow`, nunca un color calibrado para el fondo de la página. El anillo de foco de la regla va hacia adentro (`outline-offset: -2px`).",
+        "name": "The Two Gradients Rule",
+        "body": "El degradé Brote → Hifa (en claro, `degrade-inicio-claro` → `hifa-claro`, para que las dos puntas pasen 3:1 sobre el Lienzo claro) vive en dos lugares y solo dos: la palabra del logo y el número de versión de la tapa. El H1 de la portada va en Humus liso: está sobre una imagen cargada y necesita todo el contraste.",
         "section": "colors"
       },
       {
-        "name": "The Hour Column Rule",
-        "body": "La hora de un tramo va **dentro** de su H2, como primera columna de una grilla de 7rem (5.5rem en ventana mediana; `auto` con 0.85rem de separación en el celular, siempre en la primera línea). La entrada, la sintaxis, la lista de la IA y la nota al pie se sangran esos mismos 7rem para alinearse con el título. La hora no es un rótulo suelto encima del título: es el dato que conecta el tramo con la regla.",
+        "name": "The Version In Geist Rule",
+        "body": "Toda mención de la versión —la cabecera, la línea de la portada, el título de las descargas, el pie y la tapa— va en Geist con cifras tabulares, nunca en mono.",
         "section": "typography"
       },
       {
         "name": "The Literal Mono Rule",
-        "body": "La mono es para lo que se teclea o se lee en un reloj: horas, `kbd`, sintaxis, versión. Nunca para rótulos o adornos.",
+        "body": "La mono es para lo que en la app es literal: nombres de nodo, `code`, `kbd`, la fecha de tapa y el pie de foto del grafo. Nunca para titulares ni para la versión.",
         "section": "typography"
       },
       {
-        "name": "The Only Windows Float Rule",
-        "body": "Solo el marco de una captura y el rótulo flotante de la regla tienen sombra. Texto, listas, columnas de descarga y novedades son planos.",
+        "name": "The Lit Node Rule",
+        "body": "Un nodo apagado es un aro de Hifa al 45% sobre el fondo, sin halo; encendido, se rellena y gana el halo. El anillo final no lleva halo: es aro y núcleo.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "**Do** usar los raw y los roles de `estilos.css` y, para todo lo heredado, las reglas del DESIGN.md del producto (Two Voices, Role, Frame, Tinted Shadow).",
-      "**Do** declarar el tono `--t` y la hora `data-hora` de cada tramo nuevo, para que el fondo y la regla lo sigan.",
-      "**Do** poner la hora dentro del H2, en mono, como primera columna, y sangrar el contenido del tramo la misma medida.",
-      "**Do** mostrar funciones con capturas reales de la app, recortadas a lo que se lee.",
-      "**Do** enumerar con listas de filetes finos y pares asimétricos de captura y texto.",
-      "**Do** dejar la página entera y descargable sin JS, y dar a todo movimiento su alternativa con `prefers-reduced-motion`.",
-      "**Do** acompañar cada botón de descarga con la nota breve de lo que baja."
+      "Do usar los raw y los roles de `estilos.css` y, para todo lo heredado, las reglas del DESIGN.md del producto (Two Voices, Role, Tinted Shadow).",
+      "Do sumar una función nueva como un nodo más de la hifa: punto, nombre en mono debajo, H3 serif, dos o tres líneas y su recorte.",
+      "Do mostrar funciones con capturas reales de la app, recortadas a lo que se lee a su ancho.",
+      "Do escribir la versión en Geist con cifras tabulares, en todas sus menciones.",
+      "Do dejar un solo botón relleno por contexto: el del sistema detectado, o ninguno si no se detectó.",
+      "Do acompañar cada botón de descarga con la nota breve de lo que baja.",
+      "Do dejar la página entera y descargable sin JS, y dar a todo movimiento su alternativa con `prefers-reduced-motion`."
     ],
     "donts": [
-      "**Don't** armar una grilla de tarjetas de funciones, un hero centrado ni testimonios o métricas.",
-      "**Don't** darle fondo propio a un tramo que no sea la noche: el tono lo da el día.",
-      "**Don't** usar la mono para rótulos o adornos que no sean horas, teclas, sintaxis o versión.",
-      "**Don't** ilustrar con maquetas o capturas inventadas, ni mostrar una captura entera cuando su texto queda ilegible.",
-      "**Don't** darle sombra a nada que no sea el marco de una captura o un rótulo flotante."
+      "Don't armar una grilla de tarjetas de funciones, un hero centrado sobre fondo liso, testimonios o métricas.",
+      "Don't poner el degradé en un tercer lugar: el logo y el número de la tapa, nada más.",
+      "Don't agregar otro brote: el anillo final es el único, y `claude code` el único nodo resaltado.",
+      "Don't usar la mono para titulares, la versión o adornos.",
+      "Don't ilustrar con maquetas o capturas inventadas, ni mostrar una captura entera cuando su texto queda ilegible.",
+      "Don't aclarar la placa de la portada en modo claro: el grafo es oscuro en los dos modos."
     ]
   }
 }
