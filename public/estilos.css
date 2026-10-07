@@ -25,6 +25,9 @@
   --placa-tenue: #8db4b2;
   --placa-hifa: #19e6ff;
   --placa-brote: #3dffc4;
+  --placa-borde: #16343f;
+  /* El fondo de la terminal integrada, el mismo de la captura que enmarca. */
+  --terminal-fondo: #141414;
 
   /* Roles */
   --fondo: var(--esporo);
@@ -89,7 +92,8 @@
     --brillo-texto: #1b6c75;
     --foco: var(--hifa);
     --superficie: color-mix(in srgb, var(--niebla) 60%, var(--lienzo));
-    --superficie-alta: #ffffff;
+    /* Sin tarjetas blancas elevadas (DESIGN.md del producto): un velo de Niebla. */
+    --superficie-alta: color-mix(in srgb, var(--niebla) 55%, var(--lienzo));
     --codigo-fondo: color-mix(in srgb, var(--humus) 7%, var(--lienzo));
     --marco-borde: color-mix(in srgb, var(--esporo-profundo) 22%, transparent);
     /* Brote oscurecido → Hifa: recorre de verde a turquesa y las dos puntas
@@ -98,7 +102,9 @@
     --sombra: color-mix(in srgb, var(--esporo-profundo) 24%, transparent);
 
     --linea-apagada: color-mix(in srgb, var(--hifa) 20%, transparent);
-    --linea-punta: #16b8c9;
+    /* El punto de Claude Code y el anillo final: el Brote oscurecido del degradé claro,
+       que pasa 3:1 sobre el Lienzo (#0f8a66, 3,97:1); #16b8c9 daba 2,4:1. */
+    --linea-punta: #0f8a66;
     --nodo-texto: #1b6c75;
 
     color-scheme: light;
@@ -317,7 +323,7 @@ q {
   --enlace: var(--placa-hifa);
   --brillo-texto: var(--placa-brote);
   --foco: var(--placa-brote);
-  --borde: #16343f;
+  --borde: var(--placa-borde);
   --codigo-fondo: color-mix(in srgb, var(--placa-sombra) 70%, transparent);
   --degrade: linear-gradient(90deg, var(--placa-brote), var(--placa-hifa));
   color-scheme: dark;
@@ -495,8 +501,8 @@ html.js.movil .aviso-movil {
 
 .portada .cta-nota,
 .portada .descarga-tres-nota {
-  color: var(--texto);
-  opacity: 0.86;
+  /* Texto secundario de la placa, sin opacidad sobre el párrafo entero. */
+  color: var(--placa-tenue);
 }
 
 html.js .descarga-tres-nota,
@@ -767,7 +773,7 @@ html.movimiento .captura.visible .marco {
 
 .captura-terminal .marco {
   border-color: color-mix(in srgb, var(--placa-brote) 38%, transparent);
-  background: #141414;
+  background: var(--terminal-fondo);
   box-shadow: 0 30px 70px -30px var(--sombra), 0 2px 6px -2px var(--sombra);
 }
 
@@ -915,7 +921,9 @@ html.hifa-viva .cierre:not(.encendido) .punto-final {
 .sumario summary::before,
 .sumario-solo::before {
   content: counter(sumario, decimal-leading-zero);
-  font: 500 0.8125rem/1 var(--mono);
+  /* El orden es un número de la tapa, no sintaxis: Geist (la mono queda para lo literal). */
+  font: 600 0.8125rem/1 var(--sans);
+  font-variant-numeric: tabular-nums;
   color: var(--nodo-texto);
 }
 
@@ -1016,7 +1024,7 @@ html.hifa-viva .cierre:not(.encendido) .punto-final {
   border-radius: var(--r-sm);
   background: var(--brillo-texto);
   color: var(--sobre-accion);
-  font: 500 0.72rem/1.2 var(--mono);
+  font: 600 0.75rem/1.2 var(--sans);
 }
 
 .requisito {

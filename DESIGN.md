@@ -21,7 +21,7 @@ colors:
   humus-tenue-claro: "#4f5f62"
   brote-texto-claro: "#1b6c75"
   degrade-inicio-claro: "#0f8a66"
-  superficie-alta-claro: "#ffffff"
+  superficie-alta-claro: "color-mix(niebla 55%, lienzo)"
 typography:
   display:
     fontFamily: "Source Serif 4, Georgia, serif"
@@ -429,14 +429,15 @@ superficies; quedan anotadas para decidir si se llevan a la app o se corrigen ac
 - **Sombras:** la de la página en oscuro se tiñe con Esporo (85%), no con Esporo
   profundo; y llevan sombra el marco de una captura y la descarga detectada, que no
   flotan.
-- **Descarga detectada en claro:** superficie blanca (`#ffffff`) con sombra suave. Choca
-  con el «Don't» del producto sobre tarjetas blancas elevadas; queda anotada como
-  diferencia a revisar, no como regla.
+- **Descarga detectada en claro:** iba en superficie blanca (`#ffffff`) con sombra, contra
+  el «Don't» del producto sobre tarjetas blancas elevadas. Corregido (2026-10-07): ahora es
+  un velo de Niebla sobre el Lienzo.
 - **Densidad:** la página habla en 17px; el producto, en 13px de interfaz y 16px de nota.
 
-> [!warning] Deudas del build (no son reglas)
-> El número de orden del sumario y el chip «tu sistema» van hoy en JetBrains Mono, fuera
-> de lo que el contrato reserva a la mono (nombres de nodo, sintaxis, atajos, fecha). Y
-> dos colores están escritos a mano fuera de `:root`: el fondo `#141414` del marco de la
-> terminal y el `--borde: #16343f` que redefine la portada. Quedan anotados para
-> corregir; no se heredan.
+> [!success] Deudas del build, corregidas (2026-10-07)
+> El número de orden del sumario y el chip «tu sistema» pasaron de JetBrains Mono a Geist
+> (la mono queda para lo literal); el fondo del marco de la terminal y el borde de la
+> portada pasaron a tokens (`--terminal-fondo`, `--placa-borde`); la nota del CTA de la
+> portada dejó la opacidad por el color tenue de la placa; y en claro el punto de Claude
+> Code y el anillo final usan `#0f8a66` (3,97:1 sobre el Lienzo) en vez de `#16b8c9`
+> (2,4:1).
