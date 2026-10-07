@@ -173,6 +173,8 @@ code {
   background: var(--codigo-fondo);
   border-radius: var(--r-sm);
   padding: 0.12em 0.4em;
+  /* Un fragmento de sintaxis (`![[foto.png]]`) no se parte entre líneas. */
+  white-space: nowrap;
 }
 
 kbd {
@@ -401,7 +403,9 @@ q {
   padding: 0 0.85rem;
   border: 1px solid color-mix(in srgb, var(--accion) 45%, transparent);
   border-radius: var(--r-sm);
-  font: 500 0.8125rem/1 var(--mono);
+  /* La versión va en Geist, como en toda la página (contrato: FORM). */
+  font: 600 0.875rem/1 var(--sans);
+  font-variant-numeric: tabular-nums;
   color: var(--accion);
   text-decoration: none;
   transition: background-color 120ms ease-out, color 120ms ease-out;
