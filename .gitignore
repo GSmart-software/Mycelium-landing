@@ -1,7 +1,7 @@
 node_modules/
 .wrangler/
 .dev.vars
-# Copia generada desde capturas/ por scripts/copiar-capturas.mjs
+# WebP generadas desde capturas/ por scripts/optimizar-capturas.mjs
 public/capturas/
 # Artefactos de trabajo de impeccable que no se versionan
 .impeccable/review/

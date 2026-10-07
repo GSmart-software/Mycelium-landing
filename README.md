@@ -20,7 +20,7 @@ directo.
 
 ```
 public/            la página: index.html, estilos.css, sitio.js, favicon.svg, 404.html, _headers
-capturas/          capturas de la app (PNG); se copian a public/capturas/ antes de dev/test/deploy
+capturas/          capturas de la app (PNG, 2880×1800): la fuente que se versiona
 src/worker.ts      rutas
 src/manifiesto.ts  lectura de latest.json, caché y respaldo
 src/plataformas.ts URL de cada instalador
@@ -47,13 +47,23 @@ muestra el modo de respaldo (sirve para probarlo).
 > `index.html` tiene un único `<script>` en línea (marca `html.js`). La CSP lo admite por su
 > hash, que está en `src/cabeceras.ts`. Si lo cambiás, recalculá el hash: un test lo verifica.
 
+## Capturas
+
+Las PNG de `capturas/` (2880×1800, vault de demostración «Huerta del barrio») son la fuente.
+`npm run capturas` (corre solo antes de `dev`, `test` y `deploy`) las convierte con `sharp` en
+`public/capturas/`: `<nombre>.webp` a 2880 px y `<nombre>-1440.webp` a 1440 px, que la página
+elige con `srcset`/`sizes`, más `og.jpg` (1200 px) para la vista previa al compartir. Es
+incremental: solo rehace lo que falta o quedó más viejo que su PNG. Para cambiar una captura,
+reemplazá la PNG con el mismo nombre; si es nueva, agregá su `<img>` con el mismo patrón y un
+`alt` que diga lo que se ve.
+
 ## Desplegar
 
 Requiere una cuenta de Cloudflare con acceso al bucket `mycelium-releases`.
 
 ```sh
 npx wrangler login
-npm run deploy         # copia capturas, typecheck, tests y wrangler deploy
+npm run deploy         # genera las capturas, typecheck, tests y wrangler deploy
 ```
 
 Después, en el panel de Cloudflare, asociá el dominio al Worker (Workers → mycelium-landing →
