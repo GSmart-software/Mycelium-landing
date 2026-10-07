@@ -1,17 +1,18 @@
 // Genera las capturas que sirve la página a partir de las PNG de capturas/
-// (donde se guardan y versionan, a 2880×1800). Por cada una escribe en
-// public/capturas/:
-//   <nombre>.webp        a 2880 px, para pantallas 2x en escritorio
-//   <nombre>-1440.webp   a 1440 px, para 1x y para el celular
-// y además og.jpg (1200 px) para la vista previa al compartir el enlace, que
-// algunos lectores de Open Graph todavía no aceptan en WebP.
-//
-// Y los RECORTES: una región de la captura real, para que la interfaz se lea al
-// tamaño en que se presenta (entera, una captura de 2880 px mostrada a 350 o 700 px
-// deja la letra en 4–7 px). Nunca se achica la UI ni se dibuja: se recorta.
+// (donde se guardan y versionan, a 2880×1800). La página nunca muestra una
+// captura entera: muestra RECORTES, regiones de la captura real, para que la
+// interfaz se lea al tamaño en que se presenta (entera, una captura de 2880 px
+// mostrada a 350 o 700 px deja la letra en 4–7 px). Nunca se achica la UI ni se
+// dibuja: se recorta. En public/capturas/ escribe:
 //   <nombre>-recorte.webp        el recorte a 2x de su tamaño de presentación
 //   <nombre>-recorte-1x.webp     el mismo a 1x (solo los que se ven en escritorio)
 //   <nombre>-recorte-movil.webp  uno más cerrado para el celular, a 2x
+// Un recorte puede pedir anchos de más (`mas`): <nombre><sufijo>-<ancho>.webp.
+// La portada es el lienzo del grafo sin el cromo de la app (barra, rail, botones):
+//   02-grafo-portada.webp (+ -1440)  a sangre en escritorio
+//   02-grafo-portada-movil.webp      vertical, centrado en la red, para el celular
+// y og.jpg (1200×750, también del grafo) para la vista previa al compartir el
+// enlace, que algunos lectores de Open Graph todavía no aceptan en WebP.
 //
 // Corre antes de dev, test y deploy. Es incremental: solo rehace lo que falta o
 // quedó más viejo que su PNG. Si capturas/ no existe, la página muestra marcos
@@ -28,28 +29,35 @@ const destino = join(raiz, "public", "capturas");
 // Calidad alta y conversión RGB→YUV «sharp» (smartSubsample): el texto de la UI
 // (letras chicas, enlaces de color sobre fondo oscuro) no se emborrona en los bordes.
 const WEBP = { quality: 88, smartSubsample: true, effort: 6 };
-const ANCHOS = [
-  { sufijo: "", ancho: 2880, webp: { ...WEBP, quality: 82 } },
-  { sufijo: "-1440", ancho: 1440, webp: WEBP },
-];
-const OG = { fuente: "01-nota-en-vivo.png", archivo: "og.jpg", ancho: 1200 };
+// La vista previa al compartir es la portada: el grafo, a 1200×750.
+const OG = {
+  fuente: "02-grafo.png",
+  archivo: "og.jpg",
+  region: { left: 168, top: 176, width: 2464, height: 1540 },
+  ancho: 1200,
+};
 
 // Regiones en px de la PNG (2880×1800). `ancho` es la salida a 2x: el doble del
 // ancho CSS en que se presenta (nunca más que el recorte: no se agranda). Si
 // cambiás una región, cambiá también el width/height de su <img>/<source> en
-// index.html (son las medidas de la salida) y su --proporcion.
+// index.html (son las medidas de la salida: de ahí sale la proporción del marco).
 const RECORTES = {
-  // Celular: el hero, el grafo y la terminal se ven enteros en escritorio.
+  // El nodo «escribir»: la nota en vivo, también en escritorio.
   "01-nota-en-vivo": {
     "-recorte": { left: 828, top: 281, width: 972, height: 1073, ancho: 828 },
   },
+  // La portada: solo el lienzo del grafo (#0b1d27), sin barra de título, rail ni
+  // los botones de arriba a la derecha.
   "02-grafo": {
-    "-recorte": { left: 1123, top: 547, width: 864, height: 893, ancho: 740 },
+    "-portada": { left: 120, top: 176, width: 2560, height: 1540, ancho: 2560, mas: [1440] },
+    "-portada-movil": { left: 1000, top: 200, width: 1100, height: 1500, ancho: 1000 },
   },
+  // El nodo «claude code»: en escritorio, la respuesta de la terminal a lo ancho;
+  // en el celular, su principio.
   "04-terminal-ia": {
+    "-salida": { left: 592, top: 172, width: 2288, height: 520, ancho: 2288, uno: true },
     "-recorte": { left: 598, top: 180, width: 842, height: 461, ancho: 740 },
   },
-  // Figuras secundarias: el recorte es la imagen también en escritorio.
   "03-paleta": {
     "-recorte": { left: 806, top: 101, width: 1267, height: 706, ancho: 1267, uno: true },
     "-recorte-movil": { left: 847, top: 124, width: 608, height: 452, ancho: 608 },
@@ -76,7 +84,7 @@ const RECORTES = {
   },
 };
 
-// Si cambia la definición de un recorte, se rehace aunque la PNG no cambió.
+// Si cambia la definición de un recorte (o de og.jpg), se rehace aunque la PNG no cambió.
 const firmaRecortes = join(destino, ".recortes.json");
 
 if (!existsSync(origen)) {
@@ -86,7 +94,7 @@ if (!existsSync(origen)) {
 }
 mkdirSync(destino, { recursive: true });
 
-const firmaNueva = JSON.stringify(RECORTES);
+const firmaNueva = JSON.stringify({ RECORTES, OG });
 const recortesCambiaron = !existsSync(firmaRecortes) || readFileSync(firmaRecortes, "utf8") !== firmaNueva;
 
 const fuentes = readdirSync(origen).filter((f) => /\.png$/i.test(f));
@@ -100,18 +108,11 @@ let hechas = 0;
 for (const f of fuentes) {
   const entrada = join(origen, f);
   const nombre = basename(f, ".png");
-  for (const { sufijo, ancho, webp } of ANCHOS) {
-    const archivo = `${nombre}${sufijo}.webp`;
-    const salida = join(destino, archivo);
-    esperados.add(archivo);
-    if (!pendiente(entrada, salida)) continue;
-    await sharp(entrada).resize({ width: ancho, withoutEnlargement: true }).webp(webp).toFile(salida);
-    hechas++;
-  }
   for (const [sufijo, r] of Object.entries(RECORTES[nombre] ?? {})) {
     const region = { left: r.left, top: r.top, width: r.width, height: r.height };
     const salidas = [{ archivo: `${nombre}${sufijo}.webp`, ancho: r.ancho }];
     if (r.uno) salidas.push({ archivo: `${nombre}${sufijo}-1x.webp`, ancho: Math.round(r.ancho / 2) });
+    for (const ancho of r.mas ?? []) salidas.push({ archivo: `${nombre}${sufijo}-${ancho}.webp`, ancho });
     for (const { archivo, ancho } of salidas) {
       const salida = join(destino, archivo);
       esperados.add(archivo);
@@ -127,8 +128,8 @@ for (const f of fuentes) {
   if (f === OG.fuente) {
     const salida = join(destino, OG.archivo);
     esperados.add(OG.archivo);
-    if (pendiente(entrada, salida)) {
-      await sharp(entrada).resize({ width: OG.ancho }).jpeg({ quality: 85, mozjpeg: true }).toFile(salida);
+    if (recortesCambiaron || pendiente(entrada, salida)) {
+      await sharp(entrada).extract(OG.region).resize({ width: OG.ancho }).jpeg({ quality: 85, mozjpeg: true }).toFile(salida);
       hechas++;
     }
   }
