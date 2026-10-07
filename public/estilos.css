@@ -1,0 +1,1336 @@
+/* Landing de Mycelium — Bioluminiscencia.
+   Todo sale de los tokens de :root. Oscuro por defecto; el claro llega con
+   prefers-color-scheme. Las capas: raw (los colores del tema), roles (qué
+   hace cada color) y la página. */
+
+:root {
+  /* Raw: Bioluminiscencia oscuro */
+  --esporo: #04090e;
+  --esporo-profundo: #0b1d27;
+  --lienzo: #071219;
+  --niebla: #0a1a24;
+  --humus: #c6e7e1;
+  --humus-tenue: #6e9a99;
+  --hifa: #19e6ff;
+  --brote: #3dffc4;
+  --borde: #16343f;
+  --info: #3d8bff;
+  --ambar: #c9821e;
+
+  /* Roles */
+  --texto: var(--humus);
+  --texto-tenue: var(--humus-tenue);
+  --accion: var(--hifa);
+  --sobre-accion: var(--lienzo);
+  --enlace: var(--hifa);
+  --brillo-texto: var(--brote);
+  --foco: var(--brote);
+  --superficie: var(--niebla);
+  --codigo-fondo: var(--esporo-profundo);
+  --marco: var(--esporo);
+  --marco-glow: var(--brote);
+  --marco-acento: var(--hifa);
+  --marco-texto: var(--humus-tenue);
+  --titulo-2: color-mix(in srgb, var(--brote) 70%, var(--humus));
+  --titulo-3: color-mix(in srgb, var(--hifa) 58%, var(--humus));
+  --titulo-4: color-mix(in srgb, var(--brote) 44%, var(--humus));
+  --degrade: linear-gradient(90deg, var(--brote), var(--hifa));
+  --sombra: color-mix(in srgb, var(--esporo) 75%, transparent);
+
+  /* El día: de la mañana a la tarde el fondo se hunde hacia Esporo. */
+  --fondo-dia: var(--niebla);
+  --fondo-tarde: var(--esporo);
+  --noche-fondo: var(--esporo);
+
+  /* Medidas */
+  --regla: 56px;
+  --canal: clamp(1.25rem, 5vw, 5rem);
+  --ancho: 78rem;
+  --r-sm: 4px;
+  --r-md: 8px;
+  --serif: "Source Serif 4", Georgia, serif;
+  --sans: "Geist", system-ui, sans-serif;
+  --mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --salida: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Raw: Bioluminiscencia claro */
+    --esporo: #0c4a57;
+    --esporo-profundo: #08323d;
+    --lienzo: #f1f6f7;
+    --niebla: #e3eef1;
+    --humus: #1f2d30;
+    --humus-tenue: #4f5f62;
+    --hifa: #0e7c8c;
+    --brote: #16b8c9;
+    --borde: color-mix(in srgb, #1f2d30 16%, transparent);
+
+    --sobre-accion: #f1f6f7;
+    --enlace: color-mix(in srgb, var(--hifa) 72%, var(--humus));
+    --brillo-texto: #1b6c75;
+    --foco: var(--hifa);
+    --codigo-fondo: color-mix(in srgb, var(--humus) 7%, var(--lienzo));
+    --marco-glow: #68ced9;
+    --marco-acento: #3fc3d1;
+    --marco-texto: color-mix(in srgb, var(--niebla) 86%, var(--esporo));
+    --titulo-2: color-mix(in srgb, var(--brote) 50%, var(--humus));
+    --titulo-3: color-mix(in srgb, var(--hifa) 70%, var(--humus));
+    --titulo-4: color-mix(in srgb, var(--brote) 40%, var(--humus));
+    --degrade: linear-gradient(90deg, #1b6c75, var(--hifa));
+    --sombra: color-mix(in srgb, var(--esporo-profundo) 22%, transparent);
+
+    --fondo-dia: var(--lienzo);
+    --fondo-tarde: color-mix(in oklab, var(--niebla), var(--esporo) 9%);
+    --noche-fondo: var(--esporo-profundo);
+
+    color-scheme: light;
+  }
+}
+
+/* La noche usa la paleta oscura en los dos modos: es Esporo. */
+.noche {
+  --texto: #c6e7e1;
+  --texto-tenue: #7fa9a8;
+  --brillo-texto: #3dffc4;
+  --enlace: #19e6ff;
+  --foco: #3dffc4;
+  --borde: color-mix(in srgb, #3dffc4 16%, transparent);
+  --titulo-2: color-mix(in srgb, #3dffc4 70%, #c6e7e1);
+  --superficie: #0a1a24;
+  --sombra: color-mix(in srgb, #000 55%, transparent);
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--borde) transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--fondo-dia);
+  color: var(--texto);
+  font: 400 1.0625rem/1.6 var(--sans);
+  font-feature-settings: "ss01";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Con JS, el fondo del día es uno solo y se hunde con el scroll. */
+html.tono-vivo body {
+  background-color: color-mix(in oklab, var(--fondo-dia), var(--fondo-tarde) calc(var(--hundimiento, 0) * 100%));
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brote) 32%, transparent);
+  color: var(--texto);
+}
+
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+a {
+  color: var(--enlace);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--serif);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--codigo-fondo);
+  border-radius: var(--r-sm);
+  padding: 0.12em 0.4em;
+}
+
+kbd {
+  font-family: var(--mono);
+  font-size: 0.8em;
+  font-weight: 500;
+  padding: 0.1em 0.45em;
+  border: 1px solid var(--borde);
+  border-bottom-width: 2px;
+  border-radius: var(--r-sm);
+  background: var(--superficie);
+  color: var(--texto);
+  white-space: nowrap;
+}
+
+q {
+  quotes: "«" "»";
+  font-style: italic;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.saltar {
+  position: fixed;
+  left: calc(var(--regla) + 1rem);
+  top: 1rem;
+  z-index: 50;
+  padding: 0.6rem 1rem;
+  background: var(--accion);
+  color: var(--sobre-accion);
+  font-weight: 600;
+  border-radius: var(--r-sm);
+  transform: translateY(-200%);
+}
+
+.saltar:focus-visible {
+  transform: none;
+}
+
+.icono {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- Isotipo ---------- */
+
+.iso-hifas {
+  stroke: var(--marco-glow);
+  stroke-width: 1.5;
+  opacity: 0.55;
+  fill: none;
+}
+
+.iso-a {
+  fill: var(--marco-glow);
+}
+
+.iso-b {
+  fill: var(--marco-acento);
+}
+
+.iso-c {
+  fill: var(--info);
+}
+
+/* ---------- Botones ---------- */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 46px;
+  padding: 0 1.2rem;
+  border-radius: var(--r-sm);
+  font: 600 1rem/1.2 var(--sans);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+
+.boton-primario {
+  background: var(--accion);
+  color: var(--sobre-accion);
+}
+
+.boton-primario:hover {
+  background: color-mix(in srgb, var(--accion) 85%, #000);
+}
+
+.boton-secundario {
+  border: 1px solid color-mix(in srgb, var(--texto) 30%, transparent);
+  color: var(--texto);
+}
+
+.boton-secundario:hover {
+  background: color-mix(in srgb, var(--brote) 14%, transparent);
+  border-color: color-mix(in srgb, var(--texto) 50%, transparent);
+}
+
+/* ---------- La regla del día ---------- */
+
+.regla {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+  width: var(--regla);
+  display: flex;
+  flex-direction: column;
+  background: var(--marco);
+  color: var(--marco-texto);
+  border-right: 1px solid color-mix(in srgb, var(--marco-glow) 12%, transparent);
+  --focus-marco: var(--marco-glow);
+}
+
+.regla :focus-visible {
+  outline-color: var(--marco-glow);
+  outline-offset: -2px;
+}
+
+.regla-logo {
+  display: grid;
+  place-items: center;
+  height: var(--regla);
+  flex: none;
+}
+
+.regla-logo svg {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--marco-glow) 55%, transparent));
+}
+
+.regla-lectura {
+  position: relative;
+  height: 30px;
+  flex: none;
+  overflow: hidden;
+  border-block: 1px solid color-mix(in srgb, var(--marco-glow) 14%, transparent);
+  font: 500 12px/30px var(--mono);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--marco-glow);
+}
+
+.regla-lectura span {
+  position: absolute;
+  inset: 0;
+  transition: transform 220ms var(--salida), opacity 220ms var(--salida);
+}
+
+.regla-lectura .entra {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.regla-lectura .sale {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.regla-escala {
+  --tick: color-mix(in srgb, var(--marco-texto) 45%, transparent);
+  position: relative;
+  flex: 1;
+  margin: 1.5rem 0 1.75rem;
+  /* Una marca por hora, de 06 a 24, contra el borde derecho. */
+  background:
+    linear-gradient(var(--tick), var(--tick)) right bottom / 12px 1px no-repeat,
+    repeating-linear-gradient(to bottom, var(--tick) 0 1px, transparent 1px calc(100% / 18)) right top / 7px 100% no-repeat;
+}
+
+.regla-escala::before,
+.regla-escala::after {
+  position: absolute;
+  right: 15px;
+  font: 400 9px/1 var(--mono);
+  color: color-mix(in srgb, var(--marco-texto) 80%, transparent);
+  transform: translateY(-50%);
+}
+
+.regla-escala::before {
+  content: "06";
+  top: 0;
+}
+
+.regla-escala::after {
+  content: "24";
+  top: 100%;
+}
+
+.regla-horas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.regla-horas li {
+  position: absolute;
+  top: var(--p);
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.regla-horas a {
+  position: relative;
+  display: block;
+  padding: 7px 0 7px 7px;
+  font: 500 11px/1 var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--marco-texto);
+  text-decoration: none;
+  transition: color 120ms ease-out;
+}
+
+.regla-horas a:hover,
+.regla-horas a[aria-current="true"] {
+  color: var(--marco-glow);
+}
+
+.regla-horas a[aria-current="true"] {
+  font-weight: 600;
+}
+
+/* El nombre de la hora aparece al costado de la regla al pasar o enfocar. */
+.regla-que {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  background: var(--marco);
+  color: var(--marco-glow);
+  font: 500 13px/1 var(--sans);
+  white-space: nowrap;
+  box-shadow: 0 8px 24px var(--sombra);
+  opacity: 0;
+  transform: translate(-4px, -50%);
+  pointer-events: none;
+  transition: opacity 120ms ease-out, transform 120ms ease-out;
+}
+
+.regla-horas a:hover .regla-que,
+.regla-horas a:focus-visible .regla-que {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.regla-indicador {
+  position: absolute;
+  left: 0;
+  top: calc(var(--avance, 14.81) * 1%);
+  width: 2px;
+  height: 26px;
+  background: var(--marco-glow);
+  transform: translateY(-50%);
+  transition: opacity 160ms ease-out;
+}
+
+.regla[data-dia="terminado"] .regla-indicador {
+  opacity: 0;
+}
+
+.regla-ahora {
+  position: absolute;
+  right: 2px;
+  top: var(--ahora, 50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--marco-acento);
+  box-shadow: 0 0 0 2px var(--marco);
+  transform: translateY(-50%);
+}
+
+/* ---------- Tramos ---------- */
+
+main,
+.pie {
+  margin-left: var(--regla);
+  /* Las capturas sangran por el borde derecho: se recortan acá. */
+  overflow-x: clip;
+}
+
+.tramo {
+  --col: minmax(0, var(--ancho));
+  display: grid;
+  grid-template-columns: [full-start] minmax(var(--canal), 1fr) [content-start] var(--col) [content-end] minmax(var(--canal), 1fr) [full-end];
+  row-gap: clamp(2.5rem, 5vw, 4.5rem);
+  padding-block: clamp(5rem, 10vw, 9rem);
+  background: color-mix(in oklab, var(--fondo-dia), var(--fondo-tarde) calc(var(--t, 0) * 100%));
+}
+
+html.tono-vivo .tramo:not(.noche) {
+  background: transparent;
+}
+
+.tramo > * {
+  grid-column: content;
+}
+
+.estacion-cabeza {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 54rem;
+}
+
+.estacion-cabeza h2,
+.descargas h2,
+.novedades h2 {
+  font-size: clamp(2.1rem, 1.3rem + 2.4vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: var(--titulo-2);
+}
+
+.estacion h2,
+.noche h2 {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  align-items: baseline;
+}
+
+.hora {
+  font: 500 1rem/1 var(--mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  color: var(--brillo-texto);
+}
+
+.entrada {
+  font: 400 clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem)/1.55 var(--serif);
+  color: var(--texto);
+  max-width: 40rem;
+}
+
+.estacion .entrada,
+.noche .entrada {
+  margin-left: 7rem;
+}
+
+/* ---------- Capturas ---------- */
+
+.captura {
+  margin: 0;
+  position: relative;
+}
+
+.marco {
+  aspect-ratio: 2880 / 1800;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  box-shadow: 0 28px 70px -24px var(--sombra);
+}
+
+.marco img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sin la captura todavía: queda el marco neutro, sin el ícono roto. */
+.marco.sin-imagen img {
+  visibility: hidden;
+}
+
+.captura figcaption {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--texto-tenue);
+  max-width: 34rem;
+}
+
+.captura-ancha {
+  grid-column: content-start / full-end;
+}
+
+.captura-ancha .marco {
+  border-right: 0;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+/* Entrada de las capturas: fundido corto desde 4px, solo con JS y movimiento. */
+html.movimiento .captura:not(.captura-hero) .marco {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 160ms var(--salida), transform 160ms var(--salida);
+}
+
+html.movimiento .captura.visible .marco {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: 100svh;
+  align-content: center;
+  grid-template-columns:
+    [full-start] minmax(var(--canal), 1fr)
+    [content-start] minmax(0, 31rem)
+    [medio] minmax(2.5rem, 5rem)
+    [fig-start] minmax(0, 42rem)
+    [content-end] minmax(var(--canal), 1fr) [full-end];
+  padding-block: clamp(4rem, 8vw, 6rem);
+}
+
+.hero-texto {
+  grid-column: content-start / medio;
+  grid-row: 1;
+  display: grid;
+  gap: 1.75rem;
+  align-content: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 1.4rem + 3vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-bottom: 0.06em;
+}
+
+.bajada {
+  font: 400 clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem)/1.5 var(--serif);
+  color: var(--texto);
+  max-width: 28rem;
+}
+
+.descarga-hero {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.descarga-detectada,
+.descarga-tres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.descarga-tres {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html.js .descarga-detectada {
+  display: flex;
+}
+
+html.js .descarga-tres {
+  display: none;
+}
+
+html.js.movil .descarga-detectada {
+  display: none;
+}
+
+html.js.movil .aviso-movil {
+  display: block;
+}
+
+.aviso-movil {
+  color: var(--texto-tenue);
+  max-width: 28rem;
+}
+
+.version-linea {
+  font: 400 0.9rem/1.5 var(--sans);
+  color: var(--texto-tenue);
+  font-variant-numeric: tabular-nums;
+}
+
+.version-linea [data-mic="version"] {
+  font-family: var(--mono);
+  font-size: 0.95em;
+  color: var(--brillo-texto);
+}
+
+.captura-hero {
+  grid-column: fig-start / full-end;
+  grid-row: 1;
+  align-self: center;
+}
+
+.captura-hero .marco {
+  width: calc(100% + 14vw);
+  border-right: 0;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+.hora-margen {
+  position: absolute;
+  left: -1.9rem;
+  top: 0.25rem;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font: 500 0.8rem/1 var(--mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--brillo-texto);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 08:40 Escribís ---------- */
+
+.sintaxis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(2rem, 5vw, 5rem);
+  margin: 0;
+  margin-left: 7rem;
+  max-width: 64rem;
+}
+
+.sintaxis > div {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+  padding-block: 1.6rem;
+  border-top: 1px solid var(--borde);
+}
+
+.sintaxis dt code {
+  font-size: 0.95rem;
+  padding: 0.3em 0.6em;
+  color: var(--texto);
+}
+
+.sintaxis dd {
+  margin: 0;
+  color: var(--texto-tenue);
+  max-width: 30rem;
+}
+
+/* ---------- Pares de captura y texto ---------- */
+
+.par {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.par-texto-derecha {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+}
+
+.par-texto-izquierda {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  grid-column: content-start / full-end;
+}
+
+.par-texto-izquierda .marco {
+  border-right: 0;
+  border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+.par-texto {
+  display: grid;
+  gap: 1rem;
+  max-width: 28rem;
+}
+
+.par-texto h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--titulo-3);
+}
+
+.par-texto p {
+  color: var(--texto-tenue);
+}
+
+.par-desparejo {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: start;
+}
+
+.par-desparejo > .captura:last-child {
+  margin-top: clamp(3rem, 9vw, 8rem);
+}
+
+.formas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 26rem;
+}
+
+.formas li {
+  color: var(--texto-tenue);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--borde);
+}
+
+.formas li:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.formas strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  font: 600 1.3rem/1.25 var(--serif);
+  color: var(--titulo-3);
+}
+
+/* ---------- 22:10 La noche ---------- */
+
+.noche {
+  background: var(--noche-fondo);
+  color: var(--texto);
+  border-block: 1px solid color-mix(in srgb, #3dffc4 10%, transparent);
+}
+
+.noche-adentro {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: full;
+  row-gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.noche-adentro > * {
+  grid-column: content;
+}
+
+.noche-adentro > .captura-ancha {
+  grid-column: content-start / full-end;
+}
+
+.ia {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin: 0;
+  margin-left: 7rem;
+}
+
+.ia > div {
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--borde);
+}
+
+.ia dt {
+  font: 600 1.3rem/1.25 var(--serif);
+  color: var(--brillo-texto);
+}
+
+.ia dd {
+  margin: 0;
+  color: var(--texto-tenue);
+}
+
+.nota-al-pie {
+  margin-left: 7rem;
+  max-width: 40rem;
+  font-size: 0.95rem;
+  color: var(--texto-tenue);
+}
+
+/* ---------- A la mañana siguiente ---------- */
+
+.manana h2 {
+  max-width: 30ch;
+}
+
+.dos-luces {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.dos-luces .captura:first-child {
+  grid-column: 1 / 9;
+  grid-row: 1;
+}
+
+.dos-luces .captura:last-child {
+  grid-column: 6 / 13;
+  grid-row: 1;
+  margin-top: clamp(6rem, 16vw, 15rem);
+  z-index: 1;
+}
+
+.dos-luces .captura:last-child figcaption {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* ---------- Novedades ---------- */
+
+.novedades {
+  row-gap: 2rem;
+}
+
+.novedades-cabeza,
+.novedades-cuerpo,
+.novedades-sin {
+  grid-row: auto;
+}
+
+.novedades-cabeza {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.novedades-fecha {
+  color: var(--texto-tenue);
+}
+
+.novedades-cuerpo,
+.novedades-sin {
+  max-width: 42rem;
+  font: 400 1.0625rem/1.7 var(--serif);
+}
+
+.novedades-cuerpo h3 {
+  margin: 2.5rem 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--titulo-3);
+}
+
+.novedades-cuerpo h3:first-child {
+  margin-top: 0;
+}
+
+.novedades-cuerpo h4 {
+  margin: 2rem 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--titulo-4);
+}
+
+.novedades-cuerpo h5,
+.novedades-cuerpo h6 {
+  margin: 1.5rem 0 0.4rem;
+  font-size: 1rem;
+  color: var(--texto-tenue);
+}
+
+.novedades-cuerpo ul,
+.novedades-cuerpo ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.novedades-cuerpo li {
+  margin-block: 0.45rem;
+}
+
+.novedades-cuerpo li::marker {
+  color: var(--brillo-texto);
+}
+
+.novedades-cuerpo p {
+  margin-block: 0.75rem;
+}
+
+.novedades-cuerpo strong {
+  font-weight: 600;
+}
+
+.novedades-sin {
+  color: var(--texto-tenue);
+}
+
+@media (min-width: 1100px) {
+  .novedades {
+    grid-template-columns:
+      [full-start] minmax(var(--canal), 1fr)
+      [content-start] minmax(0, 22rem) [cuerpo] minmax(0, 52rem)
+      [content-end] minmax(var(--canal), 1fr) [full-end];
+    column-gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .novedades-cabeza {
+    grid-column: content-start / cuerpo;
+    grid-row: 1 / span 2;
+    align-self: start;
+    position: sticky;
+    top: 3rem;
+  }
+
+  .novedades-cuerpo,
+  .novedades-sin {
+    grid-column: cuerpo / content-end;
+  }
+}
+
+/* ---------- Descargas ---------- */
+
+.descargas {
+  row-gap: 1rem;
+  border-top: 1px solid var(--borde);
+}
+
+.descargas .version-linea {
+  font-size: 1rem;
+}
+
+.sistemas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.sistema {
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem) 0.5rem;
+  border-left: 1px solid var(--borde);
+}
+
+.sistema:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.sistema h3 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--titulo-3);
+}
+
+.sistema.es-tuyo h3::after {
+  content: "tu sistema";
+  margin-left: 0.75rem;
+  vertical-align: 0.3em;
+  font: 500 0.75rem/1 var(--sans);
+  color: var(--brillo-texto);
+  padding: 0.25em 0.55em;
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--brote) 15%, transparent);
+}
+
+.requisito {
+  color: var(--texto-tenue);
+}
+
+.sistema > .boton,
+.botones-linux {
+  justify-self: start;
+  margin-top: 0.4rem;
+}
+
+.botones-linux {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.sistema .nota {
+  font-size: 0.95rem;
+  color: var(--texto-tenue);
+  max-width: 22rem;
+}
+
+/* ---------- Pie ---------- */
+
+.pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  padding: 2.5rem var(--canal) 3rem;
+  border-top: 1px solid var(--borde);
+  color: var(--texto-tenue);
+  font-size: 0.95rem;
+}
+
+.pie-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  font: 700 1.05rem/1 var(--sans);
+}
+
+.pie-logo span {
+  background: linear-gradient(90deg, var(--marco-glow), var(--marco-acento));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pie-version {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Ventana mediana ---------- */
+
+@media (max-width: 1100px) {
+  .estacion h2,
+  .noche h2 {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .estacion .entrada,
+  .noche .entrada,
+  .sintaxis,
+  .ia,
+  .nota-al-pie {
+    margin-left: 5.5rem;
+  }
+
+  .ia {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: [full-start] var(--canal) [content-start] minmax(0, 1fr) [content-end] var(--canal) [full-end];
+    row-gap: 3rem;
+    min-height: auto;
+    padding-top: 4rem;
+  }
+
+  .hero-texto {
+    grid-column: content;
+    grid-row: 1;
+  }
+
+  .captura-hero {
+    grid-column: content-start / full-end;
+    grid-row: 2;
+    padding-left: 1.6rem;
+  }
+
+  .hora-margen {
+    left: 0;
+  }
+
+  .captura-hero .marco {
+    width: calc(100% + 18vw);
+  }
+
+  .par-texto-derecha,
+  .par-texto-izquierda,
+  .par-desparejo {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .par-texto-izquierda {
+    grid-column: content;
+  }
+
+  .par-texto-izquierda .marco {
+    border-right: 1px solid var(--borde);
+    border-radius: var(--r-md);
+  }
+
+  .par-desparejo > .captura:last-child {
+    margin-top: 0;
+  }
+
+  .sistemas {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .sistema,
+  .sistema:first-child {
+    padding: 2rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--borde);
+  }
+}
+
+/* ---------- Celular: la regla pasa arriba ---------- */
+
+@media (max-width: 760px) {
+  :root {
+    --regla: 0px;
+  }
+
+  .regla {
+    inset: 0 0 auto 0;
+    width: auto;
+    height: 48px;
+    flex-direction: row;
+    align-items: stretch;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--marco-glow) 14%, transparent);
+  }
+
+  .regla-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .regla-logo svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .regla-lectura {
+    display: none;
+  }
+
+  .regla-escala {
+    margin: 0 18px 0 6px;
+    background:
+      repeating-linear-gradient(to right, var(--tick) 0 1px, transparent 1px calc(100% / 18)) left bottom / 100% 6px no-repeat,
+      linear-gradient(var(--tick), var(--tick)) right bottom / 1px 10px no-repeat;
+  }
+
+  .regla-escala::before,
+  .regla-escala::after {
+    display: none;
+  }
+
+  .regla-horas li {
+    top: 0;
+    bottom: 0;
+    left: var(--p);
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .regla-horas a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 3px 4px;
+    font-size: 11px;
+  }
+
+  .regla-que {
+    left: -9999px;
+    opacity: 0;
+  }
+
+  .regla-horas a:hover .regla-que,
+  .regla-horas a:focus-visible .regla-que {
+    opacity: 0;
+  }
+
+  .regla-indicador {
+    top: auto;
+    bottom: 0;
+    left: calc(var(--avance, 14.81) * 1%);
+    width: 30px;
+    height: 2px;
+    transform: translateX(-50%);
+  }
+
+  .regla-ahora {
+    top: auto;
+    right: auto;
+    bottom: 9px;
+    left: var(--ahora, 50%);
+    width: 5px;
+    height: 5px;
+    transform: translateX(-50%);
+  }
+
+  main {
+    padding-top: 48px;
+  }
+
+  .tramo {
+    scroll-margin-top: 48px;
+  }
+
+  .saltar {
+    left: 1rem;
+  }
+
+  .estacion h2,
+  .noche h2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.85rem;
+  }
+
+  .estacion .entrada,
+  .noche .entrada,
+  .sintaxis,
+  .ia,
+  .nota-al-pie {
+    margin-left: 0;
+  }
+
+  .sintaxis {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sintaxis dt code {
+    font-size: 0.85rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .dos-luces .captura:first-child {
+    grid-column: 1 / 12;
+  }
+
+  /* En el celular no entran superpuestas sin tapar el epígrafe: se apilan,
+     corridas para que se lea que son dos. */
+  .dos-luces .captura:last-child {
+    grid-column: 2 / 13;
+    grid-row: 2;
+    margin-top: 2rem;
+  }
+
+  .pie-version {
+    margin-left: 0;
+  }
+}
+
+/* ---------- Movimiento reducido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

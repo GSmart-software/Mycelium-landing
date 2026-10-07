@@ -1,0 +1,147 @@
+{
+  "title": "Elegí la estructura de la landing",
+  "question": "El mundo visual ya está (Bioluminiscencia). Elegí cómo se ordena la página, o pedí otra mano.",
+  "options": [
+    {
+      "id": "un-dia",
+      "label": "Un día con tu vault",
+      "kicker": "THE ROLL",
+      "lineage": "una jornada de trabajo, hora por hora",
+      "thesis": "La página recorre un día real de uso: escribís, conectás, encontrás, ordenás y a la noche le preguntás a tu vault.",
+      "palette": ["#04090e", "#071219", "#0a1a24", "#19e6ff", "#3dffc4", "#c6e7e1"],
+      "materials": ["capturas reales a 1440×900", "regla horaria en mono", "tono que se hunde hacia la noche"],
+      "viewport": "Tagline, una línea, «Descargar para <tu sistema>» y la captura de la nota en vivo marcada 08:40; a la izquierda, la regla del día con sus cinco horas.",
+      "risk": "Si la hora se vuelve adorno, la narrativa se siente forzada; cada hora tiene que nombrar una función concreta.",
+      "raised": [
+        { "from": "challenger-darkroom", "raise": "Las horas son estaciones en orden fijo: nunca se saltea de escribir a la IA sin pasar por conectar." },
+        { "from": "challenger-sleeping-city", "raise": "La regla marca la hora local del visitante como «ahora», sin reordenar nada." }
+      ],
+      "wireframe": {
+        "cols": 12, "rows": 10,
+        "regions": [
+          { "label": "regla del día", "x": 0, "y": 0, "w": 1, "h": 10, "accent": true },
+          { "label": "tagline + descarga", "x": 1, "y": 1, "w": 4, "h": 4 },
+          { "label": "captura: nota en vivo · 08:40", "x": 5, "y": 1, "w": 7, "h": 5, "accent": true },
+          { "label": "11:15 conectás · grafo", "x": 1, "y": 6, "w": 11, "h": 1 },
+          { "label": "15:30 encontrás · Ctrl+P · calendario", "x": 1, "y": 7, "w": 11, "h": 1 },
+          { "label": "22:10 tu vault y Claude Code", "x": 1, "y": 8, "w": 11, "h": 1, "accent": true },
+          { "label": "novedades · descargas", "x": 1, "y": 9, "w": 11, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "version-en-tapa",
+      "label": "La versión en tapa",
+      "lineage": "la portada de un diario del día",
+      "thesis": "La última versión es la noticia: número, fecha, novedades y descarga abren la página; lo que Mycelium ya hacía viene después.",
+      "palette": ["#04090e", "#071219", "#19e6ff", "#3dffc4", "#c6e7e1", "#6e9a99"],
+      "materials": ["número de versión a escala de titular", "Markdown de notes renderizado", "una hifa continua"],
+      "viewport": "Cabecera con logo y tagline; «2.4.0» enorme con su fecha; columna de novedades al lado de las tres descargas con su nota breve.",
+      "risk": "Quien no conoce Mycelium recibe primero un changelog; si las notas de una versión son técnicas o cortas, la tapa queda floja.",
+      "raised": [
+        { "from": "challenger-neon", "raise": "Una sola hifa nace del número de versión, pasa por cada título y termina en la descarga del cierre." }
+      ],
+      "wireframe": {
+        "cols": 12, "rows": 10,
+        "regions": [
+          { "label": "logo · tagline", "x": 0, "y": 0, "w": 12, "h": 1 },
+          { "label": "2.4.0 · fecha", "x": 0, "y": 1, "w": 7, "h": 2, "accent": true },
+          { "label": "descargas + notas", "x": 7, "y": 1, "w": 5, "h": 3, "accent": true },
+          { "label": "novedades (notes)", "x": 0, "y": 3, "w": 7, "h": 3 },
+          { "label": "qué es · captura nota", "x": 0, "y": 6, "w": 12, "h": 1 },
+          { "label": "funciones · grilla de capturas", "x": 0, "y": 7, "w": 12, "h": 1 },
+          { "label": "IA sobre tu vault", "x": 0, "y": 8, "w": 12, "h": 1 },
+          { "label": "versiones anteriores", "x": 0, "y": 9, "w": 12, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "vault-abierto",
+      "label": "Vault abierto",
+      "lineage": "el propio espacio de trabajo de Mycelium",
+      "thesis": "La landing es un vault: rail, árbol y pestañas de verdad, y cada sección es una nota que se lee en serif.",
+      "palette": ["#04090e", "#0a1a24", "#071219", "#19e6ff", "#3dffc4", "#c6e7e1"],
+      "materials": ["cascarón de la app en HTML vivo", "notas en Source Serif 4", "[[enlaces]] que abren pestañas"],
+      "viewport": "Ventana de Mycelium a pantalla completa: árbol con Bienvenida, Funciones, IA, Novedades y Descargar; abierta, «Bienvenida» con el tagline, el botón de descarga y un callout.",
+      "risk": "Capturas de la app dentro de una app falsa: cromo dentro de cromo; y cada botón del rail tiene que funcionar o se rompe la regla de no mostrar controles muertos.",
+      "raised": [
+        { "from": "challenger-ukiyoe", "raise": "El marco no se mueve nunca: profundizar abre una pestaña encima, no navega a otra página." }
+      ],
+      "wireframe": {
+        "cols": 12, "rows": 10,
+        "regions": [
+          { "label": "barra superior · Ctrl+P", "x": 0, "y": 0, "w": 12, "h": 1 },
+          { "label": "rail", "x": 0, "y": 1, "w": 1, "h": 9 },
+          { "label": "árbol de secciones", "x": 1, "y": 1, "w": 2, "h": 9 },
+          { "label": "pestañas", "x": 3, "y": 1, "w": 9, "h": 1 },
+          { "label": "nota «Bienvenida»: tagline + descarga", "x": 4, "y": 2, "w": 7, "h": 3, "accent": true },
+          { "label": "captura embebida", "x": 4, "y": 5, "w": 7, "h": 4, "accent": true },
+          { "label": "barra de estado", "x": 0, "y": 9, "w": 12, "h": 1 }
+        ]
+      }
+    },
+    {
+      "id": "challenger-darkroom",
+      "label": "Cuarto oscuro",
+      "verdict": "declined",
+      "lineage": "signals-instruments-darkroom-safelight-bay",
+      "thesis": "Estaciones fijas bajo luz de seguridad donde la imagen emerge despacio.",
+      "palette": ["#2a1405", "#e08a1e", "#b8b8b0"],
+      "materials": ["luz ámbar", "bandejas de revelado"],
+      "viewport": "Una bandeja donde la captura se revela.",
+      "case": "Fusiona mal: quien toma notas no se reconoce en un laboratorio de fotos, y el ámbar pisa la paleta.",
+      "kept": "El orden fijo de estaciones, prestado a «Un día con tu vault».",
+      "risk": "Cambia la paleta comprometida.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay.webp"
+    },
+    {
+      "id": "challenger-ukiyoe",
+      "label": "Grabado por registros",
+      "verdict": "declined",
+      "lineage": "graphic-worlds-publishing-ukiyoe-block-registration",
+      "thesis": "La hoja se construye capa por capa sobre una línea clave que no se mueve.",
+      "palette": ["#1f3a5f", "#c8443a", "#f1e6cf"],
+      "materials": ["papel kozo", "bloques de color"],
+      "viewport": "La línea clave sola, esperando su primer color.",
+      "case": "Fusiona mal: el material es ajeno al producto.",
+      "kept": "El marco fijo que suma capas, prestado a «Vault abierto».",
+      "risk": "Disfraz cultural ajeno.",
+      "hero": "https://impeccable.style/worlds/cards/graphic-worlds-publishing-ukiyoe-block-registration-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/graphic-worlds-publishing-ukiyoe-block-registration.webp"
+    },
+    {
+      "id": "challenger-neon",
+      "label": "Circuito de neón",
+      "verdict": "declined",
+      "lineage": "magnetism-electricity-plasma-hand-bent-neon-circuit",
+      "thesis": "Una palabra de vidrio que se enciende de punta a punta.",
+      "palette": ["#05060a", "#2f6bff", "#e0412b"],
+      "materials": ["tubo de vidrio", "electrodos"],
+      "viewport": "Un trazo continuo que se enciende.",
+      "case": "Fusiona mal: es exactamente el «neón gamer» que DESIGN.md prohíbe.",
+      "kept": "Un único trazo continuo, prestado a «La versión en tapa».",
+      "risk": "Brillo como ruido.",
+      "hero": "https://impeccable.style/worlds/cards/magnetism-electricity-plasma-hand-bent-neon-circuit-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/magnetism-electricity-plasma-hand-bent-neon-circuit.webp"
+    },
+    {
+      "id": "challenger-sleeping-city",
+      "label": "Ciudad dormida",
+      "verdict": "declined",
+      "lineage": "dream-surreal-impossible-worlds-sleeping-city-fold",
+      "thesis": "Una ciudad que se pliega como manta y sueña de noche.",
+      "palette": ["#0d1633", "#e7c25a", "#f2efe6"],
+      "materials": ["costuras", "luces bordadas"],
+      "viewport": "Una avenida que se levanta como costura.",
+      "case": "Fusiona mal: lo onírico oscurece qué es el producto.",
+      "kept": "La hora local del visitante, prestada a «Un día con tu vault».",
+      "risk": "Poca claridad de producto.",
+      "hero": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-sleeping-city-fold-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-sleeping-city-fold.webp"
+    }
+  ],
+  "reroll": true,
+  "buildPath": { "value": "code" },
+  "steer": true
+}

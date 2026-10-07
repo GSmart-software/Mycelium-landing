@@ -1,0 +1,121 @@
+SURFACE CONCEPT SEED (key: f55ffbfc; mode: persuade; source: api; approved pool: c3b204a1eed6; 306/564 human-approved; rerun with --scope surface --mode persuade --from f55ffbfc --candidate-count 7 to reproduce this roll against this catalog revision)
+DEALT INDICES: 6, 7, 5 (index 6 leads)
+  After ordering the task's grounded structural candidates by resonance,
+  deal candidates 6, 7, 5 of your own grounded list to the
+  table; index 6 leads, and the deal never points at a challenger.
+  The deal is the roll, not a suggestion: the dice decide which structures
+  reach the user, so the ranking rut stays broken while the user still gets a
+  real choice, and the full ranked list stays yours. In an attended run,
+  present the three dealt structures as full cards of equal salience, the
+  lead carrying kicker THE ROLL, with steer and re-roll, and let the user
+  lock one in; the world is already settled, so this choice is composition.
+  Visualize every dealt card: with image generation available and a
+  comp-led default (.impeccable/config.json buildPath; the page toggle
+  handles the exception), declare a comp per card and generate after
+  serving, lead first; otherwise author each card's wireframe field (see
+  serve-question --schema) and the page draws the schematic. Carry the
+  recorded default in the payload as buildPath with toggle: true. Locking a card
+  approves its comp: a surface round that put three visualized structures on
+  the table replaces the three-option comp round in visualize.md. Re-roll
+  yourself only when every dealt structure fails audience identification or
+  product clarity on named factual grounds.
+  The assignment exists to refuse the model's ranking rut, never to outrank
+  the user or the brief. Never expose assignment metadata in user-facing labels.
+CHALLENGERS:
+  1. a hand-bent neon letter becoming a continuous gas-discharge circuit, where glass radius, electrode placement, gas, pressure, transformer load, and typography determine the final light
+     SOURCE ID: magnetism-electricity-plasma-hand-bent-neon-circuit
+     CREATIVE SPARK: A clear glass stroke softens over flame and bends into a cobalt script; electrodes seal, the room goes dark, and one continuous word ignites from within.
+     SYSTEM GRAMMAR:
+       - Palette/material: dark room as ground, clear glass tube softening over flame, one cobalt gas-discharge glow marking the active run, warm electrode-red at the sealed ends
+       - Type/composition: hand-bent script drawn as one continuous glass stroke, glyphs bending on a fabrication path, bridges and electrodes ranked where the circuit breaks
+       - Topology/navigation: Follow glyph, tube run, bend, bridge, electrode, transformer circuit, gas spectrum, and installed sign.
+       - Controls/state: Edit path, change gas, test bend radius, split circuits, and compare sketched, bent, pumped, aging, and restored states.
+       - Responsive/motion: Unroll the tube into a fabrication path on phones
+     WEB LEVERAGE: Direct SVG path editing, bend-radius and transformer validation, selectable source text, spectral comparison, and fabrication-ready export turn browser typography into a buildable neon circuit.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/magnetism-electricity-plasma-hand-bent-neon-circuit.webp · hero https://impeccable.style/worlds/cards/magnetism-electricity-plasma-hand-bent-neon-circuit-hero.webp
+  2. a sleeping city fold, where streets crease into blankets, towers become bedposts, and neighborhoods dream different weather beneath one night
+     SOURCE ID: dream-surreal-impossible-worlds-sleeping-city-fold
+     CREATIVE SPARK: At midnight an avenue rises like a quilt seam, apartment lights become embroidered stars, and a whole district folds gently over a park dreaming tropical rain.
+     SYSTEM GRAMMAR:
+       - Palette/material: night navy city as ground, window lights as embroidered gold stars, quilt seams in pale thread white, each dreaming district tinted its own weather hue
+       - Type/composition: soft rounded caps for district names stitched along seam lines, the map grid relaxing into blanket folds, morning notes set in a plain waking sans
+       - Topology/navigation: Move through waking streets, folded neighborhoods, shared dream edges, and morning return.
+       - Controls/state: Tuck a district, open its dream, connect two sleeping weather patterns, and unfold at dawn.
+       - Responsive/motion: Use layered city quilts on phones and substitute crossfades with static night and morning plates.
+     WEB LEVERAGE: Deformable map geometry, local time, and collaborative dream fragments create a nightly city that remains spatially recognizable.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-sleeping-city-fold.webp · hero https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-sleeping-city-fold-hero.webp
+  3. a dada assemblage page built from tram tickets, torn newsprint, and mixed type cases, rules and printers' fists dragged in at angles so the composition reads as a found object rather than a layout
+     SOURCE ID: design-canon-merz-collage-page
+     CREATIVE SPARK: a tram ticket, half a headline, a printer's fist pointing at nothing in particular, and eleven sizes of type from the same raided case, all glued down at angles that should not work and completely do.
+     SYSTEM GRAMMAR:
+       - Palette/material: aged ticket stock, newsprint gray, and one dull red, everything sitting at slightly different paper ages and thicknesses
+       - Type/composition: every size and face at once from a raided case, printers' fists and rules pointing across the field, no dominant axis
+       - Topology/navigation: the field is a pinboard of scraps, and navigation means pulling one scrap forward while the rest keep their positions
+       - Controls/state: controls are pasted scraps, pressing one lifts it with a small shadow, and used ones settle back into the collage
+       - Responsive/motion: scraps repack rather than scale as the frame changes, and motion is a paste-and-lift with no smooth easing
+     WEB LEVERAGE: a responsive collage that repacks scraps, css transforms for lift and paste states, and pointer-driven z-order reordering
+     QUALITY BAR: board https://impeccable.style/worlds/cards/design-canon-merz-collage-page.webp · hero https://impeccable.style/worlds/cards/design-canon-merz-collage-page-hero.webp
+  4. an edo woodblock print coming together one color block at a time, the keyblock outline printed first and each pigment block registered against carved kento notches until the sheet is whole
+     SOURCE ID: graphic-worlds-publishing-ukiyoe-block-registration
+     CREATIVE SPARK: the outline lands first in black, a ghost of a wave with nothing inside it. then indigo drops in, then safflower, each one nudged against a carved notch, and on the fifth pull the sea is suddenly deep enough to fall into.
+     SYSTEM GRAMMAR:
+       - Palette/material: mineral indigo, safflower red, and clove brown on warm kozo paper, each color a flat sealed area bounded by a black keyblock line
+       - Type/composition: vertical title cartouches sit in the upper corners, publisher and censor seals cluster at one margin as small red furniture
+       - Topology/navigation: the sheet builds in registered layers, so moving deeper adds a block rather than a page, and the keyline never moves
+       - Controls/state: controls read as carved cartouches, an active state prints its color layer in, and an inactive one shows the keyline alone
+       - Responsive/motion: narrow frames drop pigment blocks in reverse carving order, and motion is the soft bokashi wipe of one field into another
+     WEB LEVERAGE: layered svg color plates composited over one keyline, a css gradient wipe for bokashi, and progressive reveal of each registered block
+     QUALITY BAR: board https://impeccable.style/worlds/cards/graphic-worlds-publishing-ukiyoe-block-registration.webp · hero https://impeccable.style/worlds/cards/graphic-worlds-publishing-ukiyoe-block-registration-hero.webp
+  5. a live scene rendered as typewriter characters, where density of glyphs stands in for light and an at-sign can be a face if it moves correctly
+     SOURCE ID: medium-native-ascii-live-scene-render
+     CREATIVE SPARK: A rotating skull made entirely of dollar signs and periods; you squint and it is sculpture, you focus and it is text, and it is both at every distance.
+     SYSTEM GRAMMAR:
+       - Palette/material: single-ink phosphor, green or amber on black; tone is glyph density from period to at-sign, and the densest glyph is the highlight
+       - Type/composition: one strict monospace grid as the entire composition, the luminance ramp serving as the typographic scale, captions living inside the same grid
+       - Topology/navigation: the world is a fixed character grid; you move the camera, and the alphabet re-renders the view.
+       - Controls/state: the luminance ramp is the palette; swapping ramps changes mood while geometry stays put.
+       - Responsive/motion: cell count adapts to viewport while glyphs stay monospace-true
+     WEB LEVERAGE: Canvas or camera frames sample down to a live glyph grid, so video, 3D, and pointer input all become selectable text.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/medium-native-ascii-live-scene-render.webp · hero https://impeccable.style/worlds/cards/medium-native-ascii-live-scene-render-hero.webp
+  6. a printing darkroom under amber safelight, where enlarger beams, timed baths, and drying lines stage photographs into slow deliberate existence
+     SOURCE ID: signals-instruments-darkroom-safelight-bay
+     CREATIVE SPARK: In the developer tray, gray ghosts gather into a face; the timer ticks, and pulling the print too early is a real loss.
+     SYSTEM GRAMMAR:
+       - Palette/material: amber safelight washing every surface as the ground, wet-print silver grays deepening to black as the image ink, enamel tray white at the edges
+       - Type/composition: grease-pencil notes and printed timer digits under amber, labels sparse on bottles and trays; test strips band the field into stepped exposures
+       - Topology/navigation: work moves through fixed stations in order: compose, expose, develop, fix, wash, dry.
+       - Controls/state: progress is chemical and irreversible past marked points; test strips preview before committing.
+       - Responsive/motion: stations linearize on phones; the develop reveal is one continuous emergence, shown statically under
+     WEB LEVERAGE: Canvas-simulated development curves let previews emerge in real time before an action commits.
+     QUALITY BAR: board https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay.webp · hero https://impeccable.style/worlds/cards/signals-instruments-darkroom-safelight-bay-hero.webp
+A challenger wins only when its fused result beats the grounded list on
+  audience identification and product clarity. It may change task topology or
+  interaction, but never the committed visual identity.
+When you can view images, open the QUALITY BAR board and hero for any
+challenger you weigh seriously and for the world you build. They exist as a
+craft bar, the finish level and commitment the build is expected to reach,
+never as a mockup to copy; your surface serves this product, not that render.
+PRODUCT.md and DESIGN.md constrain every surface candidate's identity
+vocabulary; they do not cancel task-level composition. The seed never
+authorizes a new palette, type system, material world, or unfamiliar control
+behavior.
+The CREATIVE SPARK is a complete visual system, not a theme or decorative
+reference. Translate every supplied system rule into the product: palette and
+material, type and composition, topology, controls and states, and adaptation.
+Keep the source's visible character, scale, rhythm, and interaction instead of
+reducing vivid grammar to generic nouns. When the source is already a credible
+interface language, commit to it across navigation, content, controls, and
+states. Otherwise keep a literal carrier only when it becomes functional.
+Ambitious motion, spatial media, or interaction is welcome when it strengthens
+the product without weakening semantics, performance, or fallback behavior.
+TELEMETRY: after the user's choice resolves, rerun this script once with
+  --kind <assigned|pick|challenger|canon> --from f55ffbfc --scope surface --mode persuade,
+  adding --chosen <challenger-id> when a dealt challenger won and keeping
+  --register <safer|bolder> when the resolved round came from a steered hand.
+  One ping per resolved attended round. The ping is anonymous, the card kind
+  plus the catalog id when one won; your grounded candidates' names never
+  leave the machine, and the ping is skipped automatically when DO_NOT_TRACK
+  or IMPECCABLE_NO_TELEMETRY is set.
+A user- or brief-pinned decision beats the roll, always.
+DEALT INDICES (restated for truncated readers): 6, 7, 5; index
+6 leads. Present all three dealt structures; seed key f55ffbfc.

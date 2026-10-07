@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mycelium · Tu red de conocimiento, viva y conectada</title>
+  <meta name="description" content="Mycelium: notas en Markdown que enlazás entre sí y recorrés como un grafo, en una carpeta tuya y sin cuenta. Para Windows, macOS y Linux.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#04090e" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0C4A57" media="(prefers-color-scheme: light)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mycelium · Tu red de conocimiento, viva y conectada">
+  <meta property="og:description" content="Notas en Markdown que enlazás entre sí y recorrés como un grafo, en una carpeta tuya y sin cuenta.">
+  <meta property="og:image" content="capturas/01-nota-en-vivo.png">
+  <meta property="og:locale" content="es_AR">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+  <link rel="stylesheet" href="estilos.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script src="sitio.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <nav class="regla" aria-label="Un día con tu vault">
+    <a class="regla-logo" href="#inicio" aria-label="Mycelium, volver al principio">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M9 10L23 8M9 10L16 23M23 8L16 23" class="iso-hifas"/>
+        <circle cx="9" cy="10" r="4" class="iso-a"/>
+        <circle cx="23" cy="8" r="3" class="iso-b"/>
+        <circle cx="16" cy="23" r="4" class="iso-c"/>
+      </svg>
+    </a>
+    <p class="regla-lectura" aria-hidden="true"><span class="regla-hora-actual">08:40</span></p>
+    <div class="regla-escala">
+      <ol class="regla-horas">
+        <li style="--p: 14.81%"><a href="#escribis" data-estacion="escribis"><time>08:40</time><span class="regla-que">Escribís</span></a></li>
+        <li style="--p: 29.17%"><a href="#conectas" data-estacion="conectas"><time>11:15</time><span class="regla-que">Conectás</span></a></li>
+        <li style="--p: 52.78%"><a href="#encontras" data-estacion="encontras"><time>15:30</time><span class="regla-que">Encontrás</span></a></li>
+        <li style="--p: 66.67%"><a href="#ordenas" data-estacion="ordenas"><time>18:00</time><span class="regla-que">Ordenás</span></a></li>
+        <li style="--p: 89.81%"><a href="#preguntas" data-estacion="preguntas"><time>22:10</time><span class="regla-que">Le preguntás</span></a></li>
+      </ol>
+      <span class="regla-indicador" aria-hidden="true"></span>
+      <span class="regla-ahora" hidden><span class="sr">Ahora, en tu reloj: <span class="regla-ahora-hora"></span></span></span>
+    </div>
+  </nav>
+
+  <main id="contenido">
+    <section class="tramo hero" id="inicio" style="--t: 0" data-hora="08:40" aria-labelledby="titulo">
+      <div class="hero-texto">
+        <h1 id="titulo">Tu red de conocimiento, viva y conectada</h1>
+        <p class="bajada">Notas en Markdown que enlazás entre sí y recorrés como un grafo, en una carpeta tuya y sin cuenta.</p>
+
+        <div class="descarga-hero">
+          <div class="descarga-detectada" hidden>
+            <a class="boton boton-primario" data-cta href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_x64-setup.exe">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 10l5 5 5-5M5 21h14"/></svg>
+              <span data-cta-texto>Descargar para Windows</span>
+            </a>
+            <a class="boton boton-secundario" href="#descargas">Otras plataformas</a>
+          </div>
+          <ul class="descarga-tres" aria-label="Descargar Mycelium">
+            <li><a class="boton boton-primario" data-plataforma="windows" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_x64-setup.exe">Windows</a></li>
+            <li><a class="boton boton-primario" data-plataforma="mac" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_aarch64.dmg">macOS</a></li>
+            <li><a class="boton boton-primario" data-plataforma="linux-appimage" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_amd64.AppImage">Linux</a></li>
+          </ul>
+          <p class="aviso-movil" hidden>Mycelium es para la computadora. Abrí esta página desde Windows, macOS o Linux, o mirá <a href="#descargas">las descargas</a>.</p>
+        </div>
+
+        <p class="version-linea"><span data-mic="con-version">Mycelium <span data-mic="version">2.4.0</span> · </span>Windows, macOS y Linux</p>
+      </div>
+
+      <figure class="captura captura-hero">
+        <span class="hora-margen" aria-hidden="true">08:40</span>
+        <div class="marco"><img src="capturas/01-nota-en-vivo.png" width="2880" height="1800" fetchpriority="high" decoding="async" alt="Mycelium con una nota del vault «Huerta del barrio» abierta en el editor en vivo."></div>
+      </figure>
+    </section>
+
+    <section class="tramo estacion" id="escribis" style="--t: 0.08" data-hora="08:40" aria-labelledby="t-escribis">
+      <div class="estacion-cabeza">
+        <h2 id="t-escribis"><time class="hora">08:40</time> Escribís</h2>
+        <p class="entrada">Abrís la nota del día y escribís Markdown. Mycelium lo formatea mientras tipeás: los títulos crecen, las listas se acomodan y los enlaces se pueden seguir, sin cambiar de vista.</p>
+      </div>
+      <dl class="sintaxis">
+        <div>
+          <dt><code>[[Compost]]</code></dt>
+          <dd>Un enlace a otra nota. Si todavía no existe, queda marcado; cuando la creás, el enlace se conecta solo.</dd>
+        </div>
+        <div>
+          <dt><code>&gt; [!warning] Helada el jueves</code></dt>
+          <dd>Un callout, para lo que tiene que saltar a la vista. Hay diez tipos, y se pliegan y se anidan.</dd>
+        </div>
+        <div>
+          <dt><code>#riego</code></dt>
+          <dd>Una etiqueta: cruza carpetas y junta las notas de un mismo tema.</dd>
+        </div>
+        <div>
+          <dt><code>- [/] Armar la compostera</code></dt>
+          <dd>Una tarea en curso. Además de pendiente y hecha, puede estar cancelada, pospuesta, destacada o ser una pregunta.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="tramo estacion" id="conectas" style="--t: 0.3" data-hora="11:15" aria-labelledby="t-conectas">
+      <div class="estacion-cabeza">
+        <h2 id="t-conectas"><time class="hora">11:15</time> Conectás</h2>
+        <p class="entrada">Cada enlace une dos notas, como una hifa une dos puntos del micelio. El grafo dibuja la red entera: qué notas son centros, cuáles quedaron sueltas y por dónde un tema toca a otro.</p>
+      </div>
+      <figure class="captura captura-ancha">
+        <div class="marco"><img src="capturas/02-grafo.png" width="2880" height="1800" loading="lazy" decoding="async" alt="El grafo de conexiones del vault «Huerta del barrio»: cada nota es un nodo y cada enlace, una línea."></div>
+      </figure>
+      <div class="par par-texto-derecha">
+        <figure class="captura">
+          <div class="marco"><img src="capturas/05-lectura-enlaces.png" width="2880" height="1800" loading="lazy" decoding="async" alt="Una nota en modo lectura con el panel de enlaces abierto al costado."></div>
+        </figure>
+        <div class="par-texto">
+          <h3>Quién te cita</h3>
+          <p>En lectura la nota pasa a una letra serif, cómoda para leer largo. El panel de enlaces muestra a qué notas apunta y cuáles la mencionan, sin buscar.</p>
+          <p>Si renombrás una nota desde Mycelium, los enlaces que llegaban a ella se actualizan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tramo estacion" id="encontras" style="--t: 0.55" data-hora="15:30" aria-labelledby="t-encontras">
+      <div class="estacion-cabeza">
+        <h2 id="t-encontras"><time class="hora">15:30</time> Encontrás</h2>
+        <p class="entrada"><kbd>Ctrl</kbd>&#8239;+&#8239;<kbd>O</kbd> y tres letras: estás en la nota que buscabas. <kbd>Ctrl</kbd>&#8239;+&#8239;<kbd>P</kbd> hace lo mismo con los comandos.</p>
+      </div>
+      <div class="par par-desparejo">
+        <figure class="captura">
+          <div class="marco"><img src="capturas/03-paleta.png" width="2880" height="1800" loading="lazy" decoding="async" alt="La paleta de Mycelium abierta sobre una nota, con las opciones que coinciden con lo escrito."></div>
+          <figcaption>La búsqueda entra también en el contenido: <code>tag:riego</code> filtra por etiqueta y <code>estado:activo</code>, por una propiedad.</figcaption>
+        </figure>
+        <figure class="captura">
+          <div class="marco"><img src="capturas/06-calendario.png" width="2880" height="1800" loading="lazy" decoding="async" alt="El calendario de Mycelium con recordatorios del vault."></div>
+          <figcaption>Lo que tiene fecha va al calendario: recordatorios con hora, repetición, color y aviso.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="tramo estacion" id="ordenas" style="--t: 0.8" data-hora="18:00" aria-labelledby="t-ordenas">
+      <div class="estacion-cabeza">
+        <h2 id="t-ordenas"><time class="hora">18:00</time> Ordenás</h2>
+        <p class="entrada">Al final de la tarde acomodás lo que juntaste. Todo sigue siendo texto plano en tu carpeta: lo podés abrir con cualquier editor.</p>
+      </div>
+      <div class="par par-texto-izquierda">
+        <ul class="formas">
+          <li><strong>Lienzos.</strong> Notas y tarjetas en el espacio, unidas por flechas, para pensar un plan antes de escribirlo.</li>
+          <li><strong>Bases.</strong> Una tabla con las notas que cumplen un filtro: por carpeta, etiqueta o propiedad.</li>
+          <li><strong>Esporas.</strong> Plantillas para la nota que repetís —la reunión, la cosecha, el diario— con la fecha y el título ya puestos.</li>
+        </ul>
+        <figure class="captura">
+          <div class="marco"><img src="capturas/07-lienzo-o-base.png" width="2880" height="1800" loading="lazy" decoding="async" alt="Un lienzo del vault «Huerta del barrio»."></div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="tramo noche" id="preguntas" style="--t: 1" data-hora="22:10" aria-labelledby="t-preguntas">
+      <div class="noche-adentro">
+        <div class="estacion-cabeza">
+          <h2 id="t-preguntas"><time class="hora">22:10</time> Le preguntás a tu vault</h2>
+          <p class="entrada">A la noche abrís la terminal integrada y le preguntás a Claude Code: <q>¿qué decidimos sobre el riego por goteo?</q> Busca en tus notas, te responde con ellas y anota lo nuevo donde corresponde.</p>
+        </div>
+        <figure class="captura captura-ancha">
+          <div class="marco"><img src="capturas/04-terminal-ia.png" width="2880" height="1800" loading="lazy" decoding="async" alt="La terminal integrada de Mycelium con Claude Code trabajando sobre el vault."></div>
+        </figure>
+        <dl class="ia">
+          <div>
+            <dt>Tu vault, su memoria</dt>
+            <dd>Mycelium escribe en el vault las instrucciones y las skills que le explican a la IA cómo está armado: enlaces, lienzos, bases, el calendario. Las generás vos, desde Configuración.</dd>
+          </div>
+          <div>
+            <dt>Opera Mycelium</dt>
+            <dd>Con el control encendido, te abre la nota que nombra, agenda un recordatorio o renombra una nota sin romper los enlaces que llegan a ella.</dd>
+          </div>
+          <div>
+            <dt>Todo a la vista</dt>
+            <dd>Cada cosa que hace queda en «Actividad de la IA», con su Deshacer.</dd>
+          </div>
+        </dl>
+        <p class="nota-al-pie">Es opcional: sin IA, Mycelium es el mismo. Para usarla necesitás Claude Code instalado; el control de la IA viene apagado y se enciende por vault.</p>
+      </div>
+    </section>
+
+    <section class="tramo manana" id="manana" style="--t: 0" data-hora="mañana" aria-labelledby="t-manana">
+      <div class="estacion-cabeza">
+        <h2 id="t-manana">A la mañana siguiente, la misma nota con otra luz</h2>
+        <p class="entrada">Dos temas, Bioluminiscencia y Cantarela, cada uno claro y oscuro, y atmósferas que reparten sus colores. Si querés ir más lejos, tus propios estilos en CSS.</p>
+      </div>
+      <div class="dos-luces">
+        <figure class="captura">
+          <div class="marco"><img src="capturas/08-temas-bio-claro.png" width="2880" height="1800" loading="lazy" decoding="async" alt="Una nota con el tema Bioluminiscencia en modo claro."></div>
+          <figcaption>Bioluminiscencia, claro</figcaption>
+        </figure>
+        <figure class="captura">
+          <div class="marco"><img src="capturas/09-temas-cantarela.png" width="2880" height="1800" loading="lazy" decoding="async" alt="La misma nota con el tema Cantarela."></div>
+          <figcaption>Cantarela</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="tramo novedades" id="novedades" style="--t: 0" data-hora="mañana" aria-labelledby="t-novedades">
+      <div class="novedades-cabeza">
+        <h2 id="t-novedades">Novedades<span data-mic="con-version"> de la <span data-mic="version">2.4.0</span></span></h2>
+        <p class="novedades-fecha" data-mic="con-version">Publicada el <time data-mic="fecha" datetime="2026-10-06">6 de octubre de 2026</time></p>
+      </div>
+      <div class="novedades-cuerpo" data-mic="novedades">
+<h3>Tus archivos, al instante</h3>
+<h4>El explorador sigue al disco</h4>
+<ul><li>Lo que agregás, movés o borrás <strong>desde fuera de Mycelium</strong> —una nota, una imagen, un PDF, una carpeta— aparece en el explorador <strong>al instante</strong>, sin esperar.</li><li>Un botón <strong>«Refrescar»</strong> en el explorador, y al volver a la ventana Mycelium revisa solo si se le escapó algún cambio.</li></ul>
+<h4>Cualquier archivo</h4>
+<ul><li><strong>Arrastrá cualquier archivo o carpeta</strong> desde el explorador de Windows a una carpeta de Mycelium: se copia ahí, con barra de progreso para los grandes. Las carpetas grandes entran completas.</li><li>Las <strong>imágenes del vault se ven dentro de las notas</strong> (<code>![[foto.png]]</code> o <code>![](foto.png)</code>), en la edición, en la lectura y al exportar a PDF.</li><li>Clic derecho en una imagen, un PDF o cualquier otro archivo: <strong>abrir, abrir con su programa, renombrar, duplicar, guardar una copia, mostrarlo en el explorador o eliminarlo</strong>.</li><li>Los menús del explorador tienen un <strong>ícono por opción</strong>.</li></ul>
+<h4>Tareas con estados</h4>
+<ul><li>Además de pendiente y hecha: <strong>en curso</strong> <code>[/]</code>, <strong>cancelada</strong> <code>[-]</code>, <strong>destacada</strong> <code>[*]</code>, <strong>pospuesta</strong> <code>[&gt;]</code>, <strong>pregunta</strong> <code>[?]</code>, <strong>importante</strong> <code>[!]</code> y <strong>agregada</strong> <code>[+]</code>. Con clic derecho en la casilla elegís el estado. La tarea hecha se ve apagada, sin tachar.</li></ul>
+<h4>Más cómodo</h4>
+<ul><li>El <strong>buscador de la nota</strong> encuentra y resalta lo que está dentro de las tablas.</li><li>El <code>.mycignore</code> se edita en una <strong>pestaña</strong>, desde Configuración → Vault.</li><li>En el título de un callout, los enlaces y el texto con estilo conservan su color.</li><li>Mac y Linux: Mycelium se puede instalar también en esos sistemas.</li></ul>
+      </div>
+      <p class="novedades-sin" data-mic="sin-version" hidden>Ahora no pudimos consultar cuál es la última versión. Las descargas siguen funcionando, y Mycelium te avisa después si hay una más nueva.</p>
+    </section>
+
+    <section class="tramo descargas" id="descargas" style="--t: 0" data-hora="mañana" aria-labelledby="t-descargas">
+      <h2 id="t-descargas">Descargá Mycelium</h2>
+      <p class="version-linea"><span data-mic="con-version">Versión <span data-mic="version">2.4.0</span> · </span>Mycelium te avisa cuando sale una nueva y la instalás cuando quieras.</p>
+      <div class="sistemas">
+        <div class="sistema" data-sistema="windows">
+          <h3>Windows</h3>
+          <p class="requisito">Windows de 64 bits (x64)</p>
+          <a class="boton boton-primario" data-plataforma="windows" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_x64-setup.exe">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 10l5 5 5-5M5 21h14"/></svg>
+            Descargar el instalador
+          </a>
+          <p class="nota">Un instalador <code>.exe</code>. No hace falta crear ninguna cuenta.</p>
+        </div>
+        <div class="sistema" data-sistema="mac">
+          <h3>macOS</h3>
+          <p class="requisito">Solo Apple Silicon (M1 o posterior)</p>
+          <a class="boton boton-primario" data-plataforma="mac" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_aarch64.dmg">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 10l5 5 5-5M5 21h14"/></svg>
+            Descargar el .dmg
+          </a>
+          <p class="nota">La primera vez, abrilo con clic derecho → <strong>Abrir</strong>.</p>
+        </div>
+        <div class="sistema" data-sistema="linux">
+          <h3>Linux</h3>
+          <p class="requisito">x86_64, en tres formatos</p>
+          <div class="botones-linux">
+            <a class="boton boton-primario" data-plataforma="linux-appimage" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_amd64.AppImage">
+              <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 10l5 5 5-5M5 21h14"/></svg>
+              AppImage
+            </a>
+            <a class="boton boton-secundario" data-plataforma="linux-deb" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_amd64.deb">.deb</a>
+            <a class="boton boton-secundario" data-plataforma="linux-rpm" href="https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium-2.4.0-1.x86_64.rpm">.rpm</a>
+          </div>
+          <p class="nota">AppImage corre en casi cualquier distribución; <code>.deb</code> para Debian y Ubuntu, <code>.rpm</code> para Fedora y openSUSE.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <a class="pie-logo" href="#inicio">
+      <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+        <path d="M9 10L23 8M9 10L16 23M23 8L16 23" class="iso-hifas"/>
+        <circle cx="9" cy="10" r="4" class="iso-a"/>
+        <circle cx="23" cy="8" r="3" class="iso-b"/>
+        <circle cx="16" cy="23" r="4" class="iso-c"/>
+      </svg>
+      <span>Mycelium</span>
+    </a>
+    <p>Tu red de conocimiento, viva y conectada. Hecho en español.</p>
+    <p class="pie-version" data-mic="con-version">Versión <span data-mic="version">2.4.0</span></p>
+  </footer>
+</body>
+</html>
