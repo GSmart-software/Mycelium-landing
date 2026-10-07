@@ -1,0 +1,27 @@
+# Landing de Mycelium: página estática (public/) servida por Workers Static
+# Assets. El Worker corre primero solo en la página y en /descargar/*, para
+# inyectar la última versión leída de R2 y redirigir a los instaladores.
+name = "mycelium-landing"
+main = "src/worker.ts"
+compatibility_date = "2025-09-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/", "/index.html", "/descargar/*"]
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"
+
+# El mismo bucket donde `npm run publicar` (repo de la app) sube latest.json y
+# los instaladores. Solo se lee latest.json.
+[[r2_buckets]]
+binding = "RELEASES"
+bucket_name = "mycelium-releases"
+
+[vars]
+# Base pública de los instaladores (los archivos están en <base>/<versión>/…).
+URL_PUBLICA = "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev"
+# Versión conocida que se usa si R2 no responde: /descargar/* sigue bajando
+# un instalador que existe, y la app avisa después si hay una más nueva.
+# Subila cuando quieras que el respaldo apunte a una más reciente.
+VERSION_RESPALDO = "2.4.0"

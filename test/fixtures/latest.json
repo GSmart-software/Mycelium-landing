@@ -1,0 +1,31 @@
+{
+  "version": "2.4.0",
+  "notes": "## Tus archivos, al instante\n\n### El explorador sigue al disco\n\n- Lo que agregás, movés o borrás **desde fuera de Mycelium** —una nota, una imagen, un PDF, una\n  carpeta— aparece en el explorador **al instante**, sin esperar.\n- Un botón **«Refrescar»** en el explorador, y al volver a la ventana Mycelium revisa solo si\n  se le escapó algún cambio.\n\n### Cualquier archivo\n\n- **Arrastrá cualquier archivo o carpeta** desde el explorador de Windows a una carpeta de\n  Mycelium: se copia ahí, con barra de progreso para los grandes. Las carpetas grandes entran\n  completas.\n- Las **imágenes del vault se ven dentro de las notas** (`![[foto.png]]` o `![](foto.png)`),\n  en la edición, en la lectura y al exportar a PDF.\n- Clic derecho en una imagen, un PDF o cualquier otro archivo: **abrir, abrir con su programa,\n  renombrar, duplicar, guardar una copia, mostrarlo en el explorador o eliminarlo**.\n- Los menús del explorador tienen un **ícono por opción**.\n\n### Tareas con estados\n\n- Además de pendiente y hecha: **en curso** `[/]`, **cancelada** `[-]`, **destacada** `[*]`,\n  **pospuesta** `[>]`, **pregunta** `[?]`, **importante** `[!]` y **agregada** `[+]`. Con\n  clic derecho en la casilla elegís el estado. La tarea hecha se ve apagada, sin tachar.\n\n### Más cómodo\n\n- El **buscador de la nota** encuentra y resalta lo que está dentro de las tablas.\n- El `.mycignore` se edita en una **pestaña**, desde Configuración → Vault.\n- En el título de un callout, los enlaces y el texto con estilo conservan su color.\n- Mac y Linux: Mycelium se puede instalar también en esos sistemas.",
+  "pub_date": "2026-10-06T22:37:12Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUWDlqWkhMRDJMYXJhR0o3RDdjTWlJWWZpejBJMFlZTTFaZlFmZktNdDlZN2IrY05Ld2hKdE1DZW10SFRBUVRQWnd4U0FNZzdQUHNLbGZ3MG91dCtrbFZRdlR4bklKUHdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI2MjE4CWZpbGU6TXljZWxpdW1fMi40LjBfeDY0LXNldHVwLmV4ZQpsbXpJSW1BV3YrSTRrTjVKRWd6WGk3eks2SEk4SUFZMHJ4UmZNc0c1eU10dTJvVWV5KzU3cjB2WXFSd3FXTCsreWZJeWlyTzZBRW5iL1pwcE5pWkdCZz09Cg==",
+      "url": "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_x64-setup.exe"
+    },
+    "windows-x86_64-msi": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUWDlqWkhMRDJMYXBEaVFTZis0MTNja044MHhVSkE5cmFZWks3Uzc4NWZhS1NlSWRoR0lBQjhFa01vU2F4bzZad056b2Q2cVRlOVVnVTg0WDhIWFlycGtXRmd2RFVGd0FFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI2MjIwCWZpbGU6TXljZWxpdW1fMi40LjBfeDY0X2VuLVVTLm1zaQpVL0U3Q2JEcnBJcUtTbStqeGhjamRadUJVUHFoWlZxNFBsbDl1N2Z4MmUxK2lJM2J4L2RIdjVpWERTK0JDL0UwTE1KcFA1dEVvUDNaQUdOUG5GS21CZz09Cg==",
+      "url": "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_x64_en-US.msi"
+    },
+    "darwin-aarch64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUWDlqWkhMRDJMYXBua2wrSmRrV3ZDdzE5YmxydFkvTmhocitMM0tOZW9NY2tjUnAwNHRVbzArK3BMNnE5LzBQWlZCV3VSdjhBZ2hoRkpQRUxFTWJiSW1EUVdEK01zeGdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI2MjIyCWZpbGU6TXljZWxpdW1fMi40LjBfYWFyY2g2NC5hcHAudGFyLmd6CkEvb0I3bVA3S2JPNmhISnloSUJ1YUNTeEx1b3NtUWUzSG9iYVMwTnYwUnhMZjRobTVONmtPNHl3bHRHNWxaa21yZlo1TU9DT3Z5aFJURmxUTXFyM0JnPT0K",
+      "url": "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_aarch64.app.tar.gz"
+    },
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUWDlqWkhMRDJMYWc2NzFSbkdtL3hISmhuaW9Ka0g4dmdSRmhNYXU2ckROSUVLNWdXaGJkVG1GY0VxUG1ZYlhvaU4vTUtDOTMwYW9vT1hUS2lCMGYvM0dEN09NcFhQdWdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI2MjI2CWZpbGU6TXljZWxpdW1fMi40LjBfYW1kNjQuQXBwSW1hZ2UKS2JZOHNNNlg4M29ydkFkZmFmZUVGYi9nT0ovN2N0MWxkOWVsQ2ozajdsZTFCbFh6cXFoL0pENmcrZXhXWkRkRzh2bWdWaUhUWk9pa1BkaVhWNE83QkE9PQo=",
+      "url": "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_amd64.AppImage"
+    },
+    "linux-x86_64-deb": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUWDlqWkhMRDJMYXBGcmczZTlWaVBYdktPOWViWjNPeVpvU3dHeXZDbnpqRnZwRVY0UEtnVWhKb29XT2g2Tk4rV3VIL0d4TXBaM0hiREdNQUYzY1IyTFo5a1ljbC9ZcGdzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI2MjI5CWZpbGU6TXljZWxpdW1fMi40LjBfYW1kNjQuZGViCnltZ1NLQmVjYnNHL3ArQ1VTNnUwZWxDam9Ca1Z4bjJBVFZjMjIyenpLbkJmbVI4azdhOWYrRVNrNUV5Y0RPdDZucU1MeG1hRjVBTjJHTUcyRU42bURRPT0K",
+      "url": "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium_2.4.0_amd64.deb"
+    },
+    "linux-x86_64-rpm": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUWDlqWkhMRDJMYWtHZDlwS1JlbmNvY0Z0Njk0RU9NSWFaMFV4RnBoazQ2UklybWVwdGdKYU44bVBsL0xLYUFuOFpvQlNlSkxoZ0I2SHNqVVVPWFY3VGZOMU9yMk00VHdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMzI2MjMyCWZpbGU6TXljZWxpdW0tMi40LjAtMS54ODZfNjQucnBtCk5aOWNjR0NpQktkR0F6M0hLSXd0ZkRBeHdyRXd5bEZUekJWSTBLTUdxK1k4dis0aUd3djVCQlBIMDU0VC9zVWtSRlB3N0VOZWRSakI3M2hVN1d1SUJ3PT0K",
+      "url": "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev/2.4.0/Mycelium-2.4.0-1.x86_64.rpm"
+    }
+  }
+}

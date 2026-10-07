@@ -1,0 +1,25 @@
+{
+  "name": "mycelium-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Landing de Mycelium: página estática servida por un Worker de Cloudflare que inyecta la última versión desde R2.",
+  "scripts": {
+    "capturas": "node scripts/copiar-capturas.mjs",
+    "sembrar": "node scripts/sembrar-r2-local.mjs",
+    "predev": "npm run capturas",
+    "dev": "wrangler dev",
+    "pretest": "npm run capturas",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "predeploy": "npm run capturas && npm run typecheck && npm test",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.3.7",
+    "@cloudflare/workers-types": "^4.20260702.1",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.86.0"
+  }
+}
