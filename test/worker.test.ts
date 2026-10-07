@@ -2,6 +2,8 @@ import { createExecutionContext, env, waitOnExecutionContext } from "cloudflare:
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { leerManifiesto, olvidarManifiesto, vencerManifiesto } from "../src/manifiesto";
 import { HASH_SCRIPT_EN_LINEA } from "../src/cabeceras";
+import { sumarioHtml } from "../src/inyectar";
+import { partirNovedades } from "../src/markdown";
 import worker, { type Env } from "../src/worker";
 import crudo from "./fixtures/latest.json";
 
@@ -28,7 +30,7 @@ beforeEach(async () => {
 });
 
 describe("la página", () => {
-  it("inyecta versión, fecha y novedades", async () => {
+  it("inyecta versión, fecha, titular y novedades", async () => {
     await sembrar({ ...crudo, version: "2.5.0", notes: "## Algo nuevo\n\n- **uno**" });
     const r = await SELF.fetch("https://landing.test/");
     expect(r.status).toBe(200);
@@ -37,22 +39,37 @@ describe("la página", () => {
     expect(html).toContain('<span data-mic="version">2.5.0</span>');
     expect(html).not.toContain('<span data-mic="version">2.4.0</span>');
     expect(html).toMatch(/<time data-mic="fecha" datetime="2026-10-06">6 de octubre de 2026<\/time>/);
-    expect(html).toContain("<h3>Algo nuevo</h3>");
+    expect(html).toMatch(/data-mic="titular"[^>]*>Algo nuevo</);
     expect(html).toContain("<li><strong>uno</strong></li>");
     // Las notas por defecto del HTML estático se reemplazaron.
     expect(html).not.toContain("Tus archivos, al instante");
+    expect(html).not.toContain("El explorador sigue al disco");
     // El aviso de «sin versión» sigue oculto.
     expect(html).toMatch(/data-mic="sin-version" hidden/);
   });
 
-  it("pliega las novedades después del primer grupo, con la versión en el <summary>", async () => {
-    await sembrar({ ...crudo, version: "2.5.0", notes: "## Uno\n\n- a\n\n## Dos\n\n- b" });
+  it("el sumario numera los grupos y pliega su detalle", async () => {
+    await sembrar({ ...crudo, version: "2.5.0", notes: "## Titular\n\n### Uno\n\n- a\n\n### Dos\n\n- b" });
     const html = await (await SELF.fetch("https://landing.test/")).text();
+    expect(html).toMatch(/data-mic="titular"[^>]*>Titular</);
     const novedades = html.slice(html.indexOf('data-mic="novedades"'), html.indexOf('data-mic="sin-version"'));
-    expect(novedades).toContain("<h3>Uno</h3>");
-    expect(novedades).toContain("Todo lo nuevo de la 2.5.0");
-    expect(novedades.indexOf("<details")).toBeGreaterThan(novedades.indexOf("<li>a</li>"));
-    expect(novedades.indexOf("<h3>Dos</h3>")).toBeGreaterThan(novedades.indexOf("<details"));
+    expect(novedades).toContain('<ol class="sumario-lista">');
+    expect(novedades.match(/<li><details>/g)).toHaveLength(2);
+    expect(novedades.indexOf("<li>a</li>")).toBeGreaterThan(novedades.indexOf("<summary><span>Uno</span>"));
+    expect(novedades.indexOf("<summary><span>Dos</span>")).toBeGreaterThan(novedades.indexOf("<li>a</li>"));
+  });
+
+  it("si las notas no traen titular, la tapa usa el genérico", async () => {
+    await sembrar({ ...crudo, notes: "## Uno\n\n- a\n\n## Dos\n\n- b" });
+    const html = await (await SELF.fetch("https://landing.test/")).text();
+    expect(html).toMatch(/data-mic="titular"[^>]*>Lo que creció en esta versión</);
+  });
+
+  it("el titular llega escapado", async () => {
+    await sembrar({ ...crudo, notes: "## <img src=x onerror=alert(1)>\n\n### Uno\n\n- a" });
+    const html = await (await SELF.fetch("https://landing.test/")).text();
+    expect(html).not.toContain("<img src=x");
+    expect(html).toContain("&lt;img src=x onerror=alert(1)&gt;");
   });
 
   it("og:image sale absoluta, con el origen de la request", async () => {
@@ -89,6 +106,7 @@ describe("la página", () => {
     const html = await r.text();
     expect(html).not.toContain('data-mic="version"');
     expect(html).not.toContain('data-mic="novedades"');
+    expect(html).not.toContain('data-mic="titular"');
     expect(html).not.toMatch(/data-mic="sin-version" hidden/);
     expect(html).toContain("Windows, macOS y Linux");
     expect(html).toContain('href="/descargar/windows"');
@@ -117,6 +135,15 @@ describe("la página", () => {
     const r = await SELF.fetch("https://landing.test/index.html", { redirect: "manual" });
     expect([200, 307, 308]).toContain(r.status);
     if (r.status === 200) expect(await r.text()).toContain('data-mic="version">2.4.0');
+  });
+
+  it("el HTML estático trae la tapa de la 2.4.0 tal como la arma el Worker", async () => {
+    // Abierta sin el Worker, la página tiene que verse igual que inyectada.
+    const estatica = await (await env.ASSETS.fetch(new Request("https://landing.test/"))).text();
+    const n = partirNovedades(crudo.notes);
+    expect(estatica).toContain(sumarioHtml(n));
+    expect(estatica).toContain(`data-mic="titular">${n.titular}<`);
+    expect(estatica).toContain('<span data-mic="version">' + crudo.version + "</span>");
   });
 
   it("los archivos estáticos pasan sin tocar", async () => {

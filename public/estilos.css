@@ -1,7 +1,8 @@
-/* Landing de Mycelium — Bioluminiscencia.
+/* Landing de Mycelium — «La red», Bioluminiscencia.
    Todo sale de los tokens de :root. Oscuro por defecto; el claro llega con
    prefers-color-scheme. Las capas: raw (los colores del tema), roles (qué
-   hace cada color) y la página. */
+   hace cada color) y la página. La portada es el grafo: una placa oscura en
+   los dos modos. */
 
 :root {
   /* Raw: Bioluminiscencia oscuro */
@@ -16,44 +17,44 @@
   --borde: #16343f;
   --info: #3d8bff;
 
-  /* La noche (22:10) es Bioluminiscencia oscuro también en modo claro: sus
-     colores viven aparte para que el claro no los redefina. */
-  --noche-esporo: #04090e;
-  --noche-niebla: #0a1a24;
-  --noche-humus: #c6e7e1;
-  --noche-humus-tenue: #7fa9a8;
-  --noche-hifa: #19e6ff;
-  --noche-brote: #3dffc4;
+  /* La portada usa la paleta oscura en los dos modos: es la captura del grafo,
+     cuyo lienzo es Esporo profundo. */
+  --placa-fondo: #0b1d27;
+  --placa-sombra: #04090e;
+  --placa-humus: #c6e7e1;
+  --placa-tenue: #8db4b2;
+  --placa-hifa: #19e6ff;
+  --placa-brote: #3dffc4;
 
   /* Roles */
+  --fondo: var(--esporo);
   --texto: var(--humus);
   --texto-tenue: var(--humus-tenue);
   --accion: var(--hifa);
-  --sobre-accion: var(--lienzo);
+  --sobre-accion: var(--esporo);
   --enlace: var(--hifa);
   --brillo-texto: var(--brote);
   --foco: var(--brote);
-  --superficie: var(--niebla);
+  --superficie: var(--lienzo);
+  --superficie-alta: var(--esporo-profundo);
   --codigo-fondo: var(--esporo-profundo);
-  --marco: var(--esporo);
-  --marco-glow: var(--brote);
-  --marco-acento: var(--hifa);
-  --marco-texto: var(--humus-tenue);
-  --titulo-2: color-mix(in srgb, var(--brote) 70%, var(--humus));
-  --titulo-3: color-mix(in srgb, var(--hifa) 58%, var(--humus));
-  --titulo-4: color-mix(in srgb, var(--brote) 44%, var(--humus));
+  --marco-borde: var(--borde);
   --degrade: linear-gradient(90deg, var(--brote), var(--hifa));
-  --sombra: color-mix(in srgb, var(--esporo) 75%, transparent);
+  --sombra: color-mix(in srgb, var(--esporo) 85%, transparent);
 
-  /* El día: de la mañana a la tarde el fondo se hunde hacia Esporo. */
-  --fondo-dia: var(--niebla);
-  --fondo-tarde: var(--esporo);
-  --noche-fondo: var(--esporo);
+  /* La hifa: apagada, encendida y su punta. */
+  --linea-apagada: color-mix(in srgb, var(--hifa) 16%, transparent);
+  --linea: var(--hifa);
+  --linea-punta: var(--brote);
+  --nodo-texto: var(--hifa);
 
   /* Medidas */
-  --regla: 56px;
-  --canal: clamp(1.25rem, 5vw, 5rem);
-  --ancho: 78rem;
+  --canal: clamp(1rem, 4vw, 3rem);
+  --ancho: 76rem;
+  --riel: 4.5rem;
+  --linea-x: 0.75rem;
+  --punto-y: 0.6rem;
+  --entre-nodos: clamp(4.5rem, 8vw, 7.5rem);
   --r-sm: 4px;
   --r-md: 8px;
   --serif: "Source Serif 4", Georgia, serif;
@@ -77,41 +78,24 @@
     --brote: #16b8c9;
     --borde: color-mix(in srgb, #1f2d30 16%, transparent);
 
+    --fondo: var(--lienzo);
     --sobre-accion: #f1f6f7;
     --enlace: color-mix(in srgb, var(--hifa) 72%, var(--humus));
     --brillo-texto: #1b6c75;
     --foco: var(--hifa);
+    --superficie: color-mix(in srgb, var(--niebla) 60%, var(--lienzo));
+    --superficie-alta: #ffffff;
     --codigo-fondo: color-mix(in srgb, var(--humus) 7%, var(--lienzo));
-    --marco-glow: #68ced9;
-    --marco-acento: #3fc3d1;
-    --marco-texto: color-mix(in srgb, var(--niebla) 86%, var(--esporo));
-    --titulo-2: color-mix(in srgb, var(--brote) 50%, var(--humus));
-    --titulo-3: color-mix(in srgb, var(--hifa) 70%, var(--humus));
-    --titulo-4: color-mix(in srgb, var(--brote) 40%, var(--humus));
+    --marco-borde: color-mix(in srgb, var(--esporo-profundo) 22%, transparent);
     --degrade: linear-gradient(90deg, #1b6c75, var(--hifa));
-    --sombra: color-mix(in srgb, var(--esporo-profundo) 22%, transparent);
+    --sombra: color-mix(in srgb, var(--esporo-profundo) 24%, transparent);
 
-    --fondo-dia: var(--lienzo);
-    --fondo-tarde: color-mix(in oklab, var(--niebla), var(--esporo) 9%);
-    --noche-fondo: var(--esporo-profundo);
+    --linea-apagada: color-mix(in srgb, var(--hifa) 20%, transparent);
+    --linea-punta: #16b8c9;
+    --nodo-texto: #1b6c75;
 
     color-scheme: light;
   }
-}
-
-/* La noche usa la paleta oscura en los dos modos: es Esporo. */
-.noche {
-  --texto: var(--noche-humus);
-  --texto-tenue: var(--noche-humus-tenue);
-  --brillo-texto: var(--noche-brote);
-  --enlace: var(--noche-hifa);
-  --foco: var(--noche-brote);
-  --borde: color-mix(in srgb, var(--noche-brote) 16%, transparent);
-  --titulo-2: color-mix(in srgb, var(--noche-brote) 70%, var(--noche-humus));
-  --superficie: var(--noche-niebla);
-  /* Sombra teñida de Esporo, nunca negra (DESIGN.md: Tinted Shadow Rule). */
-  --sombra: color-mix(in srgb, var(--noche-esporo) 80%, transparent);
-  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -124,23 +108,18 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-color: var(--borde) transparent;
+  scrollbar-color: var(--borde) var(--fondo);
   -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background-color: var(--fondo-dia);
+  background-color: var(--fondo);
   color: var(--texto);
   font: 400 1.0625rem/1.6 var(--sans);
   font-feature-settings: "ss01";
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Con JS, el fondo del día es uno solo y se hunde con el scroll. */
-html.tono-vivo body {
-  background-color: color-mix(in oklab, var(--fondo-dia), var(--fondo-tarde) calc(var(--hundimiento, 0) * 100%));
 }
 
 ::selection {
@@ -150,7 +129,7 @@ html.tono-vivo body {
 
 :focus-visible {
   outline: 2px solid var(--foco);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: var(--r-sm);
 }
 
@@ -158,6 +137,7 @@ a {
   color: var(--enlace);
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
+  caret-color: var(--accion);
 }
 
 img {
@@ -196,7 +176,7 @@ kbd {
   border: 1px solid var(--borde);
   border-bottom-width: 2px;
   border-radius: var(--r-sm);
-  background: var(--superficie);
+  background: var(--superficie-alta);
   color: var(--texto);
   white-space: nowrap;
 }
@@ -217,19 +197,18 @@ q {
 
 .saltar {
   position: fixed;
-  left: calc(var(--regla) + 1rem);
-  top: 1rem;
+  left: 1rem;
+  top: -5rem;
   z-index: 50;
   padding: 0.6rem 1rem;
-  background: var(--accion);
-  color: var(--sobre-accion);
+  background: var(--placa-hifa);
+  color: var(--placa-sombra);
   font-weight: 600;
   border-radius: var(--r-sm);
-  transform: translateY(-200%);
 }
 
 .saltar:focus-visible {
-  transform: none;
+  top: 1rem;
 }
 
 .icono {
@@ -243,25 +222,42 @@ q {
   stroke-linejoin: round;
 }
 
-/* ---------- Isotipo ---------- */
+/* ---------- Isotipo y marca ---------- */
 
 .iso-hifas {
-  stroke: var(--marco-glow);
+  stroke: var(--placa-brote);
   stroke-width: 1.5;
   opacity: 0.55;
   fill: none;
 }
 
 .iso-a {
-  fill: var(--marco-glow);
+  fill: var(--placa-brote);
 }
 
 .iso-b {
-  fill: var(--marco-acento);
+  fill: var(--placa-hifa);
 }
 
 .iso-c {
   fill: var(--info);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+/* El logo es uno de los dos lugares del degradé (el otro, el número de la tapa). */
+.marca-nombre {
+  font: 600 1.125rem/1 var(--sans);
+  letter-spacing: -0.01em;
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ---------- Botones ---------- */
@@ -273,11 +269,12 @@ q {
   gap: 0.55rem;
   min-height: 46px;
   padding: 0 1.2rem;
+  border: 1px solid transparent;
   border-radius: var(--r-sm);
   font: 600 1rem/1.2 var(--sans);
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out, color 120ms ease-out;
 }
 
 .boton-primario {
@@ -286,11 +283,12 @@ q {
 }
 
 .boton-primario:hover {
-  background: color-mix(in srgb, var(--accion) 85%, var(--esporo));
+  background: var(--brillo-texto);
+  color: var(--sobre-accion);
 }
 
 .boton-secundario {
-  border: 1px solid color-mix(in srgb, var(--texto) 30%, transparent);
+  border-color: color-mix(in srgb, var(--texto) 30%, transparent);
   color: var(--texto);
 }
 
@@ -299,364 +297,136 @@ q {
   border-color: color-mix(in srgb, var(--texto) 50%, transparent);
 }
 
-/* ---------- La regla del día ---------- */
+/* ---------- Portada: el grafo a sangre ---------- */
 
-.regla {
-  position: fixed;
-  inset: 0 auto 0 0;
-  z-index: 20;
-  width: var(--regla);
-  display: flex;
-  flex-direction: column;
-  background: var(--marco);
-  color: var(--marco-texto);
-  border-right: 1px solid color-mix(in srgb, var(--marco-glow) 12%, transparent);
-  --focus-marco: var(--marco-glow);
-}
+.portada {
+  /* Paleta de la placa, en los dos modos. */
+  --texto: var(--placa-humus);
+  --texto-tenue: var(--placa-tenue);
+  --accion: var(--placa-hifa);
+  --sobre-accion: var(--placa-sombra);
+  --enlace: var(--placa-hifa);
+  --brillo-texto: var(--placa-brote);
+  --foco: var(--placa-brote);
+  --borde: #16343f;
+  --codigo-fondo: color-mix(in srgb, var(--placa-sombra) 70%, transparent);
+  --degrade: linear-gradient(90deg, var(--placa-brote), var(--placa-hifa));
+  color-scheme: dark;
 
-.regla :focus-visible {
-  outline-color: var(--marco-glow);
-  outline-offset: -2px;
-}
-
-.regla-logo {
-  display: grid;
-  place-items: center;
-  height: var(--regla);
-  flex: none;
-}
-
-.regla-logo svg {
-  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--marco-glow) 55%, transparent));
-}
-
-.regla-lectura {
   position: relative;
-  height: 30px;
-  flex: none;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: min(100svh, 60rem);
+  background: var(--placa-fondo);
+  color: var(--texto);
   overflow: hidden;
-  border-block: 1px solid color-mix(in srgb, var(--marco-glow) 14%, transparent);
-  font: 500 12px/30px var(--mono);
-  font-variant-numeric: tabular-nums;
-  text-align: center;
-  color: var(--marco-glow);
 }
 
-.regla-lectura span {
+.portada-red img {
   position: absolute;
-  inset: 0;
-  transition: transform 220ms var(--salida), opacity 220ms var(--salida);
-}
-
-.regla-lectura .entra {
-  transform: translateY(100%);
-  opacity: 0;
-}
-
-.regla-lectura .sale {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-.regla-escala {
-  --tick: color-mix(in srgb, var(--marco-texto) 45%, transparent);
-  position: relative;
-  flex: 1;
-  margin: 1.5rem 0 1.75rem;
-  /* Una marca por hora, de 06 a 24, contra el borde derecho. */
-  background:
-    linear-gradient(var(--tick), var(--tick)) right bottom / 12px 1px no-repeat,
-    repeating-linear-gradient(to bottom, var(--tick) 0 1px, transparent 1px calc(100% / 18)) right top / 7px 100% no-repeat;
-}
-
-.regla-escala::before,
-.regla-escala::after {
-  position: absolute;
-  right: 15px;
-  /* 11px: a 9 las horas de la escala quedaban por debajo de lo legible. */
-  font: 400 11px/1 var(--mono);
-  color: var(--marco-texto);
-  transform: translateY(-50%);
-}
-
-.regla-escala::before {
-  content: "06";
+  z-index: -2;
   top: 0;
-}
-
-.regla-escala::after {
-  content: "24";
-  top: 100%;
-}
-
-.regla-horas {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.regla-horas li {
-  position: absolute;
-  top: var(--p);
-  left: 0;
   right: 0;
-  transform: translateY(-50%);
+  bottom: 0;
+  left: clamp(0px, 36vw - 8rem, 38%);
+  width: auto;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
-.regla-horas a {
-  position: relative;
-  display: block;
-  padding: 7px 0 7px 7px;
-  font: 500 11px/1 var(--mono);
-  font-variant-numeric: tabular-nums;
-  color: var(--marco-texto);
+/* El viñeteado: la red se apaga hacia los bordes y se oscurece detrás del texto. */
+.portada-velo {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, var(--placa-fondo) 0, color-mix(in srgb, var(--placa-fondo) 70%, transparent) 7rem, transparent 13rem, transparent 72%, var(--placa-sombra) 100%),
+    radial-gradient(ellipse 52% 62% at 16% 52%, color-mix(in srgb, var(--placa-fondo) 88%, transparent) 0%, color-mix(in srgb, var(--placa-fondo) 50%, transparent) 55%, transparent 100%),
+    radial-gradient(ellipse 72% 80% at 64% 48%, transparent 0%, transparent 38%, color-mix(in srgb, var(--placa-sombra) 55%, transparent) 70%, var(--placa-sombra) 100%);
+}
+
+.cabecera {
+  width: 100%;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 1.25rem var(--canal) 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cabecera-enlaces {
+  display: flex;
+  gap: 1.75rem;
+  margin: 0 0 0 auto;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+}
+
+.cabecera-enlaces a {
+  color: var(--texto);
   text-decoration: none;
-  transition: color 120ms ease-out;
 }
 
-.regla-horas a:hover,
-.regla-horas a[aria-current="true"] {
-  color: var(--marco-glow);
-}
-
-.regla-horas a[aria-current="true"] {
-  font-weight: 600;
-}
-
-/* El nombre de la hora aparece al costado de la regla al pasar o enfocar. */
-.regla-que {
-  position: absolute;
-  left: calc(100% + 10px);
-  top: 50%;
-  padding: 6px 10px;
-  border-radius: var(--r-sm);
-  background: var(--marco);
-  color: var(--marco-glow);
-  font: 500 13px/1 var(--sans);
-  white-space: nowrap;
-  box-shadow: 0 8px 24px var(--sombra);
-  opacity: 0;
-  transform: translate(-4px, -50%);
-  pointer-events: none;
-  transition: opacity 120ms ease-out, transform 120ms ease-out;
-}
-
-.regla-horas a:hover .regla-que,
-.regla-horas a:focus-visible .regla-que {
-  opacity: 1;
-  transform: translate(0, -50%);
-}
-
-.regla-indicador {
-  position: absolute;
-  left: 0;
-  top: calc(var(--avance, 14.81) * 1%);
-  width: 2px;
-  height: 26px;
-  background: var(--marco-glow);
-  transform: translateY(-50%);
-  transition: opacity 160ms ease-out;
-}
-
-.regla[data-dia="terminado"] .regla-indicador {
-  opacity: 0;
-}
-
-/* «mañana»: el indicador vuelve al principio de la escala, de un tirón corto. */
-.regla[data-dia="manana"] .regla-indicador {
-  transition: top 320ms var(--salida), left 320ms var(--salida);
-}
-
-.regla-ahora {
-  position: absolute;
-  right: 2px;
-  top: var(--ahora, 50%);
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--marco-acento);
-  box-shadow: 0 0 0 2px var(--marco);
-  transform: translateY(-50%);
-}
-
-/* ---------- Tramos ---------- */
-
-main,
-.pie {
-  margin-left: var(--regla);
-  /* Las capturas sangran por el borde derecho: se recortan acá. */
-  overflow-x: clip;
-}
-
-.tramo {
-  --col: minmax(0, var(--ancho));
-  display: grid;
-  grid-template-columns: [full-start] minmax(var(--canal), 1fr) [content-start] var(--col) [content-end] minmax(var(--canal), 1fr) [full-end];
-  row-gap: clamp(2.5rem, 5vw, 4.5rem);
-  padding-block: clamp(5rem, 10vw, 9rem);
-  background: color-mix(in oklab, var(--fondo-dia), var(--fondo-tarde) calc(var(--t, 0) * 100%));
-}
-
-html.tono-vivo .tramo:not(.noche) {
-  background: transparent;
-}
-
-.tramo > * {
-  grid-column: content;
-}
-
-.estacion-cabeza {
-  display: grid;
-  gap: 1.25rem;
-  max-width: 54rem;
-}
-
-.estacion-cabeza h2,
-.descargas h2,
-.novedades h2 {
-  font-size: clamp(2.1rem, 1.3rem + 2.4vw, 3.4rem);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-  color: var(--titulo-2);
-}
-
-.estacion h2,
-.noche h2 {
-  display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
-  align-items: baseline;
-}
-
-.hora {
-  font: 500 1rem/1 var(--mono);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0;
+.cabecera-enlaces a:hover {
   color: var(--brillo-texto);
 }
 
-.entrada {
-  font: 400 clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem)/1.55 var(--serif);
-  color: var(--texto);
-  max-width: 40rem;
+.cabecera-descarga {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6ch;
+  min-height: 38px;
+  padding: 0 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accion) 45%, transparent);
+  border-radius: var(--r-sm);
+  font: 500 0.8125rem/1 var(--mono);
+  color: var(--accion);
+  text-decoration: none;
+  transition: background-color 120ms ease-out, color 120ms ease-out;
 }
 
-.estacion .entrada,
-.noche .entrada {
-  margin-left: 7rem;
+.cabecera-descarga:hover {
+  background: var(--accion);
+  color: var(--sobre-accion);
 }
 
-/* ---------- Capturas ---------- */
-
-.captura {
-  margin: 0;
-  position: relative;
-}
-
-/* Cada marco toma la proporción de su imagen: la captura entera (2880×1800) o
-   el recorte que se muestra (--proporcion, y en el celular --proporcion-movil). */
-.marco {
-  aspect-ratio: var(--proporcion, 2880 / 1800);
-  overflow: hidden;
-  border-radius: var(--r-md);
-  border: 1px solid var(--borde);
-  background: var(--superficie);
-  box-shadow: 0 28px 70px -24px var(--sombra);
-}
-
-.marco picture {
-  display: contents;
-}
-
-.marco img {
+.portada-texto {
+  align-self: center;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vh, 6rem) var(--canal) clamp(4rem, 10vh, 7rem);
 }
 
-/* Sin la captura todavía: queda el marco neutro, sin el ícono roto. */
-.marco.sin-imagen img {
-  visibility: hidden;
-}
-
-.captura figcaption {
-  margin-top: 0.9rem;
-  font-size: 0.95rem;
-  color: var(--texto-tenue);
-  max-width: 34rem;
-}
-
-.captura-ancha {
-  grid-column: content-start / full-end;
-}
-
-.captura-ancha .marco {
-  border-right: 0;
-  border-radius: var(--r-md) 0 0 var(--r-md);
-}
-
-/* La respuesta de la terminal ocupa el tercio de arriba de la captura: el resto
-   es consola vacía. El marco (--proporcion: 2880 / 1040) se recorta a lo que
-   tiene texto. */
-.captura-terminal .marco img {
-  object-position: left top;
-}
-
-/* Entrada de las capturas: fundido corto desde 4px, solo con JS y movimiento. */
-html.movimiento .captura:not(.captura-hero) .marco {
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 160ms var(--salida), transform 160ms var(--salida);
-}
-
-html.movimiento .captura.visible .marco {
-  opacity: 1;
-  transform: none;
-}
-
-/* ---------- Hero ---------- */
-
-.hero {
-  min-height: 100svh;
-  align-content: center;
-  grid-template-columns:
-    [full-start] minmax(var(--canal), 1fr)
-    [content-start] minmax(0, 31rem)
-    [medio] minmax(2.5rem, 5rem)
-    [fig-start] minmax(0, 42rem)
-    [content-end] minmax(var(--canal), 1fr) [full-end];
-  padding-block: clamp(4rem, 8vw, 6rem);
-}
-
-.hero-texto {
-  grid-column: content-start / medio;
-  grid-row: 1;
-  display: grid;
-  gap: 1.75rem;
-  align-content: center;
-}
-
-.hero h1 {
-  font-size: clamp(2.6rem, 1.4rem + 3vw, 4.25rem);
+.portada h1 {
+  max-width: 14ch;
   font-weight: 700;
-  line-height: 1.02;
+  font-size: clamp(2.6rem, 1.2rem + 3.1vw, 4.5rem);
+  line-height: 1.03;
   letter-spacing: -0.02em;
-  background: var(--degrade);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  padding-bottom: 0.06em;
+  color: var(--texto);
+  text-shadow: 0 2px 28px color-mix(in srgb, var(--placa-fondo) 90%, transparent);
 }
 
 .bajada {
-  font: 400 clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem)/1.5 var(--serif);
+  margin-top: 1.5rem;
+  max-width: 31rem;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.6;
   color: var(--texto);
-  max-width: 28rem;
+  text-shadow: 0 1px 18px var(--placa-fondo);
 }
 
-.descarga-hero {
+.descarga-portada {
+  margin-top: 2.25rem;
   display: grid;
   gap: 0.75rem;
+  justify-items: start;
 }
 
 .descarga-detectada,
@@ -689,7 +459,7 @@ html.js.movil .aviso-movil {
 }
 
 .aviso-movil {
-  color: var(--texto-tenue);
+  color: var(--texto);
   max-width: 28rem;
 }
 
@@ -702,9 +472,10 @@ html.js.movil .aviso-movil {
   max-width: 28rem;
 }
 
-.cta-nota code,
-.descarga-tres-nota code {
-  font-size: 0.85em;
+.portada .cta-nota,
+.portada .descarga-tres-nota {
+  color: var(--texto);
+  opacity: 0.86;
 }
 
 html.js .descarga-tres-nota,
@@ -713,434 +484,526 @@ html.js.movil .cta-nota {
 }
 
 .version-linea {
-  font: 400 0.9rem/1.5 var(--sans);
+  margin-top: 1.5rem;
+  font: 400 0.8125rem/1.5 var(--mono);
   color: var(--texto-tenue);
-  font-variant-numeric: tabular-nums;
 }
 
 .version-linea [data-mic="version"] {
-  font-family: var(--mono);
-  font-size: 0.95em;
-  color: var(--brillo-texto);
+  color: var(--texto);
 }
 
-.captura-hero {
-  grid-column: fig-start / full-end;
-  grid-row: 1;
-  align-self: center;
+.portada-pie {
+  padding: 0 var(--canal) 1.5rem;
+  text-align: center;
+  font: 400 0.75rem/1.4 var(--mono);
+  color: var(--texto-tenue);
 }
 
-.captura-hero .marco {
-  width: calc(100% + 14vw);
-  border-right: 0;
-  border-radius: var(--r-md) 0 0 var(--r-md);
+/* ---------- La red: la hifa y sus nodos ---------- */
+
+.red {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 0 var(--canal);
 }
 
-.hora-margen {
+.recorrido-cabeza {
+  position: relative;
+  padding: clamp(5rem, 10vw, 8rem) 0 clamp(3.5rem, 6vw, 5rem) var(--riel);
+  max-width: calc(40rem + var(--riel));
+}
+
+/* La hifa nace bajo la portada, tenue, y llega al primer nodo. */
+.recorrido-cabeza::before {
+  content: "";
   position: absolute;
-  left: -1.9rem;
-  top: 0.25rem;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font: 500 0.8rem/1 var(--mono);
-  font-variant-numeric: tabular-nums;
-  color: var(--brillo-texto);
-  letter-spacing: 0.04em;
+  left: calc(var(--linea-x) - 0.5px);
+  top: 0;
+  bottom: calc(-1 * var(--punto-y));
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--linea-apagada) 60%, var(--linea) 100%);
 }
 
-/* ---------- 08:40 Escribís ---------- */
-
-.sintaxis {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 clamp(2rem, 5vw, 5rem);
-  margin: 0;
-  margin-left: 7rem;
-  max-width: 64rem;
-}
-
-.sintaxis > div {
-  display: grid;
-  gap: 0.75rem;
-  align-content: start;
-  padding-block: 1.6rem;
-  border-top: 1px solid var(--borde);
-}
-
-.sintaxis dt code {
-  font-size: 0.95rem;
-  padding: 0.3em 0.6em;
-  color: var(--texto);
-}
-
-.sintaxis dd {
-  margin: 0;
-  color: var(--texto-tenue);
-  max-width: 30rem;
-}
-
-/* ---------- Pares de captura y texto ---------- */
-
-.par {
-  display: grid;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-}
-
-.par-texto-derecha {
-  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-}
-
-.par-texto-izquierda {
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  grid-column: content-start / full-end;
-}
-
-.par-texto-izquierda .marco {
-  border-right: 0;
-  border-radius: var(--r-md) 0 0 var(--r-md);
-}
-
-.par-texto {
-  display: grid;
-  gap: 1rem;
-  max-width: 28rem;
-}
-
-.par-texto h3 {
-  font-size: 1.6rem;
+.recorrido-cabeza h2 {
   font-weight: 600;
-  line-height: 1.2;
-  color: var(--titulo-3);
+  font-size: clamp(2rem, 1.4rem + 1.8vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
 }
 
-.par-texto p {
+.recorrido-cabeza p {
+  margin-top: 1rem;
+  max-width: 34rem;
   color: var(--texto-tenue);
+  font-size: 1.0625rem;
 }
 
-.par-desparejo {
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+.nodo {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 21rem) minmax(0, 1fr);
+  grid-template-areas:
+    "nombre nombre"
+    "texto figura";
+  column-gap: clamp(2rem, 5vw, 5rem);
   align-items: start;
+  padding: 0 0 var(--entre-nodos) var(--riel);
 }
 
-.par-desparejo > .captura:last-child {
-  margin-top: clamp(3rem, 9vw, 8rem);
+/* Cada nodo dibuja su tramo de hifa, de su punto al punto siguiente: la base
+   apagada (::before) y la parte encendida (::after), que se llena con --lleno. */
+.nodo::before,
+.nodo::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--linea-x) - 0.5px);
+  top: var(--punto-y);
+  width: 1px;
+  height: 100%;
 }
 
-.formas {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 1.5rem;
-  max-width: 26rem;
+.nodo::before {
+  background: var(--linea-apagada);
 }
 
-.formas li {
+.nodo::after {
+  background: linear-gradient(180deg, var(--linea) 0%, var(--linea) 82%, var(--linea-punta) 100%);
+  transform: scaleY(var(--lleno, 1));
+  transform-origin: top;
+}
+
+.punto {
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--linea-x) - 6px);
+  top: calc(var(--punto-y) - 6px);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--linea);
+  background: var(--linea);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--linea) 14%, transparent), 0 2px 14px color-mix(in srgb, var(--linea) 55%, transparent);
+  transition: background-color 280ms var(--salida), box-shadow 280ms var(--salida), border-color 280ms var(--salida);
+}
+
+/* La rama corta que une el punto con el nombre del nodo. */
+.nodo .punto::after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 5px);
+  top: 50%;
+  width: calc(var(--riel) - var(--linea-x) - 1.25rem);
+  height: 1px;
+  background: color-mix(in srgb, var(--linea) 40%, transparent);
+}
+
+.nodo-nombre {
+  grid-area: nombre;
+  margin-bottom: 1.1rem;
+  font: 500 0.8125rem/1.5 var(--mono);
+  color: var(--nodo-texto);
+  transition: color 280ms var(--salida);
+}
+
+.nodo-nombre span {
   color: var(--texto-tenue);
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--borde);
 }
 
-.formas li:first-child {
-  padding-top: 0;
-  border-top: 0;
+.nodo-texto {
+  grid-area: texto;
 }
 
-.formas strong {
-  display: block;
-  margin-bottom: 0.3rem;
-  font: 600 1.3rem/1.25 var(--serif);
-  color: var(--titulo-3);
+.nodo-texto h3 {
+  font-weight: 600;
+  font-size: clamp(1.6rem, 1.25rem + 0.9vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
-/* ---------- 22:10 La noche ---------- */
+.nodo-texto p {
+  margin-top: 1rem;
+  color: var(--texto-tenue);
+}
 
-.noche {
-  background: var(--noche-fondo);
+.nodo-texto p code,
+.nodo-texto p kbd {
   color: var(--texto);
-  border-block: 1px solid color-mix(in srgb, var(--noche-brote) 10%, transparent);
 }
 
-.noche-adentro {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: full;
-  row-gap: clamp(2.5rem, 5vw, 4.5rem);
+/* Con JS y movimiento, la hifa se enciende con el scroll (sitio.js): los nodos
+   que la línea todavía no alcanzó esperan apagados. Sin JS, todo encendido. */
+html.hifa-viva .nodo:not(.encendido) .punto,
+html.hifa-viva .cierre:not(.encendido) .punto {
+  background: var(--fondo);
+  border-color: color-mix(in srgb, var(--linea) 45%, transparent);
+  box-shadow: none;
 }
 
-.noche-adentro > * {
-  grid-column: content;
+html.hifa-viva .nodo:not(.encendido) .nodo-nombre {
+  color: var(--texto-tenue);
 }
 
-.noche-adentro > .captura-ancha {
-  grid-column: content-start / full-end;
+/* ---------- Capturas ---------- */
+
+.captura {
+  grid-area: figura;
+  margin: 0;
+  width: 100%;
+  max-width: var(--ancho-max, none);
+}
+
+.marco {
+  overflow: hidden;
+  border: 1px solid var(--marco-borde);
+  border-radius: var(--r-md);
+  background: var(--placa-fondo);
+  box-shadow: 0 28px 64px -28px var(--sombra), 0 2px 6px -2px var(--sombra);
+}
+
+.marco img {
+  width: 100%;
+}
+
+/* Sin la captura todavía: queda el marco neutro, sin el ícono roto. */
+.marco.sin-imagen img {
+  visibility: hidden;
+}
+
+.captura figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--texto-tenue);
+}
+
+/* Entrada de las capturas: fundido corto desde 4px, solo con JS y movimiento. */
+html.movimiento .captura .marco {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 160ms var(--salida), transform 160ms var(--salida);
+}
+
+html.movimiento .captura.visible .marco {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- El nodo de Claude Code ---------- */
+
+.nodo-ia {
+  --linea-nodo: var(--brote);
+  grid-template-areas:
+    "nombre nombre"
+    "texto ia"
+    "figura figura"
+    "pie pie";
+}
+
+.nodo-ia .punto {
+  left: calc(var(--linea-x) - 8px);
+  top: calc(var(--punto-y) - 8px);
+  width: 16px;
+  height: 16px;
+  border-color: var(--linea-punta);
+  background: var(--linea-punta);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--linea-punta) 16%, transparent), 0 3px 24px color-mix(in srgb, var(--linea-punta) 70%, transparent);
+}
+
+.nodo-ia .punto::after {
+  left: calc(100% + 3px);
+  background: color-mix(in srgb, var(--linea-punta) 50%, transparent);
+}
+
+.nodo-ia .nodo-nombre {
+  color: var(--brillo-texto);
 }
 
 .ia {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.5rem, 4vw, 4rem);
+  grid-area: ia;
   margin: 0;
-  margin-left: 7rem;
+  display: grid;
+  gap: 1.1rem;
+  align-self: end;
 }
 
 .ia > div {
-  display: grid;
-  gap: 0.6rem;
-  align-content: start;
-  padding-top: 1.25rem;
+  padding-top: 0.9rem;
   border-top: 1px solid var(--borde);
 }
 
 .ia dt {
-  font: 600 1.3rem/1.25 var(--serif);
-  color: var(--brillo-texto);
+  font-weight: 600;
 }
 
 .ia dd {
-  margin: 0;
+  margin: 0.25rem 0 0;
   color: var(--texto-tenue);
+  font-size: 0.975rem;
+}
+
+.captura-terminal {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.captura-terminal .marco {
+  border-color: color-mix(in srgb, var(--placa-brote) 38%, transparent);
+  background: #141414;
+  box-shadow: 0 30px 70px -30px var(--sombra), 0 2px 6px -2px var(--sombra);
 }
 
 .nota-al-pie {
-  margin-left: 7rem;
-  max-width: 40rem;
-  font-size: 0.95rem;
+  grid-area: pie;
+  margin-top: 1rem;
+  max-width: 44rem;
+  font-size: 0.9rem;
   color: var(--texto-tenue);
 }
 
-/* ---------- A la mañana siguiente ---------- */
-
-.manana h2 {
-  max-width: 30ch;
-}
+/* ---------- Temas ---------- */
 
 .dos-luces {
+  grid-area: figura;
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  max-width: 50rem;
 }
 
-.dos-luces .captura:first-child {
-  grid-column: 1 / 9;
-  grid-row: 1;
+.dos-luces .captura {
+  grid-area: auto;
 }
 
-/* Baja hasta el último cuarto de la primera: se superponen por una esquina y
-   las dos dejan leer su editor. (Un margen en % se mide contra el ancho del
-   área de la grilla: 7 de 12 columnas.) */
-.dos-luces .captura:last-child {
-  grid-column: 6 / 13;
-  grid-row: 1;
-  margin-top: 58%;
-  z-index: 1;
-}
+/* ---------- Cierre: la versión en tapa ---------- */
 
-.dos-luces .captura:last-child figcaption {
-  text-align: right;
-  margin-left: auto;
-}
-
-/* ---------- Novedades ---------- */
-
-.novedades {
-  row-gap: 2rem;
-}
-
-.novedades-cabeza,
-.novedades-cuerpo,
-.novedades-sin {
-  grid-row: auto;
-}
-
-.novedades-cabeza {
+.cierre {
+  position: relative;
   display: grid;
-  gap: 0.75rem;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  padding: 0 0 clamp(5rem, 10vw, 8rem) var(--riel);
 }
 
-.novedades-fecha {
-  color: var(--texto-tenue);
+/* Donde desemboca la hifa: un brote. */
+.punto-final {
+  left: calc(var(--linea-x) - 9px);
+  top: calc(var(--punto-y) - 9px);
+  width: 18px;
+  height: 18px;
+  border-color: var(--linea-punta);
+  background: var(--linea-punta);
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--linea-punta) 16%, transparent), 0 4px 30px color-mix(in srgb, var(--linea-punta) 75%, transparent);
 }
 
-.novedades-cuerpo,
-.novedades-sin {
-  max-width: 42rem;
-  font: 400 1.0625rem/1.7 var(--serif);
+.tapa-fecha {
+  margin-bottom: 0.75rem;
 }
 
-.novedades-cuerpo h3 {
-  margin: 2.5rem 0 0.5rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--titulo-3);
-}
-
-.novedades-cuerpo h3:first-child {
-  margin-top: 0;
-}
-
-.novedades-cuerpo h4 {
-  margin: 2rem 0 0.4rem;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--titulo-4);
-}
-
-.novedades-cuerpo h5,
-.novedades-cuerpo h6 {
-  margin: 1.5rem 0 0.4rem;
-  font-size: 1rem;
-  color: var(--texto-tenue);
-}
-
-.novedades-cuerpo ul,
-.novedades-cuerpo ol {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.novedades-cuerpo li {
-  margin-block: 0.45rem;
-}
-
-.novedades-cuerpo li::marker {
-  color: var(--brillo-texto);
-}
-
-.novedades-cuerpo p {
-  margin-block: 0.75rem;
-}
-
-.novedades-cuerpo strong {
-  font-weight: 600;
-}
-
-.novedades-sin {
-  color: var(--texto-tenue);
-}
-
-/* Lo que sigue al primer grupo de novedades queda plegado. */
-.novedades-mas {
-  margin-top: 1.75rem;
-}
-
-.novedades-mas > summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 44px;
-  padding: 0 1rem;
-  border: 1px solid color-mix(in srgb, var(--texto) 30%, transparent);
-  border-radius: var(--r-sm);
-  font: 600 1rem/1.2 var(--sans);
+.tapa-fecha time {
   color: var(--texto);
-  cursor: pointer;
+}
+
+/* El número es el titular de la tapa y el único titular con el degradé. */
+.tapa-numero {
+  font: 700 clamp(5rem, 1.5rem + 10vw, 11.5rem)/0.86 var(--sans);
+  letter-spacing: -0.04em;
+  padding-bottom: 0.06em;
+  margin-left: -0.04em;
+  background: var(--degrade);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: lining-nums;
+}
+
+@media (forced-colors: active) {
+  .tapa-numero,
+  .marca-nombre {
+    color: CanvasText;
+  }
+}
+
+.tapa-titular {
+  margin-top: 1.5rem;
+  max-width: 22ch;
+  font: 600 clamp(1.6rem, 1.1rem + 1.4vw, 2.35rem)/1.15 var(--serif);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.tapa-sin h2 {
+  font-weight: 600;
+  font-size: clamp(2rem, 1.4rem + 1.8vw, 2.75rem);
+  line-height: 1.1;
+}
+
+.tapa-sin p {
+  margin-top: 1rem;
+  max-width: 34rem;
+  color: var(--texto-tenue);
+}
+
+.sumario {
+  margin-top: 2.5rem;
+  max-width: 40rem;
+}
+
+.sumario-lista {
+  counter-reset: sumario;
   list-style: none;
-  transition: background-color 120ms ease-out, border-color 120ms ease-out;
-}
-
-.novedades-mas > summary::-webkit-details-marker {
-  display: none;
-}
-
-.novedades-mas > summary:hover {
-  background: color-mix(in srgb, var(--brote) 14%, transparent);
-  border-color: color-mix(in srgb, var(--texto) 50%, transparent);
-}
-
-.novedades-mas > summary .icono {
-  transition: transform 160ms var(--salida);
-}
-
-.novedades-mas[open] > summary {
-  margin-bottom: 0.5rem;
-}
-
-.novedades-mas[open] > summary .icono {
-  transform: rotate(180deg);
-}
-
-@media (min-width: 1100px) {
-  .novedades {
-    grid-template-columns:
-      [full-start] minmax(var(--canal), 1fr)
-      [content-start] minmax(0, 22rem) [cuerpo] minmax(0, 52rem)
-      [content-end] minmax(var(--canal), 1fr) [full-end];
-    column-gap: clamp(2rem, 5vw, 5rem);
-  }
-
-  .novedades-cabeza {
-    grid-column: content-start / cuerpo;
-    grid-row: 1 / span 2;
-    align-self: start;
-    position: sticky;
-    top: 3rem;
-  }
-
-  .novedades-cuerpo,
-  .novedades-sin {
-    grid-column: cuerpo / content-end;
-  }
-}
-
-/* ---------- Descargas ---------- */
-
-.descargas {
-  row-gap: 1rem;
+  margin: 0;
+  padding: 0;
   border-top: 1px solid var(--borde);
 }
 
-.descargas .version-linea {
-  font-size: 1rem;
+.sumario-lista > li {
+  counter-increment: sumario;
+  border-bottom: 1px solid var(--borde);
 }
 
-.sistemas {
+.sumario summary,
+.sumario-solo {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: clamp(2rem, 4vw, 3.5rem);
-}
-
-.sistema {
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
-  gap: 0.9rem;
-  align-items: start;
-  padding: 0 clamp(1.25rem, 3vw, 2.5rem) 0.5rem;
-  border-left: 1px solid var(--borde);
-}
-
-.sistema:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.sistema h3 {
-  font-size: 1.9rem;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.95rem 0;
   font-weight: 600;
-  line-height: 1.1;
-  color: var(--titulo-3);
+  font-size: 1.0625rem;
 }
 
-.sistema.es-tuyo h3::after {
-  content: "tu sistema";
-  margin-left: 0.75rem;
-  vertical-align: 0.3em;
-  font: 500 0.75rem/1 var(--sans);
-  color: var(--brillo-texto);
-  padding: 0.25em 0.55em;
+.sumario summary {
+  cursor: pointer;
+  list-style: none;
   border-radius: var(--r-sm);
-  background: color-mix(in srgb, var(--brote) 15%, transparent);
 }
 
-.requisito {
+.sumario summary::-webkit-details-marker {
+  display: none;
+}
+
+.sumario summary::before,
+.sumario-solo::before {
+  content: counter(sumario, decimal-leading-zero);
+  font: 500 0.8125rem/1 var(--mono);
+  color: var(--nodo-texto);
+}
+
+.sumario summary .icono {
+  align-self: center;
+  color: var(--texto-tenue);
+  transition: transform 200ms var(--salida);
+}
+
+.sumario summary:hover span {
+  color: var(--brillo-texto);
+}
+
+.sumario details[open] summary .icono {
+  transform: rotate(180deg);
+}
+
+.sumario details > :not(summary),
+.sumario > :not(.sumario-lista) {
+  color: var(--texto-tenue);
+  font-size: 0.975rem;
+}
+
+.sumario details > :not(summary) {
+  padding: 0 0 1.1rem 2.75rem;
+}
+
+.sumario ul,
+.sumario ol:not(.sumario-lista) {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.sumario li li + li {
+  margin-top: 0.45rem;
+}
+
+.sumario li li::marker {
+  color: var(--brillo-texto);
+}
+
+.sumario h4,
+.sumario h5,
+.sumario h6 {
+  margin: 0.25rem 0 0.5rem;
+  font: 600 0.95rem/1.4 var(--sans);
+  color: var(--texto);
+}
+
+.sumario strong {
+  color: var(--texto);
+  font-weight: 600;
+}
+
+/* Las tres descargas, apiladas. */
+.descargas {
+  padding-top: calc(var(--punto-y) * 2 + 0.75rem);
+  scroll-margin-top: 1.5rem;
+}
+
+.descargas-titulo {
+  margin-bottom: 1rem;
+  font: 500 0.8125rem/1.5 var(--mono);
   color: var(--texto-tenue);
 }
 
-.sistema > .boton,
-.botones-linux {
-  justify-self: start;
-  margin-top: 0.4rem;
+.descargas-titulo [data-mic="version"] {
+  color: var(--texto);
+}
+
+.sistemas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.sistema {
+  padding: 1.25rem 1.375rem 1.3rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--r-md);
+  background: var(--superficie);
+}
+
+.sistema-cabeza {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.sistema h4 {
+  font: 600 1.2rem/1.3 var(--sans);
+  letter-spacing: -0.01em;
+}
+
+.tu-sistema {
+  padding: 0.25em 0.6em;
+  border-radius: var(--r-sm);
+  background: var(--brillo-texto);
+  color: var(--sobre-accion);
+  font: 500 0.72rem/1.2 var(--mono);
+}
+
+.requisito {
+  margin: 0.3rem 0 1rem;
+  font-size: 0.925rem;
+  color: var(--texto-tenue);
+}
+
+.sistema .nota {
+  margin-top: 0.85rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--texto-tenue);
 }
 
 .botones-linux {
@@ -1149,268 +1012,178 @@ html.js.movil .cta-nota {
   gap: 0.6rem;
 }
 
-.sistema .nota {
-  font-size: 0.95rem;
+.sistema.es-tuyo {
+  border-color: color-mix(in srgb, var(--accion) 70%, transparent);
+  background: var(--superficie-alta);
+  box-shadow: 0 22px 50px -26px var(--sombra);
+}
+
+.sistema.es-tuyo > .boton {
+  width: 100%;
+}
+
+/* Con un sistema detectado, el primario es solo el suyo. */
+.sistemas.hay-tuyo .sistema:not(.es-tuyo) .boton-primario {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--texto) 30%, transparent);
+  color: var(--texto);
+}
+
+.sistemas.hay-tuyo .sistema:not(.es-tuyo) .boton-primario:hover {
+  background: color-mix(in srgb, var(--brote) 14%, transparent);
+}
+
+.descargas-pie {
+  margin-top: 1rem;
+  font-size: 0.875rem;
   color: var(--texto-tenue);
-  max-width: 22rem;
 }
 
 /* ---------- Pie ---------- */
 
 .pie {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 2rem var(--canal) 2.5rem;
+  border-top: 1px solid var(--borde);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 2rem;
-  padding: 2.5rem var(--canal) 3rem;
-  border-top: 1px solid var(--borde);
+  font-size: 0.9rem;
   color: var(--texto-tenue);
-  font-size: 0.95rem;
-}
-
-.pie-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  text-decoration: none;
-  font: 700 1.05rem/1 var(--sans);
-}
-
-.pie-logo span {
-  background: linear-gradient(90deg, var(--marco-glow), var(--marco-acento));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 .pie-version {
   margin-left: auto;
-  font-variant-numeric: tabular-nums;
+  font: 400 0.8125rem/1.5 var(--mono);
 }
 
-/* ---------- Ventana mediana ---------- */
+/* ---------- 404 ---------- */
 
-@media (max-width: 1100px) {
-  .estacion h2,
-  .noche h2 {
-    grid-template-columns: 5.5rem minmax(0, 1fr);
-  }
-
-  .estacion .entrada,
-  .noche .entrada,
-  .sintaxis,
-  .ia,
-  .nota-al-pie {
-    margin-left: 5.5rem;
-  }
-
-  .ia {
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 40rem;
-  }
+.perdido {
+  display: grid;
+  min-height: 100svh;
+  align-content: center;
+  padding: 2rem var(--canal);
 }
 
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: [full-start] var(--canal) [content-start] minmax(0, 1fr) [content-end] var(--canal) [full-end];
-    row-gap: 3rem;
-    min-height: auto;
-    padding-top: 4rem;
-  }
+.perdido main {
+  max-width: 36rem;
+  margin: 0 auto;
+}
 
-  .hero-texto {
-    grid-column: content;
-    grid-row: 1;
-  }
+.perdido h1 {
+  font-size: clamp(2rem, 1.4rem + 1.8vw, 2.75rem);
+  line-height: 1.1;
+}
 
-  .captura-hero {
-    grid-column: content-start / full-end;
-    grid-row: 2;
-    padding-left: 1.6rem;
-  }
+.perdido p {
+  margin-top: 1rem;
+  color: var(--texto-tenue);
+}
 
-  .hora-margen {
-    left: 0;
-  }
+/* ---------- Angosto ---------- */
 
-  .captura-hero .marco {
-    width: calc(100% + 18vw);
-  }
-
-  .par-texto-derecha,
-  .par-texto-izquierda,
-  .par-desparejo {
+@media (max-width: 1020px) {
+  .cierre {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .par-texto-izquierda {
-    grid-column: content;
+  .descargas {
+    padding-top: clamp(3rem, 8vw, 4rem);
   }
 
-  .par-texto-izquierda .marco {
-    border-right: 1px solid var(--borde);
-    border-radius: var(--r-md);
-  }
-
-  .par-desparejo > .captura:last-child {
-    margin-top: 0;
-  }
-
-  .sistemas {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2.5rem;
-  }
-
-  .sistema,
-  .sistema:first-child {
-    padding: 2rem 0 0;
-    border-left: 0;
-    border-top: 1px solid var(--borde);
+  .sumario {
+    max-width: none;
   }
 }
 
-/* ---------- Celular: la regla pasa arriba ---------- */
+@media (max-width: 860px) {
+  :root {
+    --riel: 2.25rem;
+    --linea-x: 0.45rem;
+  }
+
+  .nodo,
+  .nodo-ia {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "nombre"
+      "texto"
+      "figura"
+      "pie";
+    row-gap: 1.5rem;
+  }
+
+  .nodo-ia {
+    grid-template-areas:
+      "nombre"
+      "texto"
+      "ia"
+      "figura"
+      "pie";
+  }
+
+  .nodo-nombre {
+    margin-bottom: -0.5rem;
+  }
+
+  .nodo-texto p {
+    max-width: 38rem;
+  }
+
+  .cabecera-enlaces {
+    display: none;
+  }
+
+  .cabecera-descarga {
+    margin-left: auto;
+  }
+}
 
 @media (max-width: 760px) {
-  :root {
-    --regla: 0px;
+  .portada {
+    min-height: 0;
   }
 
-  .regla {
-    inset: 0 0 auto 0;
-    width: auto;
-    height: 48px;
-    flex-direction: row;
-    align-items: stretch;
-    border-right: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--marco-glow) 14%, transparent);
-  }
-
-  .regla-logo {
-    width: 48px;
-    height: 48px;
-  }
-
-  .regla-logo svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .regla-lectura {
-    display: none;
-  }
-
-  .regla-escala {
-    margin: 0 18px 0 6px;
-    background:
-      repeating-linear-gradient(to right, var(--tick) 0 1px, transparent 1px calc(100% / 18)) left bottom / 100% 6px no-repeat,
-      linear-gradient(var(--tick), var(--tick)) right bottom / 1px 10px no-repeat;
-  }
-
-  .regla-escala::before,
-  .regla-escala::after {
-    display: none;
-  }
-
-  .regla-horas li {
-    top: 0;
-    bottom: 0;
-    left: var(--p);
-    right: auto;
-    transform: translateX(-50%);
-  }
-
-  .regla-horas a {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 3px 4px;
-    font-size: 11px;
-  }
-
-  .regla-que {
-    left: -9999px;
-    opacity: 0;
-  }
-
-  .regla-horas a:hover .regla-que,
-  .regla-horas a:focus-visible .regla-que {
-    opacity: 0;
-  }
-
-  .regla-indicador {
+  /* En el celular la red no va detrás del texto: crece debajo, al pie de la portada. */
+  .portada-red img {
     top: auto;
-    bottom: 0;
-    left: calc(var(--avance, 14.81) * 1%);
-    width: 30px;
-    height: 2px;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
+    height: 26rem;
+    object-position: 50% 40%;
   }
 
-  .regla-ahora {
-    top: auto;
-    right: auto;
-    bottom: 9px;
-    left: var(--ahora, 50%);
-    width: 5px;
-    height: 5px;
-    transform: translateX(-50%);
+  .portada-velo {
+    background: linear-gradient(180deg, var(--placa-fondo) 0, var(--placa-fondo) calc(100% - 26rem), transparent calc(100% - 17rem), transparent calc(100% - 6rem), var(--placa-sombra) 100%);
   }
 
-  main {
-    padding-top: 48px;
+  .portada-texto {
+    padding-top: 2.5rem;
+    padding-bottom: 20rem;
   }
 
-  .tramo {
-    scroll-margin-top: 48px;
+  .portada h1 {
+    max-width: none;
+    font-size: clamp(2.4rem, 1.2rem + 6vw, 3.2rem);
   }
 
-  .marco {
-    aspect-ratio: var(--proporcion-movil, var(--proporcion, 2880 / 1800));
+  .portada-pie {
+    text-align: left;
   }
 
-  .saltar {
-    left: 1rem;
+  .descarga-detectada .boton-primario {
+    flex: 1 1 100%;
   }
 
-  /* La hora es el antetítulo de su línea: queda siempre en la primera, y el
-     título se parte en su propia columna. */
-  .estacion h2,
-  .noche h2 {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: baseline;
-    column-gap: 0.85rem;
-  }
-
-  .estacion .entrada,
-  .noche .entrada,
-  .sintaxis,
-  .ia,
-  .nota-al-pie {
-    margin-left: 0;
-  }
-
-  .sintaxis {
+  .dos-luces {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .sintaxis dt code {
-    font-size: 0.85rem;
-    white-space: normal;
-    overflow-wrap: anywhere;
-  }
-
-  .dos-luces .captura:first-child {
-    grid-column: 1 / 12;
-  }
-
-  /* En el celular no entran superpuestas sin tapar el epígrafe: se apilan,
-     corridas para que se lea que son dos. */
-  .dos-luces .captura:last-child {
-    grid-column: 2 / 13;
-    grid-row: 2;
-    margin-top: 2rem;
+  .tapa-numero {
+    font-size: clamp(4.25rem, 24vw, 7rem);
   }
 
   .pie-version {
@@ -1418,7 +1191,7 @@ html.js.movil .cta-nota {
   }
 }
 
-/* ---------- Movimiento reducido ---------- */
+/* ---------- Sin movimiento ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -1428,6 +1201,6 @@ html.js.movil .cta-nota {
   *,
   *::before,
   *::after {
-    transition: none !important;
+    transition-duration: 0.01ms !important;
   }
 }

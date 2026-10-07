@@ -16,7 +16,7 @@ export const CABECERAS_PAGINA: Record<string, string> = {
     "default-src 'self'",
     `script-src 'self' '${HASH_SCRIPT_EN_LINEA}'`,
     "style-src 'self' https://fonts.googleapis.com",
-    // Las posiciones de la regla y el tono de cada tramo van en style="--x".
+    // El ancho máximo de cada captura va en style="--ancho-max".
     "style-src-attr 'unsafe-inline'",
     "font-src https://fonts.gstatic.com",
     "img-src 'self' data:",
