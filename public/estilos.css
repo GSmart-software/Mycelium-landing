@@ -365,7 +365,7 @@ q {
   position: absolute;
   right: 15px;
   font: 400 9px/1 var(--mono);
-  color: color-mix(in srgb, var(--marco-texto) 80%, transparent);
+  color: var(--marco-texto);
   transform: translateY(-50%);
 }
 
@@ -450,6 +450,11 @@ q {
 
 .regla[data-dia="terminado"] .regla-indicador {
   opacity: 0;
+}
+
+/* «mañana»: el indicador vuelve al principio de la escala, de un tirón corto. */
+.regla[data-dia="manana"] .regla-indicador {
+  transition: top 320ms var(--salida), left 320ms var(--salida);
 }
 
 .regla-ahora {
@@ -538,13 +543,19 @@ html.tono-vivo .tramo:not(.noche) {
   position: relative;
 }
 
+/* Cada marco toma la proporción de su imagen: la captura entera (2880×1800) o
+   el recorte que se muestra (--proporcion, y en el celular --proporcion-movil). */
 .marco {
-  aspect-ratio: 2880 / 1800;
+  aspect-ratio: var(--proporcion, 2880 / 1800);
   overflow: hidden;
   border-radius: var(--r-md);
   border: 1px solid var(--borde);
   background: var(--superficie);
   box-shadow: 0 28px 70px -24px var(--sombra);
+}
+
+.marco picture {
+  display: contents;
 }
 
 .marco img {
@@ -575,11 +586,8 @@ html.tono-vivo .tramo:not(.noche) {
 }
 
 /* La respuesta de la terminal ocupa el tercio de arriba de la captura: el resto
-   es consola vacía. El marco se recorta a lo que tiene texto. */
-.captura-terminal .marco {
-  aspect-ratio: 2880 / 1040;
-}
-
+   es consola vacía. El marco (--proporcion: 2880 / 1040) se recorta a lo que
+   tiene texto. */
 .captura-terminal .marco img {
   object-position: left top;
 }
@@ -673,6 +681,25 @@ html.js.movil .aviso-movil {
 .aviso-movil {
   color: var(--texto-tenue);
   max-width: 28rem;
+}
+
+/* La nota breve de cada descarga, pegada debajo de su botón. */
+.cta-nota,
+.descarga-tres-nota {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--texto-tenue);
+  max-width: 28rem;
+}
+
+.cta-nota code,
+.descarga-tres-nota code {
+  font-size: 0.85em;
+}
+
+html.js .descarga-tres-nota,
+html.js.movil .cta-nota {
+  display: none;
 }
 
 .version-linea {
@@ -889,10 +916,13 @@ html.js.movil .aviso-movil {
   grid-row: 1;
 }
 
+/* Baja hasta el último cuarto de la primera: se superponen por una esquina y
+   las dos dejan leer su editor. (Un margen en % se mide contra el ancho del
+   área de la grilla: 7 de 12 columnas.) */
 .dos-luces .captura:last-child {
   grid-column: 6 / 13;
   grid-row: 1;
-  margin-top: clamp(6rem, 16vw, 15rem);
+  margin-top: 58%;
   z-index: 1;
 }
 
@@ -978,6 +1008,47 @@ html.js.movil .aviso-movil {
 
 .novedades-sin {
   color: var(--texto-tenue);
+}
+
+/* Lo que sigue al primer grupo de novedades queda plegado. */
+.novedades-mas {
+  margin-top: 1.75rem;
+}
+
+.novedades-mas > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid color-mix(in srgb, var(--texto) 30%, transparent);
+  border-radius: var(--r-sm);
+  font: 600 1rem/1.2 var(--sans);
+  color: var(--texto);
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 120ms ease-out, border-color 120ms ease-out;
+}
+
+.novedades-mas > summary::-webkit-details-marker {
+  display: none;
+}
+
+.novedades-mas > summary:hover {
+  background: color-mix(in srgb, var(--brote) 14%, transparent);
+  border-color: color-mix(in srgb, var(--texto) 50%, transparent);
+}
+
+.novedades-mas > summary .icono {
+  transition: transform 160ms var(--salida);
+}
+
+.novedades-mas[open] > summary {
+  margin-bottom: 0.5rem;
+}
+
+.novedades-mas[open] > summary .icono {
+  transform: rotate(180deg);
 }
 
 @media (min-width: 1100px) {
@@ -1284,16 +1355,22 @@ html.js.movil .aviso-movil {
     scroll-margin-top: 48px;
   }
 
+  .marco {
+    aspect-ratio: var(--proporcion-movil, var(--proporcion, 2880 / 1800));
+  }
+
   .saltar {
     left: 1rem;
   }
 
+  /* La hora es el antetítulo de su línea: queda siempre en la primera, y el
+     título se parte en su propia columna. */
   .estacion h2,
   .noche h2 {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: baseline;
-    gap: 0.25rem 0.85rem;
+    column-gap: 0.85rem;
   }
 
   .estacion .entrada,

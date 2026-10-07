@@ -52,7 +52,11 @@ muestra el modo de respaldo (sirve para probarlo).
 Las PNG de `capturas/` (2880×1800, vault de demostración «Huerta del barrio») son la fuente.
 `npm run capturas` (corre solo antes de `dev`, `test` y `deploy`) las convierte con `sharp` en
 `public/capturas/`: `<nombre>.webp` a 2880 px y `<nombre>-1440.webp` a 1440 px, que la página
-elige con `srcset`/`sizes`, más `og.jpg` (1200 px) para la vista previa al compartir. Es
+elige con `srcset`/`sizes`, más `og.jpg` (1200 px) para la vista previa al compartir. También
+recorta regiones de las capturas (`RECORTES` en el script: `<nombre>-recorte.webp`, `-recorte-1x` y
+`-recorte-movil`) para que la interfaz se lea al tamaño en que se presenta: en el celular, y en
+escritorio en las figuras chicas. Si cambiás una región, actualizá el `width`/`height` y la
+`--proporcion` de su figura en `index.html`. Es
 incremental: solo rehace lo que falta o quedó más viejo que su PNG. Para cambiar una captura,
 reemplazá la PNG con el mismo nombre; si es nueva, agregá su `<img>` con el mismo patrón y un
 `alt` que diga lo que se ve.

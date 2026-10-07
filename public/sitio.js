@@ -41,6 +41,11 @@
       boton.href = fuente.href;
       texto.textContent = `Descargar para ${NOMBRES[sistema]}`;
     }
+    // La nota breve de esa descarga, pegada al botón (la misma de su tarjeta en
+    // #descargas). En macOS dice que es solo Apple Silicon: el user agent de un
+    // Mac Intel y el de uno Apple Silicon son iguales.
+    const nota = document.querySelector(`.cta-nota[data-nota="${sistema}"]`);
+    if (nota) nota.hidden = false;
     const columna = document.querySelector(`.sistema[data-sistema="${sistema.split("-")[0]}"]`);
     if (columna) columna.classList.add("es-tuyo");
   }
@@ -126,7 +131,12 @@
     const hora = tramo.dataset.hora || "";
     const p = posicion(hora);
     if (regla) {
-      if (p === null) {
+      if (hora === "mañana") {
+        // El día siguiente: la lectura dice «mañana» y el indicador vuelve al
+        // principio de la escala, como el fondo vuelve a la luz del día.
+        regla.dataset.dia = "manana";
+        regla.style.setProperty("--avance", "0");
+      } else if (p === null) {
         regla.dataset.dia = "terminado";
       } else {
         delete regla.dataset.dia;
