@@ -114,6 +114,12 @@ components:
 
 # Design System: Mycelium · landing
 
+> [!warning] Desactualizado (2026-10-07)
+> Este archivo describe la dirección anterior, «Un día con tu vault» (regla del día,
+> horas, tono atado al scroll), que el usuario reemplazó el 2026-10-07 por «La red» con
+> cierre «tapa de versión». Hasta que se reescriba, el contrato vigente está en
+> `.impeccable/surfaces/public-index-html.md` y la verdad visual en `public/estilos.css`.
+
 > [!info] Qué es este archivo
 > Es el sistema visual de la **landing** (`public/index.html`, `estilos.css`, `sitio.js`)
 > tal como quedó construida y revisada el 2026-10-07 (commits `e4b3e91` y `6f25e2e`).

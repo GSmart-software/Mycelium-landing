@@ -5,8 +5,11 @@ El Worker corre solo en `/`, `/index.html` y `/descargar/*`; el resto lo sirve S
 directo.
 
 - **`/`**: lee `latest.json` del bucket R2 `mycelium-releases` (binding `RELEASES`), lo cachea
-  5 minutos (memoria del aislamiento + Cache API) e inyecta con `HTMLRewriter` la versión, la
-  fecha y las novedades (Markdown → HTML con un renderer propio que escapa todo).
+  5 minutos (memoria del aislamiento + Cache API) e inyecta con `HTMLRewriter` la tapa del
+  cierre: la versión, la fecha, el titular y el sumario de novedades (Markdown → HTML con un
+  renderer propio que escapa todo). El titular es el primer título de las notas si es el único
+  de su nivel (`## Tus archivos, al instante`); el sumario numera los grupos del nivel
+  siguiente (`### …`), cada uno con su detalle plegado en un `<details>`.
 - **`/descargar/<plataforma>`**: 302 al instalador de la última versión. Plataformas:
   `windows` (setup.exe), `mac` (`.dmg` de Apple Silicon, derivado de la versión),
   `linux-appimage`, `linux-deb`, `linux-rpm`.
@@ -14,7 +17,9 @@ directo.
   sirve igual, sin versión ni novedades y con un aviso; las descargas usan la última copia buena
   del manifiesto o, si no hay, `VERSION_RESPALDO` (`wrangler.toml`). Nunca un 500.
 
-`public/index.html` trae valores por defecto (la 2.4.0) para funcionar abierto sin el Worker.
+`public/index.html` trae valores por defecto (la 2.4.0) para funcionar abierto sin el Worker. Un
+test verifica que su sumario estático sea exactamente el que arma el Worker con
+`test/fixtures/latest.json`: al cambiar de versión por defecto, actualizá los dos.
 
 ## Estructura
 
@@ -51,12 +56,13 @@ muestra el modo de respaldo (sirve para probarlo).
 
 Las PNG de `capturas/` (2880×1800, vault de demostración «Huerta del barrio») son la fuente.
 `npm run capturas` (corre solo antes de `dev`, `test` y `deploy`) las convierte con `sharp` en
-`public/capturas/`: `<nombre>.webp` a 2880 px y `<nombre>-1440.webp` a 1440 px, que la página
-elige con `srcset`/`sizes`, más `og.jpg` (1200 px) para la vista previa al compartir. También
-recorta regiones de las capturas (`RECORTES` en el script: `<nombre>-recorte.webp`, `-recorte-1x` y
-`-recorte-movil`) para que la interfaz se lea al tamaño en que se presenta: en el celular, y en
-escritorio en las figuras chicas. Si cambiás una región, actualizá el `width`/`height` y la
-`--proporcion` de su figura en `index.html`. Es
+`public/capturas/` solo **recortes**: regiones de las capturas (`RECORTES` en el script), para que
+la interfaz se lea al tamaño en que se presenta —`<nombre><sufijo>.webp` a 2x, `-1x` para
+escritorio y `-recorte-movil` para el celular—. La portada es `02-grafo-portada` (el lienzo del
+grafo sin el cromo de la app, a 2560 y 1440 px) y `02-grafo-portada-movil`; la terminal a lo
+ancho, `04-terminal-ia-salida`. Además, `og.jpg` (1200×750, del grafo) para la vista previa al
+compartir. Si cambiás una región, actualizá el `width`/`height` de su `<img>`/`<source>` en
+`index.html` (de ahí sale la proporción del marco). Es
 incremental: solo rehace lo que falta o quedó más viejo que su PNG. Para cambiar una captura,
 reemplazá la PNG con el mismo nombre; si es nueva, agregá su `<img>` con el mismo patrón y un
 `alt` que diga lo que se ve.
