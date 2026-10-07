@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-07T19:17:31.376Z",
+  "title": "Design System: Mycelium · landing",
+  "extensions": {
+    "colorMeta": {
+      "hifa": {
+        "role": "primary",
+        "displayName": "Hifa",
+        "canonical": "oklch(84.8% 0.144 208.9)",
+        "tonalRamp": [
+          "oklch(15% 0.144 208.9)",
+          "oklch(26% 0.144 208.9)",
+          "oklch(38% 0.144 208.9)",
+          "oklch(50% 0.144 208.9)",
+          "oklch(62% 0.144 208.9)",
+          "oklch(74% 0.144 208.9)",
+          "oklch(85% 0.144 208.9)",
+          "oklch(95% 0.144 208.9)"
+        ]
+      },
+      "brote": {
+        "role": "primary",
+        "displayName": "Brote",
+        "canonical": "oklch(89.3% 0.17 167)",
+        "tonalRamp": [
+          "oklch(15% 0.16 167)",
+          "oklch(26% 0.16 167)",
+          "oklch(38% 0.16 167)",
+          "oklch(50% 0.16 167)",
+          "oklch(62% 0.16 167)",
+          "oklch(74% 0.16 167)",
+          "oklch(85% 0.16 167)",
+          "oklch(95% 0.16 167)"
+        ]
+      },
+      "esporo": {
+        "role": "neutral",
+        "displayName": "Esporo",
+        "canonical": "oklch(13.6% 0.015 242.1)",
+        "tonalRamp": [
+          "oklch(15% 0.015 242.1)",
+          "oklch(26% 0.015 242.1)",
+          "oklch(38% 0.015 242.1)",
+          "oklch(50% 0.015 242.1)",
+          "oklch(62% 0.015 242.1)",
+          "oklch(74% 0.015 242.1)",
+          "oklch(85% 0.015 242.1)",
+          "oklch(95% 0.015 242.1)"
+        ]
+      },
+      "esporo-profundo": {
+        "role": "neutral",
+        "displayName": "Esporo profundo",
+        "canonical": "oklch(22.1% 0.031 234.9)",
+        "tonalRamp": [
+          "oklch(15% 0.031 234.9)",
+          "oklch(26% 0.031 234.9)",
+          "oklch(38% 0.031 234.9)",
+          "oklch(50% 0.031 234.9)",
+          "oklch(62% 0.031 234.9)",
+          "oklch(74% 0.031 234.9)",
+          "oklch(85% 0.031 234.9)",
+          "oklch(95% 0.031 234.9)"
+        ]
+      },
+      "lienzo": {
+        "role": "neutral",
+        "displayName": "Lienzo",
+        "canonical": "oklch(17.5% 0.022 237)",
+        "tonalRamp": [
+          "oklch(15% 0.022 237)",
+          "oklch(26% 0.022 237)",
+          "oklch(38% 0.022 237)",
+          "oklch(50% 0.022 237)",
+          "oklch(62% 0.022 237)",
+          "oklch(74% 0.022 237)",
+          "oklch(85% 0.022 237)",
+          "oklch(95% 0.022 237)"
+        ]
+      },
+      "niebla": {
+        "role": "neutral",
+        "displayName": "Niebla",
+        "canonical": "oklch(20.9% 0.029 237.9)",
+        "tonalRamp": [
+          "oklch(15% 0.029 237.9)",
+          "oklch(26% 0.029 237.9)",
+          "oklch(38% 0.029 237.9)",
+          "oklch(50% 0.029 237.9)",
+          "oklch(62% 0.029 237.9)",
+          "oklch(74% 0.029 237.9)",
+          "oklch(85% 0.029 237.9)",
+          "oklch(95% 0.029 237.9)"
+        ]
+      },
+      "humus": {
+        "role": "neutral",
+        "displayName": "Humus",
+        "canonical": "oklch(90.2% 0.036 183.3)",
+        "tonalRamp": [
+          "oklch(15% 0.036 183.3)",
+          "oklch(26% 0.036 183.3)",
+          "oklch(38% 0.036 183.3)",
+          "oklch(50% 0.036 183.3)",
+          "oklch(62% 0.036 183.3)",
+          "oklch(74% 0.036 183.3)",
+          "oklch(85% 0.036 183.3)",
+          "oklch(95% 0.036 183.3)"
+        ]
+      },
+      "humus-tenue": {
+        "role": "neutral",
+        "displayName": "Humus tenue",
+        "canonical": "oklch(65.4% 0.048 194.3)",
+        "tonalRamp": [
+          "oklch(15% 0.048 194.3)",
+          "oklch(26% 0.048 194.3)",
+          "oklch(38% 0.048 194.3)",
+          "oklch(50% 0.048 194.3)",
+          "oklch(62% 0.048 194.3)",
+          "oklch(74% 0.048 194.3)",
+          "oklch(85% 0.048 194.3)",
+          "oklch(95% 0.048 194.3)"
+        ]
+      },
+      "borde": {
+        "role": "neutral",
+        "displayName": "Borde",
+        "canonical": "oklch(30.7% 0.041 224.5)",
+        "tonalRamp": [
+          "oklch(15% 0.041 224.5)",
+          "oklch(26% 0.041 224.5)",
+          "oklch(38% 0.041 224.5)",
+          "oklch(50% 0.041 224.5)",
+          "oklch(62% 0.041 224.5)",
+          "oklch(74% 0.041 224.5)",
+          "oklch(85% 0.041 224.5)",
+          "oklch(95% 0.041 224.5)"
+        ]
+      },
+      "info": {
+        "role": "tertiary",
+        "displayName": "Info (solo isotipo)",
+        "canonical": "oklch(64.8% 0.189 258.5)",
+        "tonalRamp": [
+          "oklch(15% 0.16 258.5)",
+          "oklch(26% 0.16 258.5)",
+          "oklch(38% 0.16 258.5)",
+          "oklch(50% 0.16 258.5)",
+          "oklch(62% 0.16 258.5)",
+          "oklch(74% 0.16 258.5)",
+          "oklch(85% 0.16 258.5)",
+          "oklch(95% 0.16 258.5)"
+        ]
+      },
+      "hifa-claro": {
+        "role": "primary",
+        "displayName": "Hifa, claro",
+        "canonical": "oklch(53.9% 0.091 210.9)",
+        "tonalRamp": [
+          "oklch(15% 0.091 210.9)",
+          "oklch(26% 0.091 210.9)",
+          "oklch(38% 0.091 210.9)",
+          "oklch(50% 0.091 210.9)",
+          "oklch(62% 0.091 210.9)",
+          "oklch(74% 0.091 210.9)",
+          "oklch(85% 0.091 210.9)",
+          "oklch(95% 0.091 210.9)"
+        ]
+      },
+      "brote-claro": {
+        "role": "primary",
+        "displayName": "Brote, claro",
+        "canonical": "oklch(71.6% 0.12 206.8)",
+        "tonalRamp": [
+          "oklch(15% 0.12 206.8)",
+          "oklch(26% 0.12 206.8)",
+          "oklch(38% 0.12 206.8)",
+          "oklch(50% 0.12 206.8)",
+          "oklch(62% 0.12 206.8)",
+          "oklch(74% 0.12 206.8)",
+          "oklch(85% 0.12 206.8)",
+          "oklch(95% 0.12 206.8)"
+        ]
+      },
+      "esporo-claro": {
+        "role": "neutral",
+        "displayName": "Esporo, claro",
+        "canonical": "oklch(37.9% 0.062 215.9)",
+        "tonalRamp": [
+          "oklch(15% 0.062 215.9)",
+          "oklch(26% 0.062 215.9)",
+          "oklch(38% 0.062 215.9)",
+          "oklch(50% 0.062 215.9)",
+          "oklch(62% 0.062 215.9)",
+          "oklch(74% 0.062 215.9)",
+          "oklch(85% 0.062 215.9)",
+          "oklch(95% 0.062 215.9)"
+        ]
+      },
+      "esporo-profundo-claro": {
+        "role": "neutral",
+        "displayName": "Esporo profundo, claro",
+        "canonical": "oklch(29.5% 0.048 219.7)",
+        "tonalRamp": [
+          "oklch(15% 0.048 219.7)",
+          "oklch(26% 0.048 219.7)",
+          "oklch(38% 0.048 219.7)",
+          "oklch(50% 0.048 219.7)",
+          "oklch(62% 0.048 219.7)",
+          "oklch(74% 0.048 219.7)",
+          "oklch(85% 0.048 219.7)",
+          "oklch(95% 0.048 219.7)"
+        ]
+      },
+      "lienzo-claro": {
+        "role": "neutral",
+        "displayName": "Lienzo, claro",
+        "canonical": "oklch(97% 0.005 211)",
+        "tonalRamp": [
+          "oklch(15% 0.005 211)",
+          "oklch(26% 0.005 211)",
+          "oklch(38% 0.005 211)",
+          "oklch(50% 0.005 211)",
+          "oklch(62% 0.005 211)",
+          "oklch(74% 0.005 211)",
+          "oklch(85% 0.005 211)",
+          "oklch(95% 0.005 211)"
+        ]
+      },
+      "niebla-claro": {
+        "role": "neutral",
+        "displayName": "Niebla, claro",
+        "canonical": "oklch(94.2% 0.012 215.8)",
+        "tonalRamp": [
+          "oklch(15% 0.012 215.8)",
+          "oklch(26% 0.012 215.8)",
+          "oklch(38% 0.012 215.8)",
+          "oklch(50% 0.012 215.8)",
+          "oklch(62% 0.012 215.8)",
+          "oklch(74% 0.012 215.8)",
+          "oklch(85% 0.012 215.8)",
+          "oklch(95% 0.012 215.8)"
+        ]
+      },
+      "humus-claro": {
+        "role": "neutral",
+        "displayName": "Humus, claro",
+        "canonical": "oklch(28.6% 0.02 212.3)",
+        "tonalRamp": [
+          "oklch(15% 0.02 212.3)",
+          "oklch(26% 0.02 212.3)",
+          "oklch(38% 0.02 212.3)",
+          "oklch(50% 0.02 212.3)",
+          "oklch(62% 0.02 212.3)",
+          "oklch(74% 0.02 212.3)",
+          "oklch(85% 0.02 212.3)",
+          "oklch(95% 0.02 212.3)"
+        ]
+      },
+      "humus-tenue-claro": {
+        "role": "neutral",
+        "displayName": "Humus tenue, claro (landing)",
+        "canonical": "oklch(47.3% 0.02 210.2)",
+        "tonalRamp": [
+          "oklch(15% 0.02 210.2)",
+          "oklch(26% 0.02 210.2)",
+          "oklch(38% 0.02 210.2)",
+          "oklch(50% 0.02 210.2)",
+          "oklch(62% 0.02 210.2)",
+          "oklch(74% 0.02 210.2)",
+          "oklch(85% 0.02 210.2)",
+          "oklch(95% 0.02 210.2)"
+        ]
+      },
+      "brote-texto-claro": {
+        "role": "primary",
+        "displayName": "Brote texto, claro",
+        "canonical": "oklch(48.9% 0.075 206.1)",
+        "tonalRamp": [
+          "oklch(15% 0.075 206.1)",
+          "oklch(26% 0.075 206.1)",
+          "oklch(38% 0.075 206.1)",
+          "oklch(50% 0.075 206.1)",
+          "oklch(62% 0.075 206.1)",
+          "oklch(74% 0.075 206.1)",
+          "oklch(85% 0.075 206.1)",
+          "oklch(95% 0.075 206.1)"
+        ]
+      },
+      "brote-marco-claro": {
+        "role": "primary",
+        "displayName": "Brote marco, claro",
+        "canonical": "oklch(79.4% 0.096 204.7)",
+        "tonalRamp": [
+          "oklch(15% 0.096 204.7)",
+          "oklch(26% 0.096 204.7)",
+          "oklch(38% 0.096 204.7)",
+          "oklch(50% 0.096 204.7)",
+          "oklch(62% 0.096 204.7)",
+          "oklch(74% 0.096 204.7)",
+          "oklch(85% 0.096 204.7)",
+          "oklch(95% 0.096 204.7)"
+        ]
+      },
+      "brote-marco-acento-claro": {
+        "role": "primary",
+        "displayName": "Brote marco acento, claro",
+        "canonical": "oklch(75.3% 0.113 205.4)",
+        "tonalRamp": [
+          "oklch(15% 0.113 205.4)",
+          "oklch(26% 0.113 205.4)",
+          "oklch(38% 0.113 205.4)",
+          "oklch(50% 0.113 205.4)",
+          "oklch(62% 0.113 205.4)",
+          "oklch(74% 0.113 205.4)",
+          "oklch(85% 0.113 205.4)",
+          "oklch(95% 0.113 205.4)"
+        ]
+      },
+      "noche-texto-tenue": {
+        "role": "neutral",
+        "displayName": "Humus tenue de la noche",
+        "canonical": "oklch(70.4% 0.045 194.3)",
+        "tonalRamp": [
+          "oklch(15% 0.045 194.3)",
+          "oklch(26% 0.045 194.3)",
+          "oklch(38% 0.045 194.3)",
+          "oklch(50% 0.045 194.3)",
+          "oklch(62% 0.045 194.3)",
+          "oklch(74% 0.045 194.3)",
+          "oklch(85% 0.045 194.3)",
+          "oklch(95% 0.045 194.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "El H1 del hero, uno por página, con el degradé de marca."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "El H2 de cada tramo, novedades y descargas, en --titulo-2."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "El H3 de un par de captura y texto, en --titulo-3."
+      },
+      "entrada": {
+        "displayName": "Entrada",
+        "purpose": "El párrafo de apertura de cada tramo y la bajada del hero."
+      },
+      "reading": {
+        "displayName": "Lectura",
+        "purpose": "El cuerpo de las novedades, Markdown del release."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "El texto corrido de la página."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Línea de versión, notas de descarga, epígrafes."
+      },
+      "hora": {
+        "displayName": "Hora",
+        "purpose": "La hora de un tramo, dentro del H2, y las horas de la regla."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ventana",
+        "value": "0 28px 70px -24px var(--sombra)",
+        "purpose": "El marco de una captura de la app."
+      },
+      {
+        "name": "rotulo-regla",
+        "value": "0 8px 24px var(--sombra)",
+        "purpose": "El nombre de la hora que aparece al costado de la regla."
+      }
+    ],
+    "motion": [
+      {
+        "name": "salida",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entrada de capturas, giro de la hora, vuelta del indicador."
+      },
+      {
+        "name": "hover",
+        "value": "120ms ease-out",
+        "purpose": "Fondo y borde de botones, color de las horas."
+      },
+      {
+        "name": "entrada-captura",
+        "value": "160ms, desde translateY(4px) y opacidad 0",
+        "purpose": "Una vez por captura, con IntersectionObserver."
+      },
+      {
+        "name": "giro-hora",
+        "value": "220ms",
+        "purpose": "La lectura de la regla: la hora sale hacia arriba y entra desde abajo."
+      },
+      {
+        "name": "vuelta-indicador",
+        "value": "320ms",
+        "purpose": "El indicador vuelve al principio de la escala a la mañana siguiente."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mediana",
+        "value": "1100px"
+      },
+      {
+        "name": "apilado",
+        "value": "900px"
+      },
+      {
+        "name": "celular",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón primario",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "La descarga: uno por contexto.",
+      "html": "<a class=\"ds-boton ds-boton-primario\" href=\"#\"><svg class=\"ds-icono\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 15V3M7 10l5 5 5-5M5 21h14\"/></svg>Descargar para Windows</a>",
+      "css": ".ds-boton{display:inline-flex;align-items:center;gap:.55rem;min-height:46px;padding:0 1.2rem;border-radius:4px;font:600 1rem/1.2 \"Geist\",system-ui,sans-serif;text-decoration:none;white-space:nowrap;transition:background-color 120ms ease-out,border-color 120ms ease-out}.ds-icono{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ds-boton-primario{background:#19e6ff;color:#071219}.ds-boton-primario:hover{background:color-mix(in srgb,#19e6ff 85%,#000)}.ds-boton:focus-visible{outline:2px solid #3dffc4;outline-offset:2px}"
+    },
+    {
+      "name": "Botón secundario",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Otras plataformas, .deb, .rpm.",
+      "html": "<a class=\"ds-boton2\" href=\"#\">Otras plataformas</a>",
+      "css": ".ds-boton2{display:inline-flex;align-items:center;min-height:46px;padding:0 1.2rem;border-radius:4px;border:1px solid color-mix(in srgb,#c6e7e1 30%,transparent);color:#c6e7e1;font:600 1rem/1.2 \"Geist\",system-ui,sans-serif;text-decoration:none;transition:background-color 120ms ease-out,border-color 120ms ease-out}.ds-boton2:hover{background:color-mix(in srgb,#3dffc4 14%,transparent);border-color:color-mix(in srgb,#c6e7e1 50%,transparent)}.ds-boton2:focus-visible{outline:2px solid #3dffc4;outline-offset:2px}"
+    },
+    {
+      "name": "Titular con hora",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "El H2 de un tramo: la hora en mono como primera columna.",
+      "html": "<h2 class=\"ds-h2\"><time class=\"ds-hora\">11:15</time> Conectás</h2>",
+      "css": ".ds-h2{display:grid;grid-template-columns:7rem minmax(0,1fr);align-items:baseline;margin:0;font:600 clamp(2.1rem,1.3rem + 2.4vw,3.4rem)/1.08 \"Source Serif 4\",Georgia,serif;letter-spacing:-.015em;color:color-mix(in srgb,#3dffc4 70%,#c6e7e1)}.ds-hora{font:500 1rem/1 \"JetBrains Mono\",ui-monospace,monospace;font-variant-numeric:tabular-nums;color:#3dffc4}"
+    },
+    {
+      "name": "Marco de captura",
+      "kind": "card",
+      "refersTo": "marco-captura",
+      "description": "Una captura real de la app en marco de ventana.",
+      "html": "<figure class=\"ds-captura\"><div class=\"ds-marco\"></div><figcaption>Lo que tiene fecha va al calendario.</figcaption></figure>",
+      "css": ".ds-captura{margin:0}.ds-marco{aspect-ratio:2880/1800;border-radius:8px;border:1px solid #16343f;background:#0a1a24;box-shadow:0 28px 70px -24px color-mix(in srgb,#04090e 75%,transparent)}.ds-captura figcaption{margin-top:.9rem;font:400 .95rem/1.6 \"Geist\",system-ui,sans-serif;color:#6e9a99}"
+    },
+    {
+      "name": "Regla del día",
+      "kind": "nav",
+      "refersTo": "regla",
+      "description": "La regla fija de 56px con la escala 06–24 h.",
+      "html": "<nav class=\"ds-regla\"><p class=\"ds-lectura\">11:15</p><ol class=\"ds-horas\"><li><a href=\"#\">08:40</a></li><li><a href=\"#\" aria-current=\"true\">11:15</a></li><li><a href=\"#\">15:30</a></li></ol></nav>",
+      "css": ".ds-regla{width:56px;height:320px;display:flex;flex-direction:column;background:#04090e;color:#6e9a99;border-right:1px solid color-mix(in srgb,#3dffc4 12%,transparent)}.ds-lectura{margin:0;height:30px;font:500 12px/30px \"JetBrains Mono\",monospace;text-align:center;color:#3dffc4;border-block:1px solid color-mix(in srgb,#3dffc4 14%,transparent)}.ds-horas{list-style:none;margin:1.5rem 0;padding:0;display:grid;gap:2rem}.ds-horas a{display:block;padding:7px 0 7px 7px;font:500 11px/1 \"JetBrains Mono\",monospace;color:#6e9a99;text-decoration:none;transition:color 120ms ease-out}.ds-horas a:hover,.ds-horas a[aria-current=true]{color:#3dffc4}.ds-horas a[aria-current=true]{font-weight:600;box-shadow:inset 2px 0 0 #3dffc4}.ds-horas a:focus-visible{outline:2px solid #3dffc4;outline-offset:-2px}"
+    },
+    {
+      "name": "Novedades plegadas",
+      "kind": "custom",
+      "refersTo": "novedades-toggle",
+      "description": "El resto del release, plegado tras el primer grupo.",
+      "html": "<details class=\"ds-mas\"><summary><span>Todo lo nuevo de la 2.4.0</span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M6 9l6 6 6-6\"/></svg></summary><p>…</p></details>",
+      "css": ".ds-mas>summary{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem;border:1px solid color-mix(in srgb,#c6e7e1 30%,transparent);border-radius:4px;font:600 1rem/1.2 \"Geist\",system-ui,sans-serif;color:#c6e7e1;cursor:pointer;list-style:none;transition:background-color 120ms ease-out}.ds-mas>summary::-webkit-details-marker{display:none}.ds-mas>summary:hover{background:color-mix(in srgb,#3dffc4 14%,transparent)}.ds-mas>summary:focus-visible{outline:2px solid #3dffc4;outline-offset:2px}.ds-mas svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;transition:transform 160ms cubic-bezier(.16,1,.3,1)}.ds-mas[open] svg{transform:rotate(180deg)}"
+    },
+    {
+      "name": "Chip tu sistema",
+      "kind": "chip",
+      "refersTo": "chip-tu-sistema",
+      "description": "Marca la columna del sistema detectado.",
+      "html": "<span class=\"ds-chip\">tu sistema</span>",
+      "css": ".ds-chip{font:500 .75rem/1 \"Geist\",system-ui,sans-serif;color:#3dffc4;padding:.25em .55em;border-radius:4px;background:color-mix(in srgb,#3dffc4 15%,transparent)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Un día con tu vault",
+    "overview": "La página es un día. Cinco horas en orden fijo —08:40 escribís, 11:15 conectás, 15:30 encontrás, 18:00 ordenás, 22:10 le preguntás a tu vault— y después «a la mañana siguiente», donde viven los temas, las novedades y las descargas. El tiempo es el material de la página: una **regla del día** fija al borde izquierdo con la escala de 06 a 24 h, la hora de cada tramo dentro de su titular, y un fondo que se **hunde** de la luz de la mañana hacia Esporo a medida que se baja. La noche es una banda de Esporo con la terminal; a la mañana siguiente el fondo y la regla vuelven al principio.\n\nEs el bosque bioluminiscente de la app (**heredado**: los mismos raw Esporo, Lienzo, Niebla, Humus, Hifa para la acción y Brote para lo que brilla; las mismas familias; los mismos radios), pero en otra densidad: la app habla en 13px y la landing en 17px, con titulares de marketing en Source Serif. La regla del día es el rail de la app traducido a la página: 56px, Esporo, el isotipo arriba, el indicador de 2px que marca dónde estás. La prueba son **capturas reales** de la app con el vault de demostración «Huerta del barrio», recortadas para que se lean; nada de ilustraciones ni maquetas.\n\nLo que la landing rechaza es la landing de categoría: hero centrado, grilla de tarjetas de funciones y testimonios. Las funciones se dicen como momentos del día, en pares de captura y texto, en listas con filetes finos, nunca en tarjetas.",
+    "keyCharacteristics": [
+      "La regla del día, fija: escala 06–24 h, indicador que recorre el día con el scroll, la hora que gira, un punto en la hora del visitante, clic en una hora salta a su tramo.",
+      "El tono atado al scroll: el fondo se hunde de `--fondo-dia` a `--fondo-tarde`.",
+      "La noche es oscura en los dos modos; la mañana siguiente vuelve a la luz.",
+      "Capturas reales en un marco de ventana, que sangran por el borde derecho.",
+      "Titulares en Source Serif con la hora en mono como primera columna.",
+      "Todo progresivo: sin JS la página se lee entera, con las tres descargas a la vista."
+    ],
+    "rules": [
+      {
+        "name": "The Sinking Day Rule",
+        "body": "El fondo de la página es uno solo y se hunde con el scroll: cada tramo declara su tono `--t` (0 en la mañana, 0.08, 0.3, 0.55, 0.8, 1 en la noche, 0 otra vez a la mañana siguiente) y el JS interpola `--hundimiento` entre tramos, mezclando `--fondo-dia` con `--fondo-tarde` en oklab. En oscuro va de Niebla a Esporo; en claro, de Lienzo a Niebla teñida de Esporo al 9%. Con movimiento reducido cada tramo conserva su tono fijo. Ningún tramo lleva un fondo propio salvo la noche.",
+        "section": "colors"
+      },
+      {
+        "name": "The Night Is Always Dark Rule",
+        "body": "La banda de las 22:10 usa la paleta oscura en los dos modos: Esporo en oscuro, Esporo profundo en claro, con la tinta, el foco y los títulos del modo oscuro y un filete de Brote al 10% arriba y abajo. Es el único tramo oscuro en modo claro.",
+        "section": "colors"
+      },
+      {
+        "name": "The Frame Rule",
+        "body": "Sobre la regla del día, el texto y el foco usan `--marco-texto` y `--marco-glow`, nunca un color calibrado para el fondo de la página. El anillo de foco de la regla va hacia adentro (`outline-offset: -2px`).",
+        "section": "colors"
+      },
+      {
+        "name": "The Hour Column Rule",
+        "body": "La hora de un tramo va **dentro** de su H2, como primera columna de una grilla de 7rem (5.5rem en ventana mediana; `auto` con 0.85rem de separación en el celular, siempre en la primera línea). La entrada, la sintaxis, la lista de la IA y la nota al pie se sangran esos mismos 7rem para alinearse con el título. La hora no es un rótulo suelto encima del título: es el dato que conecta el tramo con la regla.",
+        "section": "typography"
+      },
+      {
+        "name": "The Literal Mono Rule",
+        "body": "La mono es para lo que se teclea o se lee en un reloj: horas, `kbd`, sintaxis, versión. Nunca para rótulos o adornos.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Windows Float Rule",
+        "body": "Solo el marco de una captura y el rótulo flotante de la regla tienen sombra. Texto, listas, columnas de descarga y novedades son planos.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** usar los raw y los roles de `estilos.css` y, para todo lo heredado, las reglas del DESIGN.md del producto (Two Voices, Role, Frame, Tinted Shadow).",
+      "**Do** declarar el tono `--t` y la hora `data-hora` de cada tramo nuevo, para que el fondo y la regla lo sigan.",
+      "**Do** poner la hora dentro del H2, en mono, como primera columna, y sangrar el contenido del tramo la misma medida.",
+      "**Do** mostrar funciones con capturas reales de la app, recortadas a lo que se lee.",
+      "**Do** enumerar con listas de filetes finos y pares asimétricos de captura y texto.",
+      "**Do** dejar la página entera y descargable sin JS, y dar a todo movimiento su alternativa con `prefers-reduced-motion`.",
+      "**Do** acompañar cada botón de descarga con la nota breve de lo que baja."
+    ],
+    "donts": [
+      "**Don't** armar una grilla de tarjetas de funciones, un hero centrado ni testimonios o métricas.",
+      "**Don't** darle fondo propio a un tramo que no sea la noche: el tono lo da el día.",
+      "**Don't** usar la mono para rótulos o adornos que no sean horas, teclas, sintaxis o versión.",
+      "**Don't** ilustrar con maquetas o capturas inventadas, ni mostrar una captura entera cuando su texto queda ilegible.",
+      "**Don't** darle sombra a nada que no sea el marco de una captura o un rótulo flotante."
+    ]
+  }
+}
