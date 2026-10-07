@@ -11,9 +11,11 @@
  * - `data-mic="con-version"`: se quita entero si no se sabe la versión.
  * - `data-mic="sin-version"`: lleva `hidden`; se muestra si no se sabe.
  * - `a[data-plataforma]`: su `href` pasa a `/descargar/<plataforma>`.
+ * - `meta[property="og:image"]`: su `content` pasa a URL absoluta con el
+ *   origen de la request (los lectores de Open Graph no resuelven relativas).
  */
 import type { Manifiesto } from "./manifiesto";
-import { renderizarMarkdown } from "./markdown";
+import { escaparHtml, renderizarMarkdown } from "./markdown";
 
 const FORMATO_FECHA: Intl.DateTimeFormatOptions = {
   day: "numeric",
@@ -47,13 +49,52 @@ export function fechaIso(iso: string): string {
   }
 }
 
-export function inyectar(respuesta: Response, m: Manifiesto | null): Response {
+const CHEVRON =
+  '<svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+
+/**
+ * Deja a la vista solo el primer grupo de las novedades —todo hasta la primera
+ * lista inclusive (el primer título con su lista)— y pliega el resto en un
+ * `<details>` cuyo `<summary>` nombra la versión. Si no queda nada después del
+ * primer grupo, o no hay ninguna lista, el HTML vuelve tal cual: nunca un
+ * `<details>` vacío.
+ *
+ * Trabaja sobre la salida de `renderizarMarkdown`, que es un bloque por línea.
+ */
+export function plegarNovedades(html: string, version: string): string {
+  const bloques = html.split("\n");
+  const lista = bloques.findIndex((b) => b.startsWith("<ul>") || b.startsWith("<ol>"));
+  if (lista === -1) return html;
+  const resto = bloques.slice(lista + 1).filter((b) => b.trim() !== "");
+  if (resto.length === 0) return html;
+  const resumen = `<summary><span>Todo lo nuevo de la ${escaparHtml(version)}</span>${CHEVRON}</summary>`;
+  return [...bloques.slice(0, lista + 1), `<details class="novedades-mas">${resumen}`, ...resto, "</details>"].join("\n");
+}
+
+/** `relativa` resuelta contra `origen`; vacío si no se puede. */
+function absoluta(relativa: string, origen: string): string {
+  try {
+    return new URL(relativa, origen).href;
+  } catch {
+    return "";
+  }
+}
+
+export function inyectar(respuesta: Response, m: Manifiesto | null, origen?: string): Response {
   const reescritor = new HTMLRewriter().on("a[data-plataforma]", {
     element(el) {
       const p = el.getAttribute("data-plataforma");
       if (p) el.setAttribute("href", `/descargar/${encodeURIComponent(p)}`);
     },
   });
+  if (origen) {
+    reescritor.on('meta[property="og:image"]', {
+      element(el) {
+        const url = absoluta(el.getAttribute("content") ?? "", origen);
+        if (url) el.setAttribute("content", url);
+      },
+    });
+  }
 
   if (!m) {
     return reescritor
@@ -64,7 +105,7 @@ export function inyectar(respuesta: Response, m: Manifiesto | null): Response {
   }
 
   const fecha = fechaLegible(m.pub_date);
-  const novedades = m.notes.trim() ? renderizarMarkdown(m.notes, { nivelBase: 2 }) : "";
+  const novedades = m.notes.trim() ? plegarNovedades(renderizarMarkdown(m.notes, { nivelBase: 2 }), m.version) : "";
 
   return reescritor
     .on('[data-mic="version"]', { element: (el) => void el.setInnerContent(m.version) })

@@ -45,6 +45,27 @@ describe("la página", () => {
     expect(html).toMatch(/data-mic="sin-version" hidden/);
   });
 
+  it("pliega las novedades después del primer grupo, con la versión en el <summary>", async () => {
+    await sembrar({ ...crudo, version: "2.5.0", notes: "## Uno\n\n- a\n\n## Dos\n\n- b" });
+    const html = await (await SELF.fetch("https://landing.test/")).text();
+    const novedades = html.slice(html.indexOf('data-mic="novedades"'), html.indexOf('data-mic="sin-version"'));
+    expect(novedades).toContain("<h3>Uno</h3>");
+    expect(novedades).toContain("Todo lo nuevo de la 2.5.0");
+    expect(novedades.indexOf("<details")).toBeGreaterThan(novedades.indexOf("<li>a</li>"));
+    expect(novedades.indexOf("<h3>Dos</h3>")).toBeGreaterThan(novedades.indexOf("<details"));
+  });
+
+  it("og:image sale absoluta, con el origen de la request", async () => {
+    await sembrar();
+    const html = await (await SELF.fetch("https://landing.test/")).text();
+    expect(html).toContain('<meta property="og:image" content="https://landing.test/capturas/og.jpg">');
+    // También sin manifiesto.
+    await olvidarManifiesto();
+    await env.RELEASES.delete("latest.json");
+    const sin = await (await SELF.fetch("https://otro.test/")).text();
+    expect(sin).toContain('content="https://otro.test/capturas/og.jpg"');
+  });
+
   it("los botones apuntan a /descargar/<plataforma>", async () => {
     await sembrar();
     const html = await (await SELF.fetch("https://landing.test/")).text();

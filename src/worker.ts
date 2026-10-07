@@ -38,7 +38,7 @@ async function pagina(request: Request, env: Env, ctx: ExecutionContext): Promis
   } catch {
     manifiesto = null;
   }
-  const respuesta = inyectar(base, manifiesto);
+  const respuesta = inyectar(base, manifiesto, raiz.origin);
   if (request.method === "HEAD") return new Response(null, { status: 200, headers: respuesta.headers });
   return respuesta;
 }
