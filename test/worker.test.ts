@@ -1,7 +1,8 @@
 import { createExecutionContext, env, waitOnExecutionContext } from "cloudflare:test";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { leerManifiesto, olvidarManifiesto, vencerManifiesto } from "../src/manifiesto";
-import worker, { HASH_SCRIPT_EN_LINEA, type Env } from "../src/worker";
+import { HASH_SCRIPT_EN_LINEA } from "../src/cabeceras";
+import worker, { type Env } from "../src/worker";
 import crudo from "./fixtures/latest.json";
 
 // Se llama al handler directo (no a SELF) para compartir el módulo con los
