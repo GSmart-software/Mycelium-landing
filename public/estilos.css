@@ -574,6 +574,16 @@ html.tono-vivo .tramo:not(.noche) {
   border-radius: var(--r-md) 0 0 var(--r-md);
 }
 
+/* La respuesta de la terminal ocupa el tercio de arriba de la captura: el resto
+   es consola vacía. El marco se recorta a lo que tiene texto. */
+.captura-terminal .marco {
+  aspect-ratio: 2880 / 1040;
+}
+
+.captura-terminal .marco img {
+  object-position: left top;
+}
+
 /* Entrada de las capturas: fundido corto desde 4px, solo con JS y movimiento. */
 html.movimiento .captura:not(.captura-hero) .marco {
   opacity: 0;
