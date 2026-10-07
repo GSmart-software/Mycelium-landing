@@ -7,7 +7,9 @@
  *
  * - `data-mic="version"`: el número de versión (texto).
  * - `data-mic="fecha"`: un `<time>` con la fecha de publicación.
- * - `data-mic="novedades"`: el contenedor de las notas del release (HTML).
+ * - `data-mic="titular"`: el titular de la tapa, el primer título de las notas
+ *   (o `TITULAR_GENERICO` si no traen uno).
+ * - `data-mic="novedades"`: el sumario de las notas del release (HTML).
  * - `data-mic="con-version"`: se quita entero si no se sabe la versión.
  * - `data-mic="sin-version"`: lleva `hidden`; se muestra si no se sabe.
  * - `a[data-plataforma]`: su `href` pasa a `/descargar/<plataforma>`.
@@ -15,7 +17,7 @@
  *   origen de la request (los lectores de Open Graph no resuelven relativas).
  */
 import type { Manifiesto } from "./manifiesto";
-import { escaparHtml, renderizarMarkdown } from "./markdown";
+import { type Novedades, partirNovedades } from "./markdown";
 
 const FORMATO_FECHA: Intl.DateTimeFormatOptions = {
   day: "numeric",
@@ -52,23 +54,28 @@ export function fechaIso(iso: string): string {
 const CHEVRON =
   '<svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
 
+/** El titular de la tapa cuando las notas no traen uno. */
+export const TITULAR_GENERICO = "Lo que creció en esta versión";
+
 /**
- * Deja a la vista solo el primer grupo de las novedades —todo hasta la primera
- * lista inclusive (el primer título con su lista)— y pliega el resto en un
- * `<details>` cuyo `<summary>` nombra la versión. Si no queda nada después del
- * primer grupo, o no hay ninguna lista, el HTML vuelve tal cual: nunca un
- * `<details>` vacío.
- *
- * Trabaja sobre la salida de `renderizarMarkdown`, que es un bloque por línea.
+ * El sumario de la tapa: la entrada (si la hay) y una lista numerada con un
+ * ítem por grupo de las notas. El título de cada grupo es el `<summary>` de su
+ * `<details>`, con el detalle plegado; un grupo sin cuerpo queda como título
+ * solo, nunca un `<details>` vacío. La numeración la pone el CSS (el `<ol>` ya
+ * la da a los lectores de pantalla).
  */
-export function plegarNovedades(html: string, version: string): string {
-  const bloques = html.split("\n");
-  const lista = bloques.findIndex((b) => b.startsWith("<ul>") || b.startsWith("<ol>"));
-  if (lista === -1) return html;
-  const resto = bloques.slice(lista + 1).filter((b) => b.trim() !== "");
-  if (resto.length === 0) return html;
-  const resumen = `<summary><span>Todo lo nuevo de la ${escaparHtml(version)}</span>${CHEVRON}</summary>`;
-  return [...bloques.slice(0, lista + 1), `<details class="novedades-mas">${resumen}`, ...resto, "</details>"].join("\n");
+export function sumarioHtml(n: Novedades): string {
+  const partes: string[] = [];
+  if (n.entrada) partes.push(n.entrada);
+  if (n.grupos.length > 0) {
+    const items = n.grupos.map((g) =>
+      g.cuerpo.trim()
+        ? `<li><details><summary><span>${g.titulo}</span>${CHEVRON}</summary>\n${g.cuerpo}\n</details></li>`
+        : `<li><span class="sumario-solo">${g.titulo}</span></li>`,
+    );
+    partes.push(`<ol class="sumario-lista">\n${items.join("\n")}\n</ol>`);
+  }
+  return partes.join("\n");
 }
 
 /** `relativa` resuelta contra `origen`; vacío si no se puede. */
@@ -105,7 +112,8 @@ export function inyectar(respuesta: Response, m: Manifiesto | null, origen?: str
   }
 
   const fecha = fechaLegible(m.pub_date);
-  const novedades = m.notes.trim() ? plegarNovedades(renderizarMarkdown(m.notes, { nivelBase: 2 }), m.version) : "";
+  const partes = partirNovedades(m.notes);
+  const novedades = sumarioHtml(partes);
 
   return reescritor
     .on('[data-mic="version"]', { element: (el) => void el.setInnerContent(m.version) })
@@ -115,6 +123,9 @@ export function inyectar(respuesta: Response, m: Manifiesto | null, origen?: str
         el.setInnerContent(fecha);
         el.setAttribute("datetime", fechaIso(m.pub_date));
       },
+    })
+    .on('[data-mic="titular"]', {
+      element: (el) => void el.setInnerContent(partes.titular ?? TITULAR_GENERICO, { html: partes.titular !== null }),
     })
     .on('[data-mic="novedades"]', {
       element(el) {

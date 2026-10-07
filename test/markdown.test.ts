@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { enLinea, escaparHtml, renderizarMarkdown, urlSegura } from "../src/markdown";
+import { enLinea, escaparHtml, partirNovedades, urlSegura } from "../src/markdown";
 import manifiesto from "./fixtures/latest.json";
 
 describe("escaparHtml", () => {
@@ -55,33 +55,63 @@ describe("enLinea", () => {
   });
 });
 
-describe("renderizarMarkdown", () => {
-  it("baja los títulos un nivel por defecto", () => {
-    expect(renderizarMarkdown("# Uno\n## Dos\n###### Seis")).toBe("<h2>Uno</h2>\n<h3>Dos</h3>\n<h6>Seis</h6>");
+describe("partirNovedades", () => {
+  it("el único título de arriba es el titular y el nivel siguiente arma los grupos", () => {
+    const n = partirNovedades("## Grande\n\n### Uno\n\n- a\n- b\n\n### Dos\n\n- c");
+    expect(n.titular).toBe("Grande");
+    expect(n.entrada).toBe("");
+    expect(n.grupos).toEqual([
+      { titulo: "Uno", cuerpo: "<ul><li>a</li><li>b</li></ul>" },
+      { titulo: "Dos", cuerpo: "<ul><li>c</li></ul>" },
+    ]);
   });
-  it("une las líneas sangradas al ítem anterior", () => {
-    expect(renderizarMarkdown("- uno\n  sigue\n- dos")).toBe("<ul><li>uno sigue</li><li>dos</li></ul>");
+  it("con varios títulos arriba no hay titular: cada uno es un grupo", () => {
+    const n = partirNovedades("## Uno\n\n- a\n\n## Dos\n\n- b");
+    expect(n.titular).toBeNull();
+    expect(n.grupos.map((g) => g.titulo)).toEqual(["Uno", "Dos"]);
   });
-  it("listas numeradas y párrafos", () => {
-    expect(renderizarMarkdown("1. a\n2. b\n\nUn párrafo\nque sigue.")).toBe(
-      "<ol><li>a</li><li>b</li></ol>\n<p>Un párrafo que sigue.</p>",
-    );
+  it("un título más profundo dentro de un grupo sale como <h4>", () => {
+    const n = partirNovedades("## Uno\n\n### Sub\n\n- a\n\n## Dos\n\n- b");
+    expect(n.grupos[0]!.cuerpo).toBe("<h4>Sub</h4>\n<ul><li>a</li></ul>");
+  });
+  it("lo que va antes del primer grupo es la entrada", () => {
+    const n = partirNovedades("## Grande\n\nUn párrafo\nque sigue.\n\n### Uno\n\n- a");
+    expect(n.titular).toBe("Grande");
+    expect(n.entrada).toBe("<p>Un párrafo que sigue.</p>");
+    expect(n.grupos).toHaveLength(1);
+  });
+  it("sin títulos, todo es entrada; las líneas sangradas siguen el ítem", () => {
+    const n = partirNovedades("1. a\n2. b\n\n- uno\n  sigue\n- dos");
+    expect(n.titular).toBeNull();
+    expect(n.grupos).toEqual([]);
+    expect(n.entrada).toBe("<ol><li>a</li><li>b</li></ol>\n<ul><li>uno sigue</li><li>dos</li></ul>");
+  });
+  it("el titular y los títulos de grupo pasan por el formato en línea, escapados", () => {
+    const n = partirNovedades("## Hola <b>`x`</b>\n\n### **Uno**\n\n- a");
+    expect(n.titular).toBe("Hola &lt;b&gt;<code>x</code>&lt;/b&gt;");
+    expect(n.grupos[0]!.titulo).toBe("<strong>Uno</strong>");
   });
   it("lo no soportado queda como texto escapado", () => {
-    const html = renderizarMarkdown("<script>alert(1)</script>\n\n> cita\n\n![img](https://x.y/a.png)");
-    expect(html).not.toContain("<script");
-    expect(html).toContain("&lt;script&gt;");
-    expect(html).toContain("&gt; cita");
+    const n = partirNovedades("<script>alert(1)</script>\n\n> cita\n\n![img](https://x.y/a.png)");
+    expect(n.entrada).not.toContain("<script");
+    expect(n.entrada).toContain("&lt;script&gt;");
+    expect(n.entrada).toContain("&gt; cita");
   });
-  it("renderiza las notas reales de la 2.4.0", () => {
-    const html = renderizarMarkdown(manifiesto.notes);
-    expect(html.startsWith("<h3>Tus archivos, al instante</h3>")).toBe(true);
-    expect(html).toContain("<h4>Tareas con estados</h4>");
+  it("parte las notas reales de la 2.4.0", () => {
+    const n = partirNovedades(manifiesto.notes);
+    expect(n.titular).toBe("Tus archivos, al instante");
+    expect(n.grupos.map((g) => g.titulo)).toEqual([
+      "El explorador sigue al disco",
+      "Cualquier archivo",
+      "Tareas con estados",
+      "Más cómodo",
+    ]);
+    const html = n.grupos.map((g) => g.cuerpo).join("\n");
     expect(html).toContain("<code>![[foto.png]]</code>");
     expect(html).toContain("<code>[&gt;]</code>");
     expect(html).toContain("<strong>desde fuera de Mycelium</strong>");
     // La línea partida del ítem quedó unida.
-    expect(html).toContain("una\ncarpeta".replace("\n", " "));
-    expect(html).not.toMatch(/<(?!\/?(h3|h4|ul|li|strong|em|code|p)>)/);
+    expect(html).toContain("una carpeta");
+    expect(html).not.toMatch(/<(?!\/?(ul|li|strong|em|code|p)>)/);
   });
 });

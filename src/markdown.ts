@@ -4,8 +4,8 @@
  * Las notas las escribe quien publica, pero terminan dentro del HTML de la
  * página: por eso todo se escapa y solo se reconoce un subconjunto cerrado.
  *
- * - Títulos `#` a `######` (bajan `nivelBase - 1` niveles: con el valor por
- *   defecto, `##` sale como `<h3>`, porque la sección ya tiene su `<h2>`).
+ * - Títulos `#` a `######`: el primero puede ser el titular de la tapa y los
+ *   siguientes arman los grupos del sumario (ver `partirNovedades`).
  * - Listas con `-`, `*` o `+` y numeradas (`1.`); las líneas sangradas que
  *   siguen continúan el ítem.
  * - Párrafos (las líneas seguidas se unen).
@@ -131,14 +131,8 @@ function analizar(markdown: string): Bloque[] {
   return bloques;
 }
 
-export interface OpcionesMarkdown {
-  /** Nivel HTML al que baja un `#`. Por defecto 2, así `##` → `<h3>`. */
-  nivelBase?: number;
-}
-
-export function renderizarMarkdown(markdown: string, opciones: OpcionesMarkdown = {}): string {
-  const desplazamiento = (opciones.nivelBase ?? 2) - 1;
-  return analizar(markdown)
+function renderizarBloques(bloques: Bloque[], desplazamiento: number): string {
+  return bloques
     .map((b) => {
       switch (b.tipo) {
         case "titulo": {
@@ -155,4 +149,64 @@ export function renderizarMarkdown(markdown: string, opciones: OpcionesMarkdown 
       }
     })
     .join("\n");
+}
+
+/** Las notas de un release partidas para la tapa: todo el HTML ya escapado. */
+export interface Novedades {
+  /** El título que encabeza las notas, si hay uno solo arriba de todo. */
+  titular: string | null;
+  /** Lo que viene antes del primer grupo (o todo, si no hay grupos). */
+  entrada: string;
+  /** Cada grupo: su título y lo que sigue hasta el próximo del mismo nivel. */
+  grupos: { titulo: string; cuerpo: string }[];
+}
+
+const niveles = (bloques: Bloque[]) => bloques.flatMap((b) => (b.tipo === "titulo" ? [b.nivel] : []));
+
+/**
+ * Parte las notas en titular, entrada y grupos.
+ *
+ * - Si el primer bloque es un título y es el único de su nivel (el menor de
+ *   las notas), es el **titular**: «## Tus archivos, al instante».
+ * - Los **grupos** son los títulos del menor nivel que queda («### Tareas con
+ *   estados»), cada uno con los bloques que lo siguen. Dentro de un grupo, un
+ *   título más profundo sale como `<h4>` o menor (el del grupo va en un
+ *   `<summary>`, debajo del `<h2>` de la tapa).
+ * - Sin títulos, todo es entrada.
+ */
+export function partirNovedades(markdown: string): Novedades {
+  let bloques = analizar(markdown);
+  let titular: string | null = null;
+
+  const primero = bloques[0];
+  if (primero?.tipo === "titulo") {
+    const todos = niveles(bloques);
+    const menor = Math.min(...todos);
+    if (primero.nivel === menor && todos.filter((n) => n === menor).length === 1) {
+      titular = enLinea(primero.texto);
+      bloques = bloques.slice(1);
+    }
+  }
+
+  const resto = niveles(bloques);
+  if (resto.length === 0) return { titular, entrada: renderizarBloques(bloques, 0), grupos: [] };
+
+  const nivel = Math.min(...resto);
+  const desplazamiento = 3 - nivel;
+  const inicio = bloques.findIndex((b) => b.tipo === "titulo" && b.nivel === nivel);
+  const grupos: Novedades["grupos"] = [];
+  let actual: { titulo: string; bloques: Bloque[] } | null = null;
+  const cerrar = () => {
+    if (actual) grupos.push({ titulo: actual.titulo, cuerpo: renderizarBloques(actual.bloques, desplazamiento) });
+  };
+  for (const b of bloques.slice(inicio)) {
+    if (b.tipo === "titulo" && b.nivel <= nivel) {
+      cerrar();
+      actual = { titulo: enLinea(b.texto), bloques: [] };
+    } else {
+      actual?.bloques.push(b);
+    }
+  }
+  cerrar();
+  return { titular, entrada: renderizarBloques(bloques.slice(0, inicio), desplazamiento), grupos };
 }
