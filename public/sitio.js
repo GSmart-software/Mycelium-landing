@@ -71,9 +71,9 @@
 
   // ---------- La hifa ----------
 
-  // Cada nodo dibuja su tramo, de su punto al del siguiente; el tramo se llena
-  // hasta la altura de lectura y el nodo se enciende cuando la línea lo alcanza.
-  // El cierre no tiene tramo: ahí desemboca la hifa.
+  // Cada nodo dibuja su tramo de punta a punta de su caja (en el cierre, hasta
+  // el anillo); el tramo se llena hasta la altura de lectura y el nodo se
+  // enciende cuando la línea alcanza su punto.
   const nodos = Array.from(document.querySelectorAll(".nodo, .cierre"));
   const LECTURA = 0.62;
 
@@ -85,11 +85,10 @@
       const caja = punto.getBoundingClientRect();
       const y = caja.top + caja.height / 2;
       nodo.classList.toggle("encendido", y <= altura);
-      if (nodo.classList.contains("nodo")) {
-        const tramo = nodo.getBoundingClientRect().height;
-        const lleno = Math.min(1, Math.max(0, (altura - y) / Math.max(1, tramo)));
-        nodo.style.setProperty("--lleno", lleno.toFixed(4));
-      }
+      const arriba = nodo.getBoundingClientRect().top;
+      const tramo = nodo.classList.contains("cierre") ? y - arriba : nodo.offsetHeight;
+      const lleno = Math.min(1, Math.max(0, (altura - arriba) / Math.max(1, tramo)));
+      nodo.style.setProperty("--lleno", lleno.toFixed(4));
     }
   }
 

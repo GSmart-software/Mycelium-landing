@@ -53,7 +53,12 @@
   --ancho: 76rem;
   --riel: 4.5rem;
   --linea-x: 0.75rem;
-  --punto-y: 0.6rem;
+  /* El punto de cada nodo va a la altura de la primera línea de su H3; el
+     anillo del cierre, a media altura del número de la tapa. */
+  --h3: clamp(1.6rem, 1.25rem + 0.9vw, 2rem);
+  --punto-y: calc(var(--h3) * 0.6);
+  --numero: clamp(5rem, 1.5rem + 10vw, 11.5rem);
+  --punto-cierre-y: calc(var(--numero) * 0.42);
   --entre-nodos: clamp(4.5rem, 8vw, 7.5rem);
   --r-sm: 4px;
   --r-md: 8px;
@@ -87,7 +92,9 @@
     --superficie-alta: #ffffff;
     --codigo-fondo: color-mix(in srgb, var(--humus) 7%, var(--lienzo));
     --marco-borde: color-mix(in srgb, var(--esporo-profundo) 22%, transparent);
-    --degrade: linear-gradient(90deg, #1b6c75, var(--hifa));
+    /* Brote oscurecido → Hifa: recorre de verde a turquesa y las dos puntas
+       pasan 3:1 sobre el Lienzo claro (#0f8a66 3,97:1 · #0e7c8c 4,5:1). */
+    --degrade: linear-gradient(90deg, #0f8a66, var(--hifa));
     --sombra: color-mix(in srgb, var(--esporo-profundo) 24%, transparent);
 
     --linea-apagada: color-mix(in srgb, var(--hifa) 20%, transparent);
@@ -323,28 +330,38 @@ q {
   overflow: hidden;
 }
 
+/* El grafo ocupa toda la portada, de borde a borde; el centro de la red queda
+   a la derecha del texto. La <picture> sale de la grilla de la portada. */
+.portada-red {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+}
+
 .portada-red img {
   position: absolute;
   z-index: -2;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: clamp(0px, 36vw - 8rem, 38%);
-  width: auto;
+  left: 0;
+  width: 100%;
   max-width: none;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: 62% 50%;
 }
 
-/* El viñeteado: la red se apaga hacia los bordes y se oscurece detrás del texto. */
+/* El viñeteado: la red se apaga hacia los bordes, se oscurece detrás de la
+   columna del texto (hasta --velo-fin, el borde derecho de la bajada, al 88%:
+   el H1 y la bajada pasan 4,5:1 sobre el nodo más claro que tengan detrás, en
+   cualquier ancho) y arriba deja una banda lisa para la navegación. */
 .portada-velo {
+  --velo-fin: calc(max(var(--canal), 50% - var(--ancho) / 2 + var(--canal)) + 32rem);
   position: absolute;
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(180deg, var(--placa-fondo) 0, color-mix(in srgb, var(--placa-fondo) 70%, transparent) 7rem, transparent 13rem, transparent 72%, var(--placa-sombra) 100%),
-    radial-gradient(ellipse 52% 62% at 16% 52%, color-mix(in srgb, var(--placa-fondo) 88%, transparent) 0%, color-mix(in srgb, var(--placa-fondo) 50%, transparent) 55%, transparent 100%),
+    linear-gradient(180deg, var(--placa-fondo) 0, var(--placa-fondo) 4.75rem, color-mix(in srgb, var(--placa-fondo) 82%, transparent) 7rem, transparent 12rem, transparent 74%, var(--placa-sombra) 100%),
+    linear-gradient(90deg, color-mix(in srgb, var(--placa-fondo) 92%, transparent) 0, color-mix(in srgb, var(--placa-fondo) 88%, transparent) var(--velo-fin), transparent calc(var(--velo-fin) + 16rem)),
     radial-gradient(ellipse 72% 80% at 64% 48%, transparent 0%, transparent 38%, color-mix(in srgb, var(--placa-sombra) 55%, transparent) 70%, var(--placa-sombra) 100%);
 }
 
@@ -485,7 +502,8 @@ html.js.movil .cta-nota {
 
 .version-linea {
   margin-top: 1.5rem;
-  font: 400 0.8125rem/1.5 var(--mono);
+  font: 400 0.875rem/1.5 var(--sans);
+  font-variant-numeric: tabular-nums;
   color: var(--texto-tenue);
 }
 
@@ -520,7 +538,7 @@ html.js.movil .cta-nota {
   position: absolute;
   left: calc(var(--linea-x) - 0.5px);
   top: 0;
-  bottom: calc(-1 * var(--punto-y));
+  bottom: 0;
   width: 1px;
   background: linear-gradient(180deg, transparent, var(--linea-apagada) 60%, var(--linea) 100%);
 }
@@ -539,45 +557,53 @@ html.js.movil .cta-nota {
   font-size: 1.0625rem;
 }
 
+/* Cada nodo: el texto a la izquierda, centrado contra su captura. */
 .nodo {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 21rem) minmax(0, 1fr);
-  grid-template-areas:
-    "nombre nombre"
-    "texto figura";
+  grid-template-areas: "texto figura";
   column-gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
+  align-items: center;
   padding: 0 0 var(--entre-nodos) var(--riel);
 }
 
-/* Cada nodo dibuja su tramo de hifa, de su punto al punto siguiente: la base
-   apagada (::before) y la parte encendida (::after), que se llena con --lleno. */
+/* Cada nodo dibuja su tramo de hifa de punta a punta de su caja, así los
+   tramos se tocan sin importar dónde quede el punto: la base apagada
+   (::before) y la parte encendida (::after), que se llena con --lleno. */
 .nodo::before,
-.nodo::after {
+.nodo::after,
+.cierre::before,
+.cierre::after {
   content: "";
   position: absolute;
   left: calc(var(--linea-x) - 0.5px);
-  top: var(--punto-y);
+  top: 0;
   width: 1px;
   height: 100%;
 }
 
-.nodo::before {
+.nodo::before,
+.cierre::before {
   background: var(--linea-apagada);
 }
 
-.nodo::after {
-  background: linear-gradient(180deg, var(--linea) 0%, var(--linea) 82%, var(--linea-punta) 100%);
+.nodo::after,
+.cierre::after {
+  background: var(--linea);
   transform: scaleY(var(--lleno, 1));
   transform-origin: top;
+}
+
+/* En el cierre la hifa termina en el anillo. */
+.cierre::before,
+.cierre::after {
+  height: var(--punto-cierre-y);
 }
 
 .punto {
   position: absolute;
   z-index: 1;
-  left: calc(var(--linea-x) - 6px);
-  top: calc(var(--punto-y) - 6px);
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -587,36 +613,37 @@ html.js.movil .cta-nota {
   transition: background-color 280ms var(--salida), box-shadow 280ms var(--salida), border-color 280ms var(--salida);
 }
 
-/* La rama corta que une el punto con el nombre del nodo. */
-.nodo .punto::after {
-  content: "";
-  position: absolute;
-  left: calc(100% + 5px);
-  top: 50%;
-  width: calc(var(--riel) - var(--linea-x) - 1.25rem);
-  height: 1px;
-  background: color-mix(in srgb, var(--linea) 40%, transparent);
-}
-
-.nodo-nombre {
-  grid-area: nombre;
-  margin-bottom: 1.1rem;
-  font: 500 0.8125rem/1.5 var(--mono);
-  color: var(--nodo-texto);
-  transition: color 280ms var(--salida);
-}
-
-.nodo-nombre span {
-  color: var(--texto-tenue);
-}
-
 .nodo-texto {
   grid-area: texto;
+  position: relative;
+}
+
+/* El punto y el nombre viven en la columna del texto, para seguir al H3
+   cuando el texto se centra contra la captura; se corren hasta la hifa. */
+.nodo-texto .punto {
+  left: calc(var(--linea-x) - var(--riel) - 6px);
+  top: calc(var(--punto-y) - 6px);
+}
+
+/* El nombre del nodo, como los rótulos del grafo: debajo del punto, centrado
+   sobre la hifa, que pasa por detrás. */
+.nodo-texto .nodo-nombre {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  left: calc(var(--linea-x) - var(--riel));
+  top: calc(var(--punto-y) + 12px);
+  transform: translateX(-50%);
+  padding: 0.2rem 0.3rem;
+  background: var(--fondo);
+  white-space: nowrap;
+  font: 400 0.75rem/1.3 var(--mono);
+  color: var(--texto-tenue);
 }
 
 .nodo-texto h3 {
   font-weight: 600;
-  font-size: clamp(1.6rem, 1.25rem + 0.9vw, 2rem);
+  font-size: var(--h3);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
@@ -638,10 +665,6 @@ html.hifa-viva .cierre:not(.encendido) .punto {
   background: var(--fondo);
   border-color: color-mix(in srgb, var(--linea) 45%, transparent);
   box-shadow: none;
-}
-
-html.hifa-viva .nodo:not(.encendido) .nodo-nombre {
-  color: var(--texto-tenue);
 }
 
 /* ---------- Capturas ---------- */
@@ -691,16 +714,14 @@ html.movimiento .captura.visible .marco {
 /* ---------- El nodo de Claude Code ---------- */
 
 .nodo-ia {
-  --linea-nodo: var(--brote);
   grid-template-areas:
-    "nombre nombre"
     "texto ia"
     "figura figura"
     "pie pie";
 }
 
 .nodo-ia .punto {
-  left: calc(var(--linea-x) - 8px);
+  left: calc(var(--linea-x) - var(--riel) - 8px);
   top: calc(var(--punto-y) - 8px);
   width: 16px;
   height: 16px;
@@ -709,13 +730,8 @@ html.movimiento .captura.visible .marco {
   box-shadow: 0 0 0 6px color-mix(in srgb, var(--linea-punta) 16%, transparent), 0 3px 24px color-mix(in srgb, var(--linea-punta) 70%, transparent);
 }
 
-.nodo-ia .punto::after {
-  left: calc(100% + 3px);
-  background: color-mix(in srgb, var(--linea-punta) 50%, transparent);
-}
-
-.nodo-ia .nodo-nombre {
-  color: var(--brillo-texto);
+.nodo-ia .nodo-texto .nodo-nombre {
+  top: calc(var(--punto-y) + 14px);
 }
 
 .ia {
@@ -785,28 +801,37 @@ html.movimiento .captura.visible .marco {
   padding: 0 0 clamp(5rem, 10vw, 8rem) var(--riel);
 }
 
-/* Donde desemboca la hifa: un brote. */
+/* Donde desemboca la hifa: el único brote de la página, un anillo con su
+   núcleo (no otro punto con brillo). El fondo tapa la hifa que llega. */
 .punto-final {
-  left: calc(var(--linea-x) - 9px);
-  top: calc(var(--punto-y) - 9px);
-  width: 18px;
-  height: 18px;
-  border-color: var(--linea-punta);
-  background: var(--linea-punta);
-  box-shadow: 0 0 0 7px color-mix(in srgb, var(--linea-punta) 16%, transparent), 0 4px 30px color-mix(in srgb, var(--linea-punta) 75%, transparent);
+  left: calc(var(--linea-x) - 14px);
+  top: calc(var(--punto-cierre-y) - 14px);
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid color-mix(in srgb, var(--linea-punta) 45%, transparent);
+  background: radial-gradient(circle, var(--linea-punta) 0 4.5px, var(--fondo) 5.5px);
+  box-shadow: none;
 }
 
+html.hifa-viva .cierre:not(.encendido) .punto-final {
+  background: var(--fondo);
+}
+
+/* La fecha de tapa, entre el número y el titular. Si el Worker no tiene
+   fecha válida, quita el <time> y el párrafo queda vacío. */
 .tapa-fecha {
-  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+  font: 400 0.875rem/1.4 var(--mono);
+  color: var(--texto-tenue);
 }
 
-.tapa-fecha time {
-  color: var(--texto);
+.tapa-fecha:empty {
+  display: none;
 }
 
 /* El número es el titular de la tapa y el único titular con el degradé. */
 .tapa-numero {
-  font: 700 clamp(5rem, 1.5rem + 10vw, 11.5rem)/0.86 var(--sans);
+  font: 700 var(--numero)/0.86 var(--sans);
   letter-spacing: -0.04em;
   padding-bottom: 0.06em;
   margin-left: -0.04em;
@@ -943,18 +968,15 @@ html.movimiento .captura.visible .marco {
 
 /* Las tres descargas, apiladas. */
 .descargas {
-  padding-top: calc(var(--punto-y) * 2 + 0.75rem);
+  padding-top: 0.4rem;
   scroll-margin-top: 1.5rem;
 }
 
 .descargas-titulo {
-  margin-bottom: 1rem;
-  font: 500 0.8125rem/1.5 var(--mono);
-  color: var(--texto-tenue);
-}
-
-.descargas-titulo [data-mic="version"] {
-  color: var(--texto);
+  margin-bottom: 1.25rem;
+  font: 600 1.25rem/1.3 var(--sans);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 .sistemas {
@@ -1022,14 +1044,16 @@ html.movimiento .captura.visible .marco {
   width: 100%;
 }
 
-/* Con un sistema detectado, el primario es solo el suyo. */
-.sistemas.hay-tuyo .sistema:not(.es-tuyo) .boton-primario {
+/* El primario es solo el del sistema detectado. Sin sistema (teléfono, user
+   agent desconocido o sin JS), las tres descargas van en secundario: tres
+   rellenos seguidos no dicen cuál es el tuyo. */
+.sistema:not(.es-tuyo) .boton-primario {
   background: transparent;
   border-color: color-mix(in srgb, var(--texto) 30%, transparent);
   color: var(--texto);
 }
 
-.sistemas.hay-tuyo .sistema:not(.es-tuyo) .boton-primario:hover {
+.sistema:not(.es-tuyo) .boton-primario:hover {
   background: color-mix(in srgb, var(--brote) 14%, transparent);
 }
 
@@ -1056,7 +1080,8 @@ html.movimiento .captura.visible .marco {
 
 .pie-version {
   margin-left: auto;
-  font: 400 0.8125rem/1.5 var(--mono);
+  font: 400 0.875rem/1.5 var(--sans);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- 404 ---------- */
@@ -1109,7 +1134,6 @@ html.movimiento .captura.visible .marco {
   .nodo-ia {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas:
-      "nombre"
       "texto"
       "figura"
       "pie";
@@ -1118,15 +1142,16 @@ html.movimiento .captura.visible .marco {
 
   .nodo-ia {
     grid-template-areas:
-      "nombre"
       "texto"
       "ia"
       "figura"
       "pie";
   }
 
+  /* Sin canal al costado de la hifa no hay lugar para el nombre: el punto
+     queda solo, a la altura del H3, que ya nombra la sección. */
   .nodo-nombre {
-    margin-bottom: -0.5rem;
+    display: none;
   }
 
   .nodo-texto p {
@@ -1147,22 +1172,41 @@ html.movimiento .captura.visible .marco {
     min-height: 0;
   }
 
-  /* En el celular la red no va detrás del texto: crece debajo, al pie de la portada. */
+  /* En el celular la red no va detrás del texto: es una banda debajo, que se
+     funde con la placa arriba y abajo, y el pie de foto va debajo de ella,
+     sobre la placa lisa. */
+  .portada {
+    grid-template-rows: auto auto auto auto;
+  }
+
+  .portada-red {
+    position: static;
+    order: 3;
+    display: block;
+  }
+
   .portada-red img {
-    top: auto;
-    left: 0;
+    position: static;
     width: 100%;
     height: 26rem;
     object-position: 50% 40%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 8rem, #000 calc(100% - 5rem), transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0, #000 8rem, #000 calc(100% - 5rem), transparent 100%);
   }
 
   .portada-velo {
-    background: linear-gradient(180deg, var(--placa-fondo) 0, var(--placa-fondo) calc(100% - 26rem), transparent calc(100% - 17rem), transparent calc(100% - 6rem), var(--placa-sombra) 100%);
+    display: none;
   }
 
   .portada-texto {
     padding-top: 2.5rem;
-    padding-bottom: 20rem;
+    padding-bottom: 0;
+  }
+
+  .portada-pie {
+    order: 4;
+    margin-top: 0.5rem;
+    padding-bottom: 2rem;
   }
 
   .portada h1 {
@@ -1182,8 +1226,8 @@ html.movimiento .captura.visible .marco {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .tapa-numero {
-    font-size: clamp(4.25rem, 24vw, 7rem);
+  :root {
+    --numero: clamp(4.25rem, 24vw, 7rem);
   }
 
   .pie-version {

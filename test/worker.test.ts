@@ -59,6 +59,13 @@ describe("la página", () => {
     expect(novedades.indexOf("<summary><span>Dos</span>")).toBeGreaterThan(novedades.indexOf("<li>a</li>"));
   });
 
+  it("sin fecha válida, la fecha de tapa queda vacía (y el CSS la oculta)", async () => {
+    await sembrar({ ...crudo, pub_date: "no es una fecha" });
+    const html = await (await SELF.fetch("https://landing.test/")).text();
+    expect(html).toContain('<p class="tapa-fecha"></p>');
+    expect(html).toContain('<span data-mic="version">2.4.0</span>');
+  });
+
   it("si las notas no traen titular, la tapa usa el genérico", async () => {
     await sembrar({ ...crudo, notes: "## Uno\n\n- a\n\n## Dos\n\n- b" });
     const html = await (await SELF.fetch("https://landing.test/")).text();
