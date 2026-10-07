@@ -15,7 +15,15 @@
   --brote: #3dffc4;
   --borde: #16343f;
   --info: #3d8bff;
-  --ambar: #c9821e;
+
+  /* La noche (22:10) es Bioluminiscencia oscuro también en modo claro: sus
+     colores viven aparte para que el claro no los redefina. */
+  --noche-esporo: #04090e;
+  --noche-niebla: #0a1a24;
+  --noche-humus: #c6e7e1;
+  --noche-humus-tenue: #7fa9a8;
+  --noche-hifa: #19e6ff;
+  --noche-brote: #3dffc4;
 
   /* Roles */
   --texto: var(--humus);
@@ -93,15 +101,16 @@
 
 /* La noche usa la paleta oscura en los dos modos: es Esporo. */
 .noche {
-  --texto: #c6e7e1;
-  --texto-tenue: #7fa9a8;
-  --brillo-texto: #3dffc4;
-  --enlace: #19e6ff;
-  --foco: #3dffc4;
-  --borde: color-mix(in srgb, #3dffc4 16%, transparent);
-  --titulo-2: color-mix(in srgb, #3dffc4 70%, #c6e7e1);
-  --superficie: #0a1a24;
-  --sombra: color-mix(in srgb, #000 55%, transparent);
+  --texto: var(--noche-humus);
+  --texto-tenue: var(--noche-humus-tenue);
+  --brillo-texto: var(--noche-brote);
+  --enlace: var(--noche-hifa);
+  --foco: var(--noche-brote);
+  --borde: color-mix(in srgb, var(--noche-brote) 16%, transparent);
+  --titulo-2: color-mix(in srgb, var(--noche-brote) 70%, var(--noche-humus));
+  --superficie: var(--noche-niebla);
+  /* Sombra teñida de Esporo, nunca negra (DESIGN.md: Tinted Shadow Rule). */
+  --sombra: color-mix(in srgb, var(--noche-esporo) 80%, transparent);
   color-scheme: dark;
 }
 
@@ -277,7 +286,7 @@ q {
 }
 
 .boton-primario:hover {
-  background: color-mix(in srgb, var(--accion) 85%, #000);
+  background: color-mix(in srgb, var(--accion) 85%, var(--esporo));
 }
 
 .boton-secundario {
@@ -364,7 +373,8 @@ q {
 .regla-escala::after {
   position: absolute;
   right: 15px;
-  font: 400 9px/1 var(--mono);
+  /* 11px: a 9 las horas de la escala quedaban por debajo de lo legible. */
+  font: 400 11px/1 var(--mono);
   color: var(--marco-texto);
   transform: translateY(-50%);
 }
@@ -849,7 +859,7 @@ html.js.movil .cta-nota {
 .noche {
   background: var(--noche-fondo);
   color: var(--texto);
-  border-block: 1px solid color-mix(in srgb, #3dffc4 10%, transparent);
+  border-block: 1px solid color-mix(in srgb, var(--noche-brote) 10%, transparent);
 }
 
 .noche-adentro {

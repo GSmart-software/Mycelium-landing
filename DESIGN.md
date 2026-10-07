@@ -410,7 +410,8 @@ superficies; quedan anotadas para decidir si se llevan a la app o se corrigen ac
 - **Sombra de ventana en las capturas:** el producto da sombra solo a lo que flota; acá
   la lleva el marco de una captura, que se lee como una ventana.
 
-Lo que el build trae y **no** es sistema (defectos, no se heredan): la clase `.noche`
-redefine los roles con hex escritos a mano (`#c6e7e1`, `#3dffc4`, …) en vez de tokens, y
-su `--sombra` es `#000` al 55%, sin teñir; las etiquetas «06» y «24» de la escala van a
-9px; `--ambar` está declarado y no se usa.
+Al documentar aparecieron cuatro defectos del build, **ya corregidos** (2026-10-07): la clase
+`.noche` redefinía los roles con hex escritos a mano —ahora usa los tokens `--noche-*`
+declarados en `:root`, que el modo claro no redefine—; su `--sombra` era `#000` al 55% —ahora
+está teñida de Esporo, como pide la regla de sombras—; las etiquetas «06» y «24» de la escala
+iban a 9px —ahora a 11px—; y `--ambar` estaba declarado sin uso —se quitó—.
