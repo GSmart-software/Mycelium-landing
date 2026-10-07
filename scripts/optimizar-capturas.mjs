@@ -8,6 +8,8 @@
 //   <nombre>-recorte-1x.webp     el mismo a 1x (solo los que se ven en escritorio)
 //   <nombre>-recorte-movil.webp  uno más cerrado para el celular, a 2x
 // Un recorte puede pedir anchos de más (`mas`): <nombre><sufijo>-<ancho>.webp.
+// Una captura sacada ya al tamaño en que se presenta (`entera`) no se recorta:
+// se convierte entera, a su ancho (que ya es 2x), en <nombre><sufijo>.webp.
 // La portada es el lienzo del grafo sin el cromo de la app (barra, rail, botones):
 //   02-grafo-portada.webp (+ -1440)  a sangre en escritorio
 //   02-grafo-portada-movil.webp      vertical, centrado en la red, para el celular
@@ -52,11 +54,14 @@ const RECORTES = {
     "-portada": { left: 120, top: 176, width: 2560, height: 1540, ancho: 2560, mas: [1440] },
     "-portada-movil": { left: 1000, top: 200, width: 1100, height: 1500, ancho: 1000 },
   },
-  // El nodo «claude code»: en escritorio, la respuesta de la terminal a lo ancho;
-  // en el celular, su principio.
+  // El nodo «claude code»: en escritorio, la respuesta de la terminal a lo ancho.
   "04-terminal-ia": {
     "-salida": { left: 592, top: 172, width: 2288, height: 520, ancho: 2288, uno: true },
-    "-recorte": { left: 598, top: 180, width: 842, height: 461, ancho: 740 },
+  },
+  // En el celular, una captura aparte de la terminal angosta, sacada a 2x para
+  // ~343 px CSS: entera, la letra queda en 11 px o más.
+  "04-terminal-ia-movil": {
+    "": { entera: true },
   },
   "03-paleta": {
     "-recorte": { left: 806, top: 101, width: 1267, height: 706, ancho: 1267, uno: true },
@@ -109,7 +114,7 @@ for (const f of fuentes) {
   const entrada = join(origen, f);
   const nombre = basename(f, ".png");
   for (const [sufijo, r] of Object.entries(RECORTES[nombre] ?? {})) {
-    const region = { left: r.left, top: r.top, width: r.width, height: r.height };
+    const region = r.entera ? null : { left: r.left, top: r.top, width: r.width, height: r.height };
     const salidas = [{ archivo: `${nombre}${sufijo}.webp`, ancho: r.ancho }];
     if (r.uno) salidas.push({ archivo: `${nombre}${sufijo}-1x.webp`, ancho: Math.round(r.ancho / 2) });
     for (const ancho of r.mas ?? []) salidas.push({ archivo: `${nombre}${sufijo}-${ancho}.webp`, ancho });
@@ -117,11 +122,10 @@ for (const f of fuentes) {
       const salida = join(destino, archivo);
       esperados.add(archivo);
       if (!recortesCambiaron && !pendiente(entrada, salida)) continue;
-      await sharp(entrada)
-        .extract(region)
-        .resize({ width: ancho, withoutEnlargement: true })
-        .webp(WEBP)
-        .toFile(salida);
+      let img = sharp(entrada);
+      if (region) img = img.extract(region).resize({ width: ancho, withoutEnlargement: true });
+      const info = await img.webp(WEBP).toFile(salida);
+      if (r.entera) console.log(`${archivo}: ${info.width}×${info.height} (el width/height de su <source>).`);
       hechas++;
     }
   }
@@ -133,6 +137,12 @@ for (const f of fuentes) {
       hechas++;
     }
   }
+}
+
+// Una PNG que todavía no está no frena nada: se avisa y la página muestra su
+// marco vacío hasta que llegue.
+for (const nombre of Object.keys(RECORTES)) {
+  if (!fuentes.includes(`${nombre}.png`)) console.warn(`Aviso: falta capturas/${nombre}.png; sus recortes quedan sin generar.`);
 }
 
 writeFileSync(firmaRecortes, firmaNueva);

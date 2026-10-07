@@ -60,7 +60,9 @@ Las PNG de `capturas/` (2880×1800, vault de demostración «Huerta del barrio»
 la interfaz se lea al tamaño en que se presenta —`<nombre><sufijo>.webp` a 2x, `-1x` para
 escritorio y `-recorte-movil` para el celular—. La portada es `02-grafo-portada` (el lienzo del
 grafo sin el cromo de la app, a 2560 y 1440 px) y `02-grafo-portada-movil`; la terminal a lo
-ancho, `04-terminal-ia-salida`. Además, `og.jpg` (1200×750, del grafo) para la vista previa al
+ancho, `04-terminal-ia-salida`, y en el celular `04-terminal-ia-movil`: una captura aparte de la
+terminal angosta, sacada a 2x, que se convierte entera (`entera: true`). Si falta una PNG, el
+script avisa y sigue. Además, `og.jpg` (1200×750, del grafo) para la vista previa al
 compartir. Si cambiás una región, actualizá el `width`/`height` de su `<img>`/`<source>` en
 `index.html` (de ahí sale la proporción del marco). Es
 incremental: solo rehace lo que falta o quedó más viejo que su PNG. Para cambiar una captura,
