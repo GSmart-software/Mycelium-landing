@@ -54,7 +54,7 @@ muestra el modo de respaldo (sirve para probarlo).
 
 ## Capturas
 
-Las PNG de `capturas/` (2880×1800, vault de demostración «Huerta del barrio») son la fuente.
+Las PNG de `capturas/` (2880×1800, vault de demostración «Bosque de hongos») son la fuente.
 `npm run capturas` (corre solo antes de `dev`, `test` y `deploy`) las convierte con `sharp` en
 `public/capturas/` solo **recortes**: regiones de las capturas (`RECORTES` en el script), para que
 la interfaz se lea al tamaño en que se presenta —`<nombre><sufijo>.webp` a 2x, `-1x` para

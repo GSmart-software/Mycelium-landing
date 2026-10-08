@@ -68,7 +68,7 @@ const RECORTES = {
     "-recorte-movil": { left: 847, top: 124, width: 608, height: 452, ancho: 608 },
   },
   "05-lectura-enlaces": {
-    "-recorte": { left: 1531, top: 259, width: 1342, height: 1123, ancho: 1342, uno: true },
+    "-recorte": { left: 1531, top: 259, width: 1342, height: 1171, ancho: 1342, uno: true },
     "-recorte-movil": { left: 2210, top: 274, width: 662, height: 763, ancho: 662 },
   },
   "06-calendario": {
@@ -76,8 +76,8 @@ const RECORTES = {
     "-recorte-movil": { left: 2290, top: 281, width: 583, height: 727, ancho: 583 },
   },
   "07-lienzo-o-base": {
-    "-recorte": { left: 677, top: 353, width: 1325, height: 1202, ancho: 1325, uno: true },
-    "-recorte-movil": { left: 1282, top: 806, width: 734, height: 763, ancho: 720 },
+    "-recorte": { left: 670, top: 350, width: 1410, height: 1300, ancho: 1410, uno: true },
+    "-recorte-movil": { left: 1404, top: 828, width: 670, height: 806, ancho: 670 },
   },
   "08-temas-bio-claro": {
     "-recorte": { left: 158, top: 252, width: 1627, height: 1102, ancho: 1627, uno: true },

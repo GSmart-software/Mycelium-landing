@@ -162,8 +162,8 @@ components:
 
 **Creative North Star: "La red"**
 
-La página es la red misma. Abre con el **grafo real** del vault de demostración «Huerta
-del barrio» a sangre, de borde a borde, bajo un velo que lo apaga detrás del texto; desde
+La página es la red misma. Abre con el **grafo real** del vault de demostración «Bosque
+de hongos» a sangre, de borde a borde, bajo un velo que lo apaga detrás del texto; desde
 ahí baja una **hifa**, una línea vertical de 1px en el margen izquierdo, que une las
 funciones como nodos: escribir, conectar, encontrar, agendar, organizar, claude code,
 temas. Cada nodo es un punto sobre la línea con su nombre debajo, en mono chico, como los
