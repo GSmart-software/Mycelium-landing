@@ -24,4 +24,4 @@ URL_PUBLICA = "https://pub-4a4b6d7b99be4917a2fe0074be9dfa40.r2.dev"
 # Versión conocida que se usa si R2 no responde: /descargar/* sigue bajando
 # un instalador que existe, y la app avisa después si hay una más nueva.
 # Subila cuando quieras que el respaldo apunte a una más reciente.
-VERSION_RESPALDO = "2.4.0"
+VERSION_RESPALDO = "2.6.0"
