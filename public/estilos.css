@@ -1,8 +1,7 @@
 /* Landing de Mycelium — «La red», Bioluminiscencia.
-   Todo sale de los tokens de :root. Oscuro por defecto; el claro llega con
-   prefers-color-scheme. Las capas: raw (los colores del tema), roles (qué
-   hace cada color) y la página. La portada es el grafo: una placa oscura en
-   los dos modos. */
+   Todo sale de los tokens de :root. Siempre oscura: no hay variante clara.
+   Las capas: raw (los colores del tema), roles (qué hace cada color) y la
+   página. La portada es el grafo: una placa con su propia paleta. */
 
 :root {
   /* Raw: Bioluminiscencia oscuro */
@@ -17,8 +16,8 @@
   --borde: #16343f;
   --info: #3d8bff;
 
-  /* La portada usa la paleta oscura en los dos modos: es la captura del grafo,
-     cuyo lienzo es Esporo profundo. */
+  /* La paleta de la portada: la de la captura del grafo, cuyo lienzo es
+     Esporo profundo. */
   --placa-fondo: #0b1d27;
   --placa-sombra: #04090e;
   --placa-humus: #c6e7e1;
@@ -71,44 +70,6 @@
   --salida: cubic-bezier(0.16, 1, 0.3, 1);
 
   color-scheme: dark;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Raw: Bioluminiscencia claro */
-    --esporo: #0c4a57;
-    --esporo-profundo: #08323d;
-    --lienzo: #f1f6f7;
-    --niebla: #e3eef1;
-    --humus: #1f2d30;
-    --humus-tenue: #4f5f62;
-    --hifa: #0e7c8c;
-    --brote: #16b8c9;
-    --borde: color-mix(in srgb, #1f2d30 16%, transparent);
-
-    --fondo: var(--lienzo);
-    --sobre-accion: #f1f6f7;
-    --enlace: color-mix(in srgb, var(--hifa) 72%, var(--humus));
-    --brillo-texto: #1b6c75;
-    --foco: var(--hifa);
-    --superficie: color-mix(in srgb, var(--niebla) 60%, var(--lienzo));
-    /* Sin tarjetas blancas elevadas (DESIGN.md del producto): un velo de Niebla. */
-    --superficie-alta: color-mix(in srgb, var(--niebla) 55%, var(--lienzo));
-    --codigo-fondo: color-mix(in srgb, var(--humus) 7%, var(--lienzo));
-    --marco-borde: color-mix(in srgb, var(--esporo-profundo) 22%, transparent);
-    /* Brote oscurecido → Hifa: recorre de verde a turquesa y las dos puntas
-       pasan 3:1 sobre el Lienzo claro (#0f8a66 3,97:1 · #0e7c8c 4,5:1). */
-    --degrade: linear-gradient(90deg, #0f8a66, var(--hifa));
-    --sombra: color-mix(in srgb, var(--esporo-profundo) 24%, transparent);
-
-    --linea-apagada: color-mix(in srgb, var(--hifa) 20%, transparent);
-    /* El punto de Claude Code y el anillo final: el Brote oscurecido del degradé claro,
-       que pasa 3:1 sobre el Lienzo (#0f8a66, 3,97:1); #16b8c9 daba 2,4:1. */
-    --linea-punta: #0f8a66;
-    --nodo-texto: #1b6c75;
-
-    color-scheme: light;
-  }
 }
 
 /* ---------- Base ---------- */
@@ -315,7 +276,7 @@ q {
 /* ---------- Portada: el grafo a sangre ---------- */
 
 .portada {
-  /* Paleta de la placa, en los dos modos. */
+  /* Paleta de la placa. */
   --texto: var(--placa-humus);
   --texto-tenue: var(--placa-tenue);
   --accion: var(--placa-hifa);

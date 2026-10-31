@@ -175,8 +175,9 @@ fecha de tapa, el titular del release y el sumario numerado, junto a las descarg
 Es el bosque bioluminiscente de la app (**heredado**: los raw de Bioluminiscencia, Hifa
 para lo que se hace y Brote para lo que brilla, las tres familias, los dos radios), en la
 densidad de una página: 17px de texto, titulares de marketing en Source Serif. La portada
-es una **placa oscura en los dos modos**, porque es la captura del grafo y el grafo se
-dibuja siempre sobre oscuro; el resto de la página sigue a `prefers-color-scheme`.
+es una **placa oscura** con su propia paleta, porque es la captura del grafo y el grafo se
+dibuja siempre sobre oscuro. La página es **siempre oscura** (desde el 2026-10-31 no sigue a
+`prefers-color-scheme`).
 
 Rechaza la landing de categoría: hero centrado sobre fondo liso, grilla de tarjetas de
 funciones, testimonios y métricas. Las funciones se recorren en fila sobre la hifa, nunca
@@ -195,8 +196,10 @@ en tarjetas.
 
 Los raw de Bioluminiscencia del producto, sin un color de marca nuevo, con una capa de
 **roles propios de la página** (`--texto`, `--accion`, `--brillo-texto`, `--foco`,
-`--superficie`, `--linea*`, `--placa-*`, `--degrade`) en `:root` de `estilos.css`,
-recalibrada en `prefers-color-scheme: light`. Oscuro por defecto, como la app.
+`--superficie`, `--linea*`, `--placa-*`, `--degrade`) en `:root` de `estilos.css`.
+**Siempre oscura**: la variante `prefers-color-scheme: light` se quitó el 2026-10-31 por
+decisión del usuario. Los tokens `*-claro` y las menciones al modo claro de este documento
+quedan como registro de esa variante; `estilos.css` ya no los usa.
 
 ### Primary
 - **Hifa** (acción y línea): el botón primario de descarga, los enlaces, el botón
