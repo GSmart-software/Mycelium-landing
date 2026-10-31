@@ -146,7 +146,8 @@ describe("la página", () => {
 
   it("el HTML estático trae la tapa de la 2.4.0 tal como la arma el Worker", async () => {
     // Abierta sin el Worker, la página tiene que verse igual que inyectada.
-    const estatica = await (await env.ASSETS.fetch(new Request("https://landing.test/"))).text();
+    // Sin los CR que agrega un checkout con core.autocrlf en Windows.
+    const estatica = (await (await env.ASSETS.fetch(new Request("https://landing.test/"))).text()).replace(/\r\n/g, "\n");
     const n = partirNovedades(crudo.notes);
     expect(estatica).toContain(sumarioHtml(n));
     expect(estatica).toContain(`data-mic="titular">${n.titular}<`);
@@ -187,7 +188,9 @@ describe("/descargar", () => {
   it("sin manifiesto, baja la versión de respaldo", async () => {
     const r = await SELF.fetch("https://landing.test/descargar/mac", { redirect: "manual" });
     expect(r.status).toBe(302);
-    expect(r.headers.get("location")).toBe(`${BASE}/2.4.0/Mycelium_2.4.0_aarch64.dmg`);
+    const v = (env as unknown as Env).VERSION_RESPALDO;
+    expect(v).toMatch(/^\d+\.\d+\.\d+$/);
+    expect(r.headers.get("location")).toBe(`${BASE}/${v}/Mycelium_${v}_aarch64.dmg`);
   });
 
   it("una plataforma desconocida vuelve a las descargas", async () => {
