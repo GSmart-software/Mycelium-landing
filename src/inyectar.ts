@@ -13,6 +13,9 @@
  * - `data-mic="con-version"`: se quita entero si no se sabe la versión.
  * - `data-mic="sin-version"`: lleva `hidden`; se muestra si no se sabe.
  * - `a[data-plataforma]`: su `href` pasa a `/descargar/<plataforma>`.
+ * - `a[data-cta]`: el botón de la portada, que sin JS ofrece Windows, pasa a
+ *   `/descargar/windows`. Con JS, `sitio.js` le copia el de la plataforma del
+ *   visitante; sin JS (o en una vista previa) se queda con este.
  * - `meta[property="og:image"]`: su `content` pasa a URL absoluta con el
  *   origen de la request (los lectores de Open Graph no resuelven relativas).
  */
@@ -93,7 +96,8 @@ export function inyectar(respuesta: Response, m: Manifiesto | null, origen?: str
       const p = el.getAttribute("data-plataforma");
       if (p) el.setAttribute("href", `/descargar/${encodeURIComponent(p)}`);
     },
-  });
+  })
+    .on("a[data-cta]", { element: (el) => void el.setAttribute("href", "/descargar/windows") });
   if (origen) {
     reescritor.on('meta[property="og:image"]', {
       element(el) {

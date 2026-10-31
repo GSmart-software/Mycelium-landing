@@ -97,6 +97,9 @@ describe("la página", () => {
       expect(html).toContain(`data-plataforma="${p}" href="/descargar/${p}"`);
     }
     expect(html).not.toMatch(/data-plataforma="[^"]+" href="https:/);
+    // El botón de la portada tampoco se queda con el instalador del HTML estático.
+    expect(html).toContain('data-cta href="/descargar/windows"');
+    expect(html).not.toMatch(/data-cta href="https:/);
   });
 
   it("las novedades maliciosas llegan escapadas", async () => {
