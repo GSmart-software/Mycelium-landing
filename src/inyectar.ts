@@ -55,7 +55,7 @@ const CHEVRON =
   '<svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
 
 /** El titular de la tapa cuando las notas no traen uno. */
-export const TITULAR_GENERICO = "Lo que creció en esta versión";
+export const TITULAR_GENERICO = "Novedades de esta versión";
 
 /**
  * El sumario de la tapa: la entrada (si la hay) y una lista numerada con un

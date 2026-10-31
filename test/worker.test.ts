@@ -69,7 +69,7 @@ describe("la página", () => {
   it("si las notas no traen titular, la tapa usa el genérico", async () => {
     await sembrar({ ...crudo, notes: "## Uno\n\n- a\n\n## Dos\n\n- b" });
     const html = await (await SELF.fetch("https://landing.test/")).text();
-    expect(html).toMatch(/data-mic="titular"[^>]*>Lo que creció en esta versión</);
+    expect(html).toMatch(/data-mic="titular"[^>]*>Novedades de esta versión</);
   });
 
   it("el titular llega escapado", async () => {
