@@ -87,6 +87,16 @@ const RECORTES = {
     "-recorte": { left: 158, top: 252, width: 1627, height: 1102, ancho: 1627, uno: true },
     "-recorte-movil": { left: 828, top: 274, width: 700, height: 806, ancho: 700 },
   },
+  // Los dos temas de la 2.6.0, con la misma composición que 08 y 09:
+  // Amethystina en oscuro y Amanita en claro.
+  "10-temas-amethystina": {
+    "-recorte": { left: 158, top: 252, width: 1627, height: 1102, ancho: 1627, uno: true },
+    "-recorte-movil": { left: 828, top: 274, width: 700, height: 806, ancho: 700 },
+  },
+  "11-temas-amanita": {
+    "-recorte": { left: 158, top: 252, width: 1627, height: 1102, ancho: 1627, uno: true },
+    "-recorte-movil": { left: 828, top: 274, width: 700, height: 806, ancho: 700 },
+  },
 };
 
 // Si cambia la definición de un recorte (o de og.jpg), se rehace aunque la PNG no cambió.
